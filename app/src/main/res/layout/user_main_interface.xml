@@ -22,14 +22,15 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
+            android:layout_weight="1"
             android:background="@color/white"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 app:srcCompat="@drawable/img1" />
         </LinearLayout>
 
@@ -73,26 +74,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:background="@color/white"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginLeft="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/selector"
-                android:backgroundTint="@color/purple_200"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="205dp"
+            android:layout_height="300dp"
             android:background="@color/white"
             android:orientation="horizontal">
 
@@ -102,17 +84,26 @@
                 android:layout_height="wrap_content"
 
 
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="130dp"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="220dp"
                 android:background="@color/purple_200"
                 android:text="首页" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="220dp"
+                android:background="@drawable/selector"
+                android:backgroundTint="@color/purple_200" />
 
             <Button
                 android:id="@+id/bt5_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="150dp"
-                android:layout_marginTop="130dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="220dp"
                 android:layout_marginRight="50dp"
 
                 android:background="@color/purple_200"
