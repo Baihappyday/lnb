@@ -95,8 +95,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="220dp"
-                android:background="@drawable/selector"
-                android:backgroundTint="@color/purple_200" />
+                android:backgroundTint="@color/purple_200"
+            />   <!--android:background="@drawable/selector"-->
 
             <Button
                 android:id="@+id/bt5_2"
