@@ -18,12 +18,20 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_user_login);
         btn_enroll = findViewById(R.id.enroll);
         btn_enroll.setOnClickListener(this);
+        btn_forget_password = findViewById(R.id.forget);
+        btn_forget_password.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         if (findViewById(R.id.enroll) == v){
             Intent i = new Intent(UserLoginActivity.this, EnrollActicity.class);
+            //启动
+            startActivity(i);
+
+        }
+        if (findViewById(R.id.forget) == v){
+            Intent i = new Intent(UserLoginActivity.this, ForgetPasswordActivity.class);
             //启动
             startActivity(i);
 
