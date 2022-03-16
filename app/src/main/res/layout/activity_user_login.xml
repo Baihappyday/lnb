@@ -1,92 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
-    android:focusableInTouchMode="true"
-    android:focusable="true">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="老年宝"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_margin="8dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_margin="8dp">
-        <EditText
+    tools:context=".ForgetPasswordActivity">
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:orientation="vertical"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:padding="10dp"-->
+<!--    android:focusableInTouchMode="true"-->
+<!--    android:focusable="true">-->
 
-            android:id="@+id/et_phone"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/editext_selector"
-            android:gravity="left|center"
-            android:hint="请输入手机号码"
-            android:inputType="number"
-            android:maxLength="11"
-            android:textColor="@color/black"
-            android:textColorHint="@color/grey"
-            android:textCursorDrawable="@drawable/text_cursor"
-            android:textSize="17sp" />
-    </LinearLayout>
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_margin="8dp">
-        <EditText
-            android:id="@+id/et_password"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/editext_selector"
-            android:gravity="left|center"
-            android:hint="请输入密码"
-            android:inputType="numberPassword"
-            android:maxLength="8"
-            android:textColor="@color/black"
-            android:textColorHint="@color/grey"
-            android:textCursorDrawable="@drawable/text_cursor"
-            android:textSize="17sp" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_margin="8dp">
-        <Button
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="登录"
-            android:textSize="20sp"
-            android:textColor="@color/black"/>
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_margin="8dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="8dp">
+                <EditText
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                    android:id="@+id/et_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/editext_selector"
+                    android:gravity="start|center"
+                    android:hint="@string/input_phone_number"
+                    android:importantForAutofill="no"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textCursorDrawable="@drawable/text_cursor"
+                    android:textSize="17sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="8dp">
+                <EditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/editext_selector"
+                    android:gravity="start|center"
+                    android:hint="@string/please_input_password"
+                    android:importantForAutofill="no"
+                    android:inputType="numberPassword"
+                    android:maxLength="8"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textCursorDrawable="@drawable/text_cursor"
+                    android:textSize="17sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="8dp">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/log_in"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"/>
 
-        <Button
-            android:id="@+id/forget"
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:gravity="center"
-            android:text="忘记密码"
-            android:textSize="17sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/enroll"
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:gravity="center"
-            android:text="注册账号"
-            android:textSize="17sp" />
-    </LinearLayout>
-</LinearLayout>
+                <Button
+                    android:id="@+id/forget"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:text="@string/forget_password"
+                    android:textSize="17sp"
+                    style="?android:attr/buttonBarButtonStyle"/>
+
+                <Button
+                    android:id="@+id/enroll"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:text="@string/register_account"
+                    android:textSize="17sp"
+                    style="?android:attr/buttonBarButtonStyle"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+<!--</LinearLayout>-->
+</androidx.constraintlayout.widget.ConstraintLayout>
