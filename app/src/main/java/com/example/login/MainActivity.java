@@ -2,49 +2,40 @@ package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-//选择用户界面
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button btn_user;
-    private Button btn_worker;
-    private Button btn_community;
-    private Button btn_institution;
+    Button skip;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {//app的logo或者推广广告展示界面
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_identi_choice);
-        btn_user = (Button)findViewById(R.id.user);//我是用户
-        btn_worker = (Button) findViewById(R.id.worker);//志愿者/家政
-        btn_community = (Button) findViewById(R.id.community);
-        btn_institution = (Button) findViewById(R.id.institution);
-        btn_user.setOnClickListener(this);
+        setContentView(R.layout.main_layout);
+        skip = (Button)findViewById(R.id.skip);
+        skip.setOnClickListener(this);
+        new Handler().postDelayed(new Runnable() {//5秒后自动跳转
+            @Override
+            public void run() {
+                Intent intent = new Intent();
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);//在跳转到目标activity前销毁所以已经存在的activity（实现不能返回的功能）
+                intent.setClass(MainActivity.this,IdentiChooseActivity.class);
+                startActivity(intent);//要延时的程序
+            }
+        },5000);
     }
 
     @Override
     public void onClick(View v) {
-        if (findViewById(R.id.user) == v){
-            //我是用户->跳转至user_login用户登录界面
-            //保存密码的用户直接跳转至首页？？
-            Intent i = new Intent(MainActivity.this, UserLoginActivity.class);
-            startActivity(i);
+        if (findViewById(R.id.skip) == v){
+            Intent intent = new Intent();
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setClass(MainActivity.this,IdentiChooseActivity.class);
+            startActivity(intent);
         }
-        if (findViewById(R.id.worker) == v){
-            //志愿者/家政->
 
-        }
-        if (findViewById(R.id.community) == v){
-            //社区->
-
-        }
-        if (findViewById(R.id.institution) == v){
-            //养老机构->
-
-        }
     }
 }

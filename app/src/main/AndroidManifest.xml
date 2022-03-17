@@ -8,12 +8,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-
-        android:theme="@style/AppTheme">
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".UserLoginActivity"></activity>
         <activity android:name=".UserMainInterfaceActivity"></activity>
         <activity android:name=".PersonalCenterActivity"></activity>
+        <activity android:name=".IdentiChooseActivity"></activity>
         <activity android:name=".EnrollActicity"/>
 
 
