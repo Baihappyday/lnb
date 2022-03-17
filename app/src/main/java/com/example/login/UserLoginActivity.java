@@ -49,16 +49,18 @@ public class UserLoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //填写页面跳转的逻辑
-                //*****此处缺失忘记密码界面****//
-                Intent intent=new Intent(UserLoginActivity.this,UserMainInterfaceActivity.class);//跳转到用户首页
-                startActivity(intent);
+                Intent i = new Intent(UserLoginActivity.this, ForgetPasswordActivity.class);
+                //启动
+                startActivity(i);
 
             }
         });
 
 
 
+
     }
 
 
-}
+
+        }

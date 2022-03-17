@@ -4,6 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/ASprogram/lnb/app/src/main/res/layout/activity_eoroll.xml" value="0.22146739130434784" />
+<<<<<<< HEAD
+=======
+        <entry key="..\:/ASprogram/lnb/app/src/main/res/layout/activity_forget_password.xml" value="0.25364583333333335" />
+>>>>>>> temp
         <entry key="..\:/ASprogram/lnb/app/src/main/res/layout/activity_identi_choice.xml" value="0.22146739130434784" />
         <entry key="..\:/ASprogram/lnb/app/src/main/res/layout/activity_main.xml" value="0.22146739130434784" />
         <entry key="..\:/ASprogram/lnb/app/src/main/res/layout/activity_user_login.xml" value="0.22146739130434784" />
