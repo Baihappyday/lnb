@@ -10,7 +10,6 @@
         android:supportsRtl="true"
 
         android:theme="@style/AppTheme">
-        android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".UserLoginActivity"></activity>
         <activity android:name=".UserMainInterfaceActivity"></activity>
         <activity android:name=".PersonalCenterActivity"></activity>
