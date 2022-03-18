@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".worker.workpersonalcenterActivity"></activity>
+        <activity android:name=".user.TaskRelease"></activity>
+        <activity android:name=".user.UserWallet" />
+        <activity android:name=".worker.workpersonalcenterActivity" />
         <activity android:name=".worker.WorkmaininterfaceAcitvity" />
         <activity android:name=".UserLoginActivity" />
         <activity android:name=".user.UserMainInterfaceActivity" />

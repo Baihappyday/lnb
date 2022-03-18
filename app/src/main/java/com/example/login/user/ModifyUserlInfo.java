@@ -15,8 +15,9 @@ import android.widget.Toast;
 import com.example.login.R;
 
 import java.util.Calendar;
-import java.util.List;
 
+
+//用户修改个人信息界面
 
 public class ModifyUserlInfo extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
     private TextView tv_birthdate;
@@ -84,7 +85,7 @@ public class ModifyUserlInfo extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        String desc = String.format("您选择的日期是%d年%d月%d日",
+        String desc = String.format("%d年%d月%d日",
                 year, monthOfYear+1, dayOfMonth);
         tv_birthdate.setText(desc);
     }

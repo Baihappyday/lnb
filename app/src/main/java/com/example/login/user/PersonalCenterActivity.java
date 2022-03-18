@@ -74,7 +74,8 @@ public class PersonalCenterActivity extends AppCompatActivity {
         wallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /****界面缺失***/
+                Intent intent=new Intent(PersonalCenterActivity.this, UserWallet.class);
+                startActivity(intent);
             }
         });
 
