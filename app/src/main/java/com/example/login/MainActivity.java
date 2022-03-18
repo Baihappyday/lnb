@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 
+/*app启动界面*/
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button skip;
     Handler handler;
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (findViewById(R.id.skip) == v){
             Intent intent = new Intent();
-            handler.removeCallbacksAndMessages(null);//清除handler中的延时操作
+            handler.removeCallbacksAndMessages(null);//清除handler中子线程的延时操作
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);//在跳转到目标activity前销毁所以已经存在的activity（实现不能返回的功能）
             intent.setClass(MainActivity.this,IdentiChooseActivity.class);
             startActivity(intent);
