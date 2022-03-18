@@ -9,15 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".UserLoginActivity"></activity>
-        <activity android:name=".user.UserMainInterfaceActivity"></activity>
-        <activity android:name=".user.PersonalCenterActivity"></activity>
-        <activity android:name=".IdentiChooseActivity"></activity>
-        <activity android:name=".EnrollActicity"/>
-
-
-
-        <activity android:name=".ForgetPasswordActivity"></activity>
+        <activity android:name=".worker.workpersonalcenterActivity"></activity>
+        <activity android:name=".worker.WorkmaininterfaceAcitvity" />
+        <activity android:name=".UserLoginActivity" />
+        <activity android:name=".user.UserMainInterfaceActivity" />
+        <activity android:name=".user.PersonalCenterActivity" />
+        <activity android:name=".IdentiChooseActivity" />
+        <activity android:name=".EnrollActicity" />
+        <activity android:name=".ForgetPasswordActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,5 +26,4 @@
         </activity>
     </application>
 
-    
 </manifest>

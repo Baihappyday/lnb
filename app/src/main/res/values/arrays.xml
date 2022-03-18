@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="typeofservice">
+        <item>服务类型</item>
         <item>洗衣</item>
         <item>做饭</item>
         <item>打扫卫生</item>
         <item>理发</item>
     </string-array>
     <string-array name="timeofservice">
-        <item>0en dash30分钟</item>
-        <item>30en dash60分钟</item>
-        <item>1en dash2小时</item>
+        <item>服务时长</item>
+        <item>0到30分钟</item>
+        <item>30到60分钟</item>
+        <item>1到2小时</item>
         <item>2小时以上</item>
     </string-array>
     <string-array name="address">
-        <item>0en dash5千米</item>
-        <item>5en dash10千米</item>
-        <item>10en dash20千米</item>
+        <item>距您距离</item>
+        <item>0到5千米</item>
+        <item>5到10千米</item>
+        <item>10到20千米</item>
     </string-array>
 
 

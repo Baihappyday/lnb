@@ -8,6 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.login.user.UserMainInterfaceActivity;
+import com.example.login.worker.WorkmaininterfaceAcitvity;
 
 public class IdentiChooseActivity extends AppCompatActivity implements View.OnClickListener  {
     private Button btn_user;
@@ -24,6 +25,9 @@ public class IdentiChooseActivity extends AppCompatActivity implements View.OnCl
         btn_community = (Button) findViewById(R.id.community);
         btn_institution = (Button) findViewById(R.id.institution);
         btn_user.setOnClickListener(this);
+        btn_worker.setOnClickListener(this);
+        btn_community.setOnClickListener(this);
+        btn_institution.setOnClickListener(this);
     }
 
     @Override
@@ -34,7 +38,8 @@ public class IdentiChooseActivity extends AppCompatActivity implements View.OnCl
         }
         if (findViewById(R.id.worker) == v){
             //志愿者/家政->
-
+            Intent i = new Intent(this, WorkmaininterfaceAcitvity.class);
+            startActivity(i);
         }
         if (findViewById(R.id.community) == v){
             //社区->
