@@ -148,7 +148,7 @@
                             android:id="@+id/birthdate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView"
+                            android:text="1900年1月1日"
                             android:textSize="30sp" />
                     </LinearLayout>
                 </HorizontalScrollView>

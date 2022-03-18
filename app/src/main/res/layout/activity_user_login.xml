@@ -77,7 +77,7 @@
                 android:layout_height="60dp"
                 android:layout_margin="8dp">
                 <Button
-                    android:id="@+id/login"
+                    android:id="@+id/submit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/log_in"

@@ -47,6 +47,16 @@ public class UserMainInterfaceActivity extends AppCompatActivity
         });
 
         //按钮：首页，点击无效
+        //按钮：任务发布
+        Button btn = findViewById(R.id.button);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /****界面缺失***/
+                Intent intent=new Intent(UserMainInterfaceActivity.this, TaskRelease.class);//跳转到任务发布
+                startActivity(intent);
+            }
+        });
 
         //按钮：个人中心
         Button  mycenter = findViewById(R.id.bt5_2);

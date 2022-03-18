@@ -21,7 +21,7 @@ public class UserLoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_login);
 
         //按钮：登录
-        btn_login_user = findViewById(R.id.login);
+        btn_login_user = findViewById(R.id.submit);
         btn_login_user.setOnClickListener(new View.OnClickListener() {//登录按钮
             @Override
             public void onClick(View view) {
