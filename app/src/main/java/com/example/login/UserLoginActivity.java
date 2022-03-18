@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.login.user.UserMainInterfaceActivity;
+
 public class UserLoginActivity extends AppCompatActivity {
 
     private Button btn_login_user;
@@ -24,7 +26,7 @@ public class UserLoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //填写页面跳转的逻辑
-                Intent intent=new Intent(UserLoginActivity.this,UserMainInterfaceActivity.class);//跳转到用户首页
+                Intent intent=new Intent(UserLoginActivity.this, UserMainInterfaceActivity.class);//跳转到用户首页
                 startActivity(intent);
                 //btn_login_user.setText("已点击登录");
             }

@@ -1,4 +1,4 @@
-package com.example.login;
+package com.example.login.user;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.login.R;
+import com.example.login.UserLoginActivity;
 
 public class PersonalCenterActivity extends AppCompatActivity {
 
@@ -19,7 +22,7 @@ public class PersonalCenterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //跳转至登录界面
-                Intent intent=new Intent(PersonalCenterActivity.this,UserLoginActivity.class);
+                Intent intent=new Intent(PersonalCenterActivity.this, UserLoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -78,7 +81,7 @@ public class PersonalCenterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //跳转至首页界面
-                Intent intent=new Intent(PersonalCenterActivity.this,UserMainInterfaceActivity.class);
+                Intent intent=new Intent(PersonalCenterActivity.this, UserMainInterfaceActivity.class);
                 startActivity(intent);
             }
         });

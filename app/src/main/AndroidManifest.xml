@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".UserLoginActivity"></activity>
-        <activity android:name=".UserMainInterfaceActivity"></activity>
-        <activity android:name=".PersonalCenterActivity"></activity>
+        <activity android:name=".user.UserMainInterfaceActivity"></activity>
+        <activity android:name=".user.PersonalCenterActivity"></activity>
         <activity android:name=".IdentiChooseActivity"></activity>
         <activity android:name=".EnrollActicity"/>
 

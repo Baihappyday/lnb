@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.login.user.UserMainInterfaceActivity;
+
 public class IdentiChooseActivity extends AppCompatActivity implements View.OnClickListener  {
     private Button btn_user;
     private Button btn_worker;

@@ -1,4 +1,4 @@
-package com.example.login;
+package com.example.login.user;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+
+import com.example.login.R;
 
 
 public class UserMainInterfaceActivity extends AppCompatActivity
@@ -52,7 +55,7 @@ public class UserMainInterfaceActivity extends AppCompatActivity
             public void onClick(View view) {
 
                 //填写页面跳转的逻辑
-                Intent intent=new Intent(UserMainInterfaceActivity.this,PersonalCenterActivity.class);//跳转到个人中心
+                Intent intent=new Intent(UserMainInterfaceActivity.this, PersonalCenterActivity.class);//跳转到个人中心
                 startActivity(intent);
             }
         });
