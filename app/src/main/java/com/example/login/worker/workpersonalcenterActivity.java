@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.login.EnrollActicity;
 import com.example.login.R;
+import com.example.login.UserLoginActivity;
 
 public class workpersonalcenterActivity extends AppCompatActivity {
 
@@ -20,9 +22,17 @@ public class workpersonalcenterActivity extends AppCompatActivity {
         btn_shouye2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent=new Intent(workpersonalcenterActivity.this, WorkmaininterfaceAcitvity.class);
                 startActivity(intent);
+            }
+        });
+        Button btn_inwallet = findViewById(R.id.inwallet);
+        btn_inwallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(workpersonalcenterActivity.this, workwalletActivity.class);//此处崩溃
+                startActivity(i);
+
             }
         });
     }
