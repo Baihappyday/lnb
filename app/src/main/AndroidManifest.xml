@@ -13,6 +13,7 @@
         <activity android:name=".worker.WorkmaininterfaceAcitvity" />
         <activity android:name=".UserLoginActivity" />
         <activity android:name=".user.UserMainInterfaceActivity" />
+        <activity android:name=".user.ModifyUserlInfo" />
         <activity android:name=".user.PersonalCenterActivity" />
         <activity android:name=".IdentiChooseActivity" />
         <activity android:name=".EnrollActicity" />
