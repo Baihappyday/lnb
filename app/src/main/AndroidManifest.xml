@@ -44,7 +44,7 @@
         <activity android:name=".EnrollActicity" />
         <activity android:name=".ForgetPasswordActivity" />
         <activity android:name=".UserLoginActivity" />
-        <activity android:name=".CameraActivity"
+        <activity android:name=".CameraActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
