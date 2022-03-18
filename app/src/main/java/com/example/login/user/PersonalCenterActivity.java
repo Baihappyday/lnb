@@ -85,9 +85,7 @@ public class PersonalCenterActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         //按钮个人中心，点击无效
-
     }
 }
 
