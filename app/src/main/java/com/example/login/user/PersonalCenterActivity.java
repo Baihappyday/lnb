@@ -32,6 +32,8 @@ public class PersonalCenterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 /******此处完善个人信息界面缺失*****/
+                Intent intent=new Intent(PersonalCenterActivity.this, ModifyUserlInfo.class);
+                startActivity(intent);
             }
         });
 
