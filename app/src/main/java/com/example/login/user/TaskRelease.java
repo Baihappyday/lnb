@@ -52,7 +52,7 @@ public class TaskRelease extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.spinner_stuff) {
+        if (v.getId() == R.id.submit) {//提交订单
 
         }
     }

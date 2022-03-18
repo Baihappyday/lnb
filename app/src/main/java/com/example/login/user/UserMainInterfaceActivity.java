@@ -24,7 +24,8 @@ public class UserMainInterfaceActivity extends AppCompatActivity
         select_institution.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /****界面缺失***/
+                Intent intent=new Intent(UserMainInterfaceActivity.this, SkimInstitution.class);
+                startActivity(intent);
             }
         });
 
