@@ -2,10 +2,15 @@ package com.example.login.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -47,6 +52,13 @@ public class SkimInstitution extends AppCompatActivity {
         sp3.setAdapter(filterAdapter);
         sp3.setSelection(0);
         sp3.setOnItemSelectedListener(new SkimInstitution.MySelectedListener());
+        //养老院信息等待连接数据库后加载
+
+//        LinearLayout ll = (LinearLayout)findViewById(R.id.institution_list);
+//        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        RelativeLayout r = (RelativeLayout)inflater.inflate(R.layout.institution, (ViewGroup) findViewById(R.id.institution), true);
+//        ll.addView(r);
+
     }
 
     private String[] multiarrangeArray = {"综合排序", "1", "2", "3", "4"};

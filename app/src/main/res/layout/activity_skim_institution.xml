@@ -12,9 +12,10 @@
         android:fillViewport="true">
 
         <LinearLayout
+            android:id="@+id/llinsti"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
@@ -54,11 +55,13 @@
                     android:layout_weight="1" />
             </LinearLayout>
 
-            <RelativeLayout
+            <LinearLayout
+                android:id="@+id/institution_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            </RelativeLayout>
+            </LinearLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
