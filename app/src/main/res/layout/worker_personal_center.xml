@@ -112,12 +112,14 @@
         android:padding="2dp"
         android:background="@color/white"
         android:layout_marginBottom="50dp">
-        <TextView
+        <Button
+            android:id="@+id/inwallet"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:text="收入钱包"
             android:textSize="17sp"
             android:textColor="@color/black"
+            android:background="@null"
             android:layout_gravity="center|left"/>
     </LinearLayout>
     <LinearLayout
