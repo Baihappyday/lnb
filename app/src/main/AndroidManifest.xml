@@ -32,7 +32,12 @@
         <activity android:name=".user.UserMainInterfaceActivity" />
         <activity android:name=".user.ModifyUserlInfo" />
         <activity android:name=".user.PersonalCenterActivity" />
-        <activity android:name=".user.SkimInstitution"/>
+        <activity android:name=".user.SkimInstitution">
+            <intent-filter>
+                <action android:name="android.intent.action.user.TitlePage"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
 
         <activity android:name=".worker.workpersonalcenterActivity" />
         <activity android:name=".worker.WorkmaininterfaceAcitvity" />

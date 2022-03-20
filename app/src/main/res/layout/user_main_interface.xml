@@ -9,107 +9,58 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/white"
-            android:orientation="vertical">
+            android:fillViewport="true">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/img1" />
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="79dp"
-            android:background="@color/white"
-
-            android:orientation="horizontal">
-
-
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="15dp"
-                android:background="@color/purple_200"
-
-                android:text="选机构" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/purple_200"
-                android:text="健康" />
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="60dp"
-                android:background="@color/purple_200"
-                android:text="社区活动" />
-        </LinearLayout>
+                <fragment
+                    android:id="@+id/fragment"
+                    android:name="com.example.login.user.BlankFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="@color/white"
+            android:layout_height="100dp"
             android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/bt5_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-
-                android:layout_marginLeft="55dp"
-                android:layout_marginTop="220dp"
-                android:background="@color/purple_200"
-                android:text="首页" />
 
             <Button
                 android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="220dp"
-                android:text="@string/taskrelease"
-                android:backgroundTint="@color/purple_200"
-            />   <!--android:background="@drawable/selector"-->
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="首页" />
 
             <Button
-                android:id="@+id/bt5_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="220dp"
-                android:layout_marginRight="50dp"
+                android:id="@+id/taskk"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:text="任务发布" />
 
-                android:background="@color/purple_200"
+            <Button
+                android:id="@+id/personalcenter"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:text="个人中心" />
-
         </LinearLayout>
 
     </LinearLayout>

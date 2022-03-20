@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.login.util.ActivityCollector;
+
 /*app启动界面*/
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {//app的logo或者推广广告展示界面
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
+        ActivityCollector.getInstance().addActivity(this);
         skip = (Button)findViewById(R.id.skip);
         skip.setOnClickListener(this);
         handler = new Handler();
@@ -40,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);//在跳转到目标activity前销毁所以已经存在的activity（实现不能返回的功能）
             intent.setClass(MainActivity.this,IdentiChooseActivity.class);
             startActivity(intent);
-
         }
 
     }
