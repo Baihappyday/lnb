@@ -23,7 +23,7 @@ public class UserMainInterfaceActivity extends AppCompatActivity
         setContentView(R.layout.user_main_interface);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, tp).commit();
-        Button button=findViewById(R.id.button);
+        Button button=findViewById(R.id.button);//首页
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

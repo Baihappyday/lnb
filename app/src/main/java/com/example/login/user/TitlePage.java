@@ -31,14 +31,14 @@ public class TitlePage extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.button1){
+        if (view.getId() == R.id.button1){//按钮：选机构
             Intent intent=new Intent(mContext,SkimInstitution.class);
             startActivity(intent);
         }
-        if (view.getId() == R.id.button2){
+        if (view.getId() == R.id.button2){//按钮：健康
 
         }
-        if (view.getId() == R.id.button3){
+        if (view.getId() == R.id.button3){//按钮：社区活动
 
         }
     }

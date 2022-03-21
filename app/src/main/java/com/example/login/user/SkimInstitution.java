@@ -15,7 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.login.R;
-
+//用户的机构列表界面
 public class SkimInstitution extends AppCompatActivity {
 
     @Override

@@ -8,6 +8,7 @@ import android.widget.ImageButton;
 
 import com.example.login.R;
 
+//用户钱包界面
 public class UserWallet extends AppCompatActivity {
     ImageButton QRCode;
     ImageButton Wallet;

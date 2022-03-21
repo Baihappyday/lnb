@@ -18,7 +18,51 @@ public class workpersonalcenterActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.worker_personal_center);
-        Button btn_shouye2 = findViewById(R.id.shouye2);
+
+        //关于订单的4个按钮
+        Button btn_o1 = findViewById(R.id.workbt1);
+        btn_o1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {      //to update
+                Intent i = new Intent(workpersonalcenterActivity.this, WorkerOrder.class);
+                startActivity(i);
+
+            }
+        });
+
+        Button btn_o2 = findViewById(R.id.workbt2);
+        btn_o2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {      //to update
+                Intent i = new Intent(workpersonalcenterActivity.this, WorkerOrder.class);
+                startActivity(i);
+
+            }
+        });
+
+        Button btn_o3 = findViewById(R.id.workbt3);
+        btn_o3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {      //to update
+                Intent i = new Intent(workpersonalcenterActivity.this, WorkerOrder.class);
+                startActivity(i);
+
+            }
+        });
+
+        Button btn_o4 = findViewById(R.id.workbt4);
+        btn_o4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {      //to update
+                Intent i = new Intent(workpersonalcenterActivity.this, WorkerOrder.class);
+                startActivity(i);
+
+            }
+        });
+        //关于订单的4个按钮结束
+
+
+        Button btn_shouye2 = findViewById(R.id.shouye2);//按钮：任务列表
         btn_shouye2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,5 +79,7 @@ public class workpersonalcenterActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 }
