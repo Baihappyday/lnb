@@ -25,6 +25,8 @@ public class TitlePage extends Fragment implements View.OnClickListener {
         mContext = getActivity();
         Button btn1 = v.findViewById(R.id.button1);
         btn1.setOnClickListener(this);
+        Button btn2 = v.findViewById(R.id.button2);
+        btn2.setOnClickListener(this);
         Button btn3 = v.findViewById(R.id.button3);
         btn3.setOnClickListener(this);
 
@@ -38,7 +40,8 @@ public class TitlePage extends Fragment implements View.OnClickListener {
             startActivity(intent);
         }
         if (view.getId() == R.id.button2){//按钮：健康
-
+            Intent intent=new Intent(mContext,HealthInfoActivity.class);
+            startActivity(intent);
         }
 
         if (view.getId() == R.id.button3){

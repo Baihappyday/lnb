@@ -35,7 +35,7 @@
                 android:layout_margin="8dp">
                 <EditText
 
-                    android:id="@+id/et_phone"
+                    android:id="@+id/input_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="5dp"
