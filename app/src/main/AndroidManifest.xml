@@ -24,6 +24,7 @@
 
         <activity android:name=".user.InfoResourceActivity"></activity>
 
+        <activity android:name=".user.HealthInfoActivity"></activity>
         <activity android:name=".user.CommunityActivityActivity" />
 
         <provider
