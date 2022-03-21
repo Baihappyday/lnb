@@ -14,12 +14,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+
         <activity
             android:name=".worker.WorkerOrder"
             android:exported="false" />
         <activity
             android:name=".user.UserOrder"
             android:exported="false" />
+
+        <activity android:name=".user.InfoResourceActivity"></activity>
+
         <activity android:name=".user.CommunityActivityActivity" />
 
         <provider
