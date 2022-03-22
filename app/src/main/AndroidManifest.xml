@@ -48,7 +48,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".worker.workpersonalcenterActivity" />
         <activity android:name=".worker.WorkmaininterfaceAcitvity" />
         <activity android:name=".worker.workwalletActivity" />
         <activity android:name=".community.CommunitymainActivity" />

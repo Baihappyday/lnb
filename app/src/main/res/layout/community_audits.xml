@@ -89,12 +89,13 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/ensure1"
             android:layout_width="80dp"
             android:layout_height="40dp"
-            android:text="提交"
-            android:textSize="20sp"
-            android:textColor="@color/black"
+            android:layout_gravity="center"
             android:background="@null"
-            android:layout_gravity="center"/>
+            android:text="提交"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
     </LinearLayout>
 </LinearLayout>
