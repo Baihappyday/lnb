@@ -15,16 +15,58 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
 
-        <activity
-            android:name=".worker.WorkerOrder"
-            android:exported="false" />
-        <activity
-            android:name=".user.UserOrder"
-            android:exported="false" />
+        //社区活动
+        <activity android:name=".community.CommunitylistActivity"></activity>
+        <activity android:name=".community.CommunitymainActivity" />
+        <activity android:name=".community.CommunityaddActivity"/>
 
-        <activity android:name=".user.InfoResourceActivity"></activity>
+        //工作者活动
+        <activity android:name=".worker.WorkerOrder" android:exported="false" />
+        <activity android:name=".worker.WorkmaininterfaceAcitvity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden">
+        </activity>
+        <activity android:name=".worker.workwalletActivity" />
 
+        //机构活动
+        <activity android:name=".institution.InstitutionActivity" />
+        <activity android:name=".institution.ShenheActivity" />
+        <activity android:name=".institution.XiangqingActivity" />
+        <activity android:name=".institution.ZhuangtaiActivity" />
+
+        //用户活动
+        <activity android:name=".user.UserOrder" android:exported="false" />
+        <activity android:name=".user.InfoResourceActivity" />
         <activity android:name=".user.CommunityActivityActivity" />
+        <activity android:name=".user.TaskRelease" />
+        <activity android:name=".user.UserWallet" />
+        <activity android:name=".user.UserMainInterfaceActivity" />
+        <activity android:name=".user.ModifyUserlInfo" />
+        <activity android:name=".user.HealthInfoActivity"/>
+        <activity
+            android:name=".user.SkimInstitution"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.user.TitlePage" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        //主要活动
+        <activity android:name=".IdentiChooseActivity" />
+        <activity android:name=".EnrollActicity" />
+        <activity android:name=".ForgetPasswordActivity" />
+        <activity android:name=".UserLoginActivity" />
+        <activity android:name=".CameraActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -35,41 +77,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_path" />
         </provider>
-
-        <activity android:name=".user.TaskRelease" />
-        <activity android:name=".user.UserWallet" />
-        <activity android:name=".user.UserMainInterfaceActivity" />
-        <activity android:name=".user.ModifyUserlInfo" />
-        <activity android:name=".user.SkimInstitution"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.intent.action.user.TitlePage" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".worker.WorkmaininterfaceAcitvity" />
-        <activity android:name=".worker.workwalletActivity" />
-        <activity android:name=".community.CommunitymainActivity" />
-
-        <activity android:name=".institution.InstitutionActivity"/>
-        <activity android:name=".institution.ShenheActivity"/>
-        <activity android:name=".institution.XiangqingActivity"/>
-        <activity android:name=".institution.ZhuangtaiActivity"/>
-
-        <activity android:name=".IdentiChooseActivity" />
-        <activity android:name=".EnrollActicity" />
-        <activity android:name=".ForgetPasswordActivity" />
-        <activity android:name=".UserLoginActivity" />
-        <activity android:name=".CameraActivity" />
-        <activity android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

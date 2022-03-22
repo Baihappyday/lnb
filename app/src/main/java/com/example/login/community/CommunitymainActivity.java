@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.example.login.CameraActivity;
 import com.example.login.R;
+import com.example.login.institution.InstitutionActivity;
 
 public class CommunitymainActivity extends AppCompatActivity {
 
@@ -21,12 +22,13 @@ public class CommunitymainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.community_audits);
         Button ensure = findViewById(R.id.ensure1);
-        /*ensure.setOnClickListener(new View.OnClickListener() {
+        ensure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(CommunitymainActivity.this, )
+                Intent i = new Intent(CommunitymainActivity.this, CommunitylistActivity.class);
+                startActivity(i);
             }
-        });*/
+        });
         yingyezhizhao = findViewById(R.id.yingyezhizhao);
         CameraActivity.setClipRatio(1,1);
     }
