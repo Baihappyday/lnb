@@ -13,6 +13,7 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
 
         <activity
@@ -38,8 +39,11 @@
 
         <activity android:name=".user.TaskRelease" />
         <activity android:name=".user.UserWallet" />
-        <activity android:name=".user.UserMainInterfaceActivity" />
+        <activity android:name=".user.UserMainInterfaceActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".user.ModifyUserlInfo" />
+        <activity android:name=".user.HealthInfoActivity" />
+
         <activity android:name=".user.SkimInstitution"
             android:exported="false">
             <intent-filter>

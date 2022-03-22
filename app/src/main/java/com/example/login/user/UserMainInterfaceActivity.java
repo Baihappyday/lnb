@@ -1,43 +1,62 @@
 package com.example.login.user;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.TypedValue;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
 
-
+import com.example.login.IdentiChooseActivity;
+import com.example.login.MainActivity;
+import com.example.login.util.ClickMotion;
 import com.example.login.R;
 
 
-public class UserMainInterfaceActivity extends AppCompatActivity implements View.OnClickListener
+public class UserMainInterfaceActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener
 {
-    TitlePage tp = new TitlePage();
-    PersonalCenter pc = new PersonalCenter();
-    ImageButton button;//首页
+    TitlePage tpa ;
+    PersonalCenter pca;
+    BlankFragment bla;
+    //首页
+    ImageButton button;
     Button homepage;
-    ImageButton imageButton2;//个人中心
+    //个人中心
+    ImageButton imageButton2;
     Button personalcenter;
+    //用于动态修改页面中图片
     private Drawable ic_user_home;
     private Drawable ic_user_home_selected;
     private Drawable ic_personal_center;
     private Drawable ic_personal_center_selected;
-    private int id1 = R.drawable.ic_user_home;//得到本地资源中图片的id
+    //得到本地资源中图片的id
+    private int id1 = R.drawable.ic_user_home;
     private int id2 = R.drawable.ic_user_home_selected;
     private int id3 = R.drawable.ic_personal_center;
     private int id4 = R.drawable.ic_personal_center_selected;
 
 
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_main_interface);
+
+        TitlePage tp = new TitlePage();
+        PersonalCenter pc = new PersonalCenter();
+        BlankFragment bl = new BlankFragment();
+        tpa = tp;
+        pca = pc;
+        bla = bl;
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, tp).commit();
 
@@ -55,10 +74,14 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
         homepage.setTextColor(getResources().getColor(R.color.choosenGreen));
         //设置监听器（首页与个人中心）
         button.setOnClickListener(this);
+        button.setOnTouchListener(this);
         homepage.setOnClickListener(this);
+        homepage.setOnTouchListener(this);
         imageButton2.setOnClickListener(this);
+        imageButton2.setOnTouchListener(this);
         personalcenter.setOnClickListener(this);
-
+        personalcenter.setOnTouchListener(this);
+        //发布任务按钮与其监听器
         ImageButton button2=findViewById(R.id.taskk);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,21 +93,64 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
 
     }
 
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        switch (event.getAction()) {
+//
+//            case MotionEvent.ACTION_DOWN:
+//                //按下
+//
+//                break;
+//            case MotionEvent.ACTION_MOVE:
+//                //移动
+//
+//                break;
+//            case MotionEvent.ACTION_UP:
+//                //松开
+//
+//                break;
+//        }
+//        return super.onTouchEvent(event);
+
+//    }
+
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        switch (motionEvent.getAction()) {
+
+            case MotionEvent.ACTION_DOWN:
+                //按下
+                if (view.getId()==R.id.button||view.getId()==R.id.homepage)
+                    ClickMotion.motion(UserMainInterfaceActivity.this,button);
+                if (view.getId()==R.id.imageButton2||view.getId()==R.id.personalcenter)
+                    ClickMotion.motion(UserMainInterfaceActivity.this,imageButton2);
+                break;
+            case MotionEvent.ACTION_MOVE:
+                //移动
+
+                break;
+            case MotionEvent.ACTION_UP:
+                //松开
+
+                break;
+        }
+        return false;
+    }
+
     public void onClick(View v) {
         if (v.getId() == R.id.homepage){
             button.setImageDrawable(ic_user_home_selected);
             homepage.setTextColor(getResources().getColor(R.color.choosenGreen));
             imageButton2.setImageDrawable(ic_personal_center);
             personalcenter.setTextColor(getResources().getColor(R.color.black));
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, tp).commit();
-
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, tpa).commit();
         }
         if (v.getId() == R.id.button){
             button.setImageDrawable(ic_user_home_selected);
             homepage.setTextColor(getResources().getColor(R.color.choosenGreen));
             imageButton2.setImageDrawable(ic_personal_center);
             personalcenter.setTextColor(getResources().getColor(R.color.black));
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, tp).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, tpa).commit();
 
         }
         if (v.getId() == R.id.imageButton2){
@@ -92,7 +158,8 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
             personalcenter.setTextColor(getResources().getColor(R.color.choosenGreen));
             button.setImageDrawable(ic_user_home);
             homepage.setTextColor(getResources().getColor(R.color.black));
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, pc).commit();
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, pca).commit();
 
         }
         if (v.getId() == R.id.personalcenter){
@@ -100,11 +167,13 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
             personalcenter.setTextColor(getResources().getColor(R.color.choosenGreen));
             button.setImageDrawable(ic_user_home);
             homepage.setTextColor(getResources().getColor(R.color.black));
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, pc).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, pca).commit();
 
         }
 
     }
+
+
 
 //
 //        //按钮：首页，点击无效
