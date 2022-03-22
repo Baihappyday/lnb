@@ -11,6 +11,7 @@ import android.widget.Button;
 import androidx.fragment.app.Fragment;
 
 import com.example.login.R;
+import com.example.login.UserLoginActivity;
 
 //用户个人中心界面
 public class PersonalCenter extends Fragment implements View.OnClickListener {
@@ -23,6 +24,8 @@ public class PersonalCenter extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_personal_center, container, false);
         mContext = getActivity();
+        Button bt2 = v.findViewById(R.id.bt2);
+        bt2.setOnClickListener(this);
         Button bt4 = v.findViewById(R.id.bt4);
         bt4.setOnClickListener(this);
         Button bt3_1 = v.findViewById(R.id.bt3_1);
@@ -33,6 +36,8 @@ public class PersonalCenter extends Fragment implements View.OnClickListener {
         bt3_3.setOnClickListener(this);
         Button bt3_4 = v.findViewById(R.id.bt3_4);
         bt3_4.setOnClickListener(this);
+        Button button6 = v.findViewById(R.id.button6);
+        button6.setOnClickListener(this);
         return v;
     }
 
@@ -40,6 +45,10 @@ public class PersonalCenter extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         if (view.getId() == R.id.bt4){//按钮：我的钱包
             Intent intent=new Intent(mContext,UserWallet.class);
+            startActivity(intent);
+        }
+        if (view.getId() == R.id.bt2){//按钮：完善个人信息
+            Intent intent=new Intent(mContext,ModifyUserlInfo.class);
             startActivity(intent);
         }
         if (view.getId() == R.id.bt3_1) {
@@ -56,6 +65,10 @@ public class PersonalCenter extends Fragment implements View.OnClickListener {
         }
         if (view.getId() == R.id.bt3_4) {
             Intent intent=new Intent(mContext, UserOrder.class);
+            startActivity(intent);
+        }
+        if (view.getId() == R.id.button6){//按钮：完善个人信息
+            Intent intent=new Intent(mContext, UserLoginActivity.class);
             startActivity(intent);
         }
         }

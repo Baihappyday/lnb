@@ -37,6 +37,14 @@ public class UserMainInterfaceActivity extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment, pc).commit();
             }
         });
+        Button button2=findViewById(R.id.taskk);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(UserMainInterfaceActivity.this,TaskRelease.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
