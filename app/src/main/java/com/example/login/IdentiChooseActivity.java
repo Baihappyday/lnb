@@ -8,6 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.login.community.CommunitymainActivity;
+import com.example.login.institution.InstitutionActivity;
 import com.example.login.user.UserMainInterfaceActivity;
 import com.example.login.worker.WorkmaininterfaceAcitvity;
 
@@ -49,7 +50,8 @@ public class IdentiChooseActivity extends AppCompatActivity implements View.OnCl
         }
         if (findViewById(R.id.institution) == v){
             //养老机构->
-
+            Intent i = new Intent(this, InstitutionActivity.class);
+            startActivity(i);
         }
     }
 }
