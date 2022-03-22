@@ -71,6 +71,6 @@ public class PersonalCenter extends Fragment implements View.OnClickListener {
             Intent intent=new Intent(mContext, UserLoginActivity.class);
             startActivity(intent);
         }
-        }
+    }
 
 }

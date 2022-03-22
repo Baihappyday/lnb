@@ -35,8 +35,10 @@ public class IdentiChooseActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         if (findViewById(R.id.user) == v){
-            Intent i = new Intent(this, UserMainInterfaceActivity.class);
-            startActivity(i);
+            Intent intent = new Intent();
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);//在跳转到目标activity前销毁所以已经存在的activity（实现不能返回的功能）
+            intent.setClass(this,UserMainInterfaceActivity.class);
+            startActivity(intent);
         }
         if (findViewById(R.id.worker) == v){
             //志愿者/家政->
