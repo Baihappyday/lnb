@@ -14,16 +14,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-
+        <activity
+            android:name=".community.List_communityActivity"
+            android:exported="false" />
         <activity
             android:name=".worker.WorkerOrder"
             android:exported="false" />
         <activity
             android:name=".user.UserOrder"
             android:exported="false" />
-
-        <activity android:name=".user.InfoResourceActivity"></activity>
-
+        <activity android:name=".user.InfoResourceActivity" />
         <activity android:name=".user.CommunityActivityActivity" />
 
         <provider
@@ -40,7 +40,8 @@
         <activity android:name=".user.UserWallet" />
         <activity android:name=".user.UserMainInterfaceActivity" />
         <activity android:name=".user.ModifyUserlInfo" />
-        <activity android:name=".user.SkimInstitution"
+        <activity
+            android:name=".user.SkimInstitution"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.user.TitlePage" />
@@ -51,18 +52,17 @@
         <activity android:name=".worker.WorkmaininterfaceAcitvity" />
         <activity android:name=".worker.workwalletActivity" />
         <activity android:name=".community.CommunitymainActivity" />
-
-        <activity android:name=".institution.InstitutionActivity"/>
-        <activity android:name=".institution.ShenheActivity"/>
-        <activity android:name=".institution.XiangqingActivity"/>
-        <activity android:name=".institution.ZhuangtaiActivity"/>
-
+        <activity android:name=".institution.InstitutionActivity" />
+        <activity android:name=".institution.ShenheActivity" />
+        <activity android:name=".institution.XiangqingActivity" />
+        <activity android:name=".institution.ZhuangtaiActivity" />
         <activity android:name=".IdentiChooseActivity" />
         <activity android:name=".EnrollActicity" />
         <activity android:name=".ForgetPasswordActivity" />
         <activity android:name=".UserLoginActivity" />
         <activity android:name=".CameraActivity" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

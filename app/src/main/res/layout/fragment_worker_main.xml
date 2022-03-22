@@ -23,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:orientation="horizontal">
+
             <EditText
                 android:layout_width="320dp"
                 android:layout_height="45dp"
@@ -32,7 +33,8 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey"
                 android:textCursorDrawable="@drawable/text_cursor"
-                android:textSize="17sp"/>
+                android:textSize="17sp" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
