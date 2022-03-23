@@ -44,17 +44,17 @@ public class GoodsInfo {
 //			R.drawable.vivo_s, R.drawable.oppo_9p_s, R.drawable.meizu_s
 			};
 	private static int[] mPicArray = {
-//			R.drawable.iphone, R.drawable.huawei, R.drawable.xiaomi,
-//			R.drawable.vivo, R.drawable.oppo_9p, R.drawable.meizu
+			R.drawable.img1, R.drawable.img1, R.drawable.img1,
+			R.drawable.img1, R.drawable.img1, R.drawable.img1
 			};
 	public static ArrayList<GoodsInfo> getDefaultList() {
 		ArrayList<GoodsInfo> goodsList = new ArrayList<GoodsInfo>();
 		for (int i=0; i<mNameArray.length; i++) {
 			com.example.login.bean.GoodsInfo info = new com.example.login.bean.GoodsInfo();
-			info.name = mNameArray[i];
-			info.desc = mDescArray[i];
-			info.price = mPriceArray[i];
-			info.thumb = mThumbArray[i];
+//			info.name = mNameArray[i];
+//			info.desc = mDescArray[i];
+//			info.price = mPriceArray[i];
+//			info.thumb = mThumbArray[i];
 			info.pic = mPicArray[i];
 			goodsList.add(info);
 		}

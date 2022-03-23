@@ -1,0 +1,353 @@
+Index: app/src/main/java/com/example/login/user/TaskRelease.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.login.user;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.app.DatePickerDialog;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.AdapterView;\r\nimport android.widget.ArrayAdapter;\r\nimport android.widget.DatePicker;\r\nimport android.widget.Spinner;\r\nimport android.widget.Toast;\r\n\r\nimport com.example.login.R;\r\n\r\nimport java.util.Calendar;\r\n//任务发布界面\r\npublic class TaskRelease extends AppCompatActivity implements View.OnClickListener {\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_task_release);\r\n\r\n        ArrayAdapter<String> stuffAdapter = new ArrayAdapter<String>(this,\r\n                R.layout.item_select, stuffArray);\r\n        ArrayAdapter<String> intervalAdapter = new ArrayAdapter<String>(this,\r\n                R.layout.item_select, timeArray);\r\n        Spinner sp = (Spinner) findViewById(R.id.spinner_stuff);\r\n        Spinner sp1 = (Spinner) findViewById(R.id.interval);\r\n        sp.setPrompt(\"服务类型\");\r\n        sp.setAdapter(stuffAdapter);\r\n        sp.setSelection(0);\r\n        sp.setOnItemSelectedListener(new TaskRelease.MySelectedListener());\r\n        sp1.setPrompt(\"服务时长\");\r\n        sp1.setAdapter(intervalAdapter);\r\n        sp1.setSelection(0);\r\n        sp1.setOnItemSelectedListener(new TaskRelease.MySelectedListener());\r\n    }\r\n\r\n    private String[] stuffArray = {\"洗衣\", \"做饭\", \"打扫卫生\", \"理发\", \"其他\"};\r\n    private String[] timeArray = {\"0~30分钟\", \"30~60分钟\", \"1~2小时\", \"2小时以上\"};\r\n\r\n    class MySelectedListener implements AdapterView.OnItemSelectedListener {\r\n        public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {\r\n            Toast.makeText(TaskRelease.this, \"您选择的是\"+stuffArray[arg2], Toast.LENGTH_LONG).show();\r\n        }\r\n\r\n        public void onNothingSelected(AdapterView<?> arg0) {\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void onClick(View v) {\r\n        if (v.getId() == R.id.submit) {//提交订单\r\n\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/login/user/TaskRelease.java b/app/src/main/java/com/example/login/user/TaskRelease.java
+--- a/app/src/main/java/com/example/login/user/TaskRelease.java	(revision 4a900efef2361fc6574aad5dc35bfabe80764aa2)
++++ b/app/src/main/java/com/example/login/user/TaskRelease.java	(date 1648033563521)
+@@ -2,21 +2,31 @@
+ 
+ import androidx.appcompat.app.AppCompatActivity;
+ 
+-import android.app.DatePickerDialog;
+ import android.os.Bundle;
++import android.util.Log;
+ import android.view.View;
++import android.widget.AbsListView;
+ import android.widget.AdapterView;
+ import android.widget.ArrayAdapter;
+-import android.widget.DatePicker;
++import android.widget.Button;
++import android.widget.EditText;
+ import android.widget.Spinner;
+ import android.widget.Toast;
+ 
+ import com.example.login.R;
+ 
+-import java.util.Calendar;
+ //任务发布界面
+ public class TaskRelease extends AppCompatActivity implements View.OnClickListener {
+ 
++    private Spinner sp;    //服务类型下拉菜单
++    private Spinner sp1;    //服务时间下拉菜单
++    private EditText input_adress;    //输入的地址
++    private Button submit;    //提交按钮
++    private EditText editTextTextMultiLine; //备注信息
++
++    private TaskDao taskDao;    //任务数据库操作辅助类
++    public static int ntask=0;   //任务编号
++
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+@@ -26,8 +36,8 @@
+                 R.layout.item_select, stuffArray);
+         ArrayAdapter<String> intervalAdapter = new ArrayAdapter<String>(this,
+                 R.layout.item_select, timeArray);
+-        Spinner sp = (Spinner) findViewById(R.id.spinner_stuff);
+-        Spinner sp1 = (Spinner) findViewById(R.id.interval);
++        sp = (Spinner) findViewById(R.id.spinner_stuff);
++        sp1 = (Spinner) findViewById(R.id.interval);
+         sp.setPrompt("服务类型");
+         sp.setAdapter(stuffAdapter);
+         sp.setSelection(0);
+@@ -36,10 +46,24 @@
+         sp1.setAdapter(intervalAdapter);
+         sp1.setSelection(0);
+         sp1.setOnItemSelectedListener(new TaskRelease.MySelectedListener());
++
++
++        submit = (Button)findViewById(R.id.submit);
++        submit.setOnClickListener(this);
++
++        input_adress = (EditText) findViewById(R.id.input_adress);
++        input_adress.setOnClickListener(this);
++
++        editTextTextMultiLine = (EditText) findViewById(R.id.editTextTextMultiLine);
++        editTextTextMultiLine.setOnClickListener(this);
+     }
+ 
+-    private String[] stuffArray = {"洗衣", "做饭", "打扫卫生", "理发", "其他"};
+-    private String[] timeArray = {"0~30分钟", "30~60分钟", "1~2小时", "2小时以上"};
++    private final String[] stuffArray = {"洗衣", "做饭", "打扫卫生", "理发", "其他"};
++    private final String[] timeArray = {"0~30分钟", "30~60分钟", "1~2小时", "2小时以上"};
++
++    public void initView(){    //初始化函数
++
++    }
+ 
+     class MySelectedListener implements AdapterView.OnItemSelectedListener {
+         public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+@@ -50,10 +74,30 @@
+         }
+     }
+ 
++
++
+     @Override
+     public void onClick(View v) {
++        taskDao = new TaskDao();
++        /*
++        发布任务
++         */
+         if (v.getId() == R.id.submit) {//提交订单
++            new Thread(new Runnable() {
++                @Override
++                public void run() {
++                    //                   taskDao.createTask( 2, "test", "test", "111",
++                    //                         "111","111");//需要在子线程中处理的逻辑
+ 
++                    ntask = taskDao.getMax_ntask() + 1;
++                    /*
++                    需要六个参数：任务编号，用户id，服务人员id，服务类型，服务时间，地址，
++                     */
++                    taskDao.createTask( ntask, "test", "test", sp.getSelectedItem().toString(),
++                            sp1.getSelectedItem().toString(),input_adress.getText().toString(),
++                            editTextTextMultiLine.getText().toString());
++                }
++            }).start();
+         }
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_task_release.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".user.TaskRelease\">\r\n    <ScrollView\r\n        android:layout_width=\"match_parent\"\r\n\r\n        android:layout_height=\"match_parent\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\">\r\n\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_margin=\"8dp\"\r\n                android:gravity=\"center\"\r\n                android:text=\"@string/taskrelease\"\r\n                android:textColor=\"@color/black\"\r\n                android:textSize=\"20sp\" />\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"60dp\"\r\n                android:layout_margin=\"8dp\">\r\n\r\n                <TextView\r\n                    android:id=\"@+id/hi_name\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginTop=\"8dp\"\r\n                    android:text=\"地址：\"\r\n                    android:textSize=\"30sp\" />\r\n\r\n                <EditText\r\n\r\n                    android:id=\"@+id/input_name\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"match_parent\"\r\n                    android:layout_marginTop=\"5dp\"\r\n                    android:layout_marginBottom=\"5dp\"\r\n                    android:background=\"@drawable/editext_selector\"\r\n                    android:hint=\"请输入地址\"\r\n                    android:importantForAutofill=\"no\"\r\n                    android:textColor=\"@color/black\"\r\n                    android:textColorHint=\"@color/grey\"\r\n                    android:textCursorDrawable=\"@drawable/text_cursor\"\r\n                    android:textSize=\"17sp\" />\r\n            </LinearLayout>\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"60dp\"\r\n                android:layout_margin=\"8dp\">\r\n\r\n                <TextView\r\n                    android:id=\"@+id/minzu\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginTop=\"8dp\"\r\n                    android:text=\"服务类型：\"\r\n                    android:textSize=\"30sp\" />\r\n\r\n                <Spinner\r\n                    android:id=\"@+id/spinner_stuff\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:animationCache=\"false\"\r\n                    android:background=\"#FFFFFF\" />\r\n\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"60dp\"\r\n                android:layout_margin=\"8dp\">\r\n\r\n                <TextView\r\n                    android:id=\"@+id/bloodtype\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginTop=\"8dp\"\r\n                    android:text=\"服务时间：\"\r\n                    android:textSize=\"30sp\" />\r\n\r\n                <Spinner\r\n                    android:id=\"@+id/interval\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:animationCache=\"false\"\r\n                    android:background=\"#FFFFFF\" />\r\n\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_margin=\"8dp\">\r\n\r\n\r\n                <TextView\r\n                    android:id=\"@+id/tips\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginTop=\"8dp\"\r\n                    android:text=\"备注：\"\r\n                    android:textSize=\"30sp\" />\r\n\r\n                <EditText\r\n                    android:id=\"@+id/editTextTextMultiLine\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"100dp\"\r\n                    android:layout_weight=\"1\"\r\n                    android:background=\"@drawable/editext_selector\"\r\n                    android:ems=\"10\"\r\n                    android:gravity=\"start|top\"\r\n                    android:inputType=\"textMultiLine\" />\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:orientation=\"horizontal\">\r\n\r\n                <Button\r\n                    android:id=\"@+id/submit\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:text=\"提交订单\"\r\n                    android:textColor=\"@color/black\"\r\n                    android:textSize=\"20sp\" />\r\n            </LinearLayout>\r\n        </LinearLayout>\r\n\r\n    </ScrollView>\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_task_release.xml b/app/src/main/res/layout/activity_task_release.xml
+--- a/app/src/main/res/layout/activity_task_release.xml	(revision 4a900efef2361fc6574aad5dc35bfabe80764aa2)
++++ b/app/src/main/res/layout/activity_task_release.xml	(date 1648033618771)
+@@ -38,7 +38,7 @@
+ 
+                 <EditText
+ 
+-                    android:id="@+id/input_name"
++                    android:id="@+id/input_adress"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:layout_marginTop="5dp"
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CompilerConfiguration\">\r\n    <bytecodeTargetLevel target=\"1.8\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	(revision 4a900efef2361fc6574aad5dc35bfabe80764aa2)
++++ b/.idea/compiler.xml	(date 1648031194541)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="CompilerConfiguration">
+-    <bytecodeTargetLevel target="1.8" />
++    <bytecodeTargetLevel target="11" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: app/src/main/java/com/example/login/user/DBUtil.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/login/user/DBUtil.java b/app/src/main/java/com/example/login/user/DBUtil.java
+new file mode 100644
+--- /dev/null	(date 1648033477917)
++++ b/app/src/main/java/com/example/login/user/DBUtil.java	(date 1648033477917)
+@@ -0,0 +1,58 @@
++package com.example.login.user;
++
++import java.sql.Connection;
++import java.sql.DriverManager;
++import java.sql.PreparedStatement;
++import java.sql.ResultSet;
++import java.sql.Statement;
++
++/**
++ * 数据库的链接和关闭
++ **/
++
++public class DBUtil {
++    private static final String CLS = "net.sourceforge.jtds.jdbc.Driver";
++    private static final String URL ="jdbc:jtds:sqlserver://120.48.5.10:1433;DatabaseName=DB";
++    private static final String USER ="sa";
++    private static final String PWD ="Lnb123456";
++
++    public static Connection conn;    //连接对象
++    public static Statement stmt;    //命令集
++    public static PreparedStatement pStmt;  //预编译命令
++    public static ResultSet rs;    //结果集
++
++    //连接数据库
++    public static void getConnection(){
++        try{
++            Class.forName(CLS);
++            conn = DriverManager.getConnection(URL, USER, PWD);
++        }catch (Exception e){
++            e.printStackTrace();
++        }
++    }
++
++    //关闭数据库
++    public static void closeAll() {
++        try {
++            if (rs != null) {
++                rs.close();
++                rs = null;
++            }
++            if (stmt != null) {
++                stmt.close();
++                stmt = null;
++            }
++            if (pStmt != null) {
++                pStmt.close();
++                pStmt = null;
++            }
++            if (conn != null) {
++                conn.close();
++                conn = null;
++            }
++        } catch (Exception e) {
++            e.printStackTrace();
++        }
++    }
++}
++
+Index: app/src/main/java/com/example/login/user/TaskDao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/login/user/TaskDao.java b/app/src/main/java/com/example/login/user/TaskDao.java
+new file mode 100644
+--- /dev/null	(date 1648033523594)
++++ b/app/src/main/java/com/example/login/user/TaskDao.java	(date 1648033523594)
+@@ -0,0 +1,55 @@
++package com.example.login.user;
++
++import android.util.Log;
++
++/**
++ * 提交任务，将任务提交到数据库
++ */
++public class TaskDao extends DBUtil{
++
++    //创建任务，上传提交数据库
++    public void createTask(int Tid, String Uid, String Vid, String Ttype, String Ttime, String Tadress, String editTextTextMultiLine){
++        //Taskinfo item =null;
++        //Log.d("TaskDao", "createTask: 999");
++        try{
++            getConnection();
++            String sql = "insert into Task_List(Tid, Uid, Vid, Ttype, Ttime, Tadress, editTextTextMultiLine) values(?, ?, ?, ?, ?, ?, ?)";
++            pStmt = conn.prepareStatement(sql);
++            pStmt.setInt(1, Tid);
++            pStmt.setString(2, Uid);
++            pStmt.setString(3, Vid);
++            pStmt.setString(4, Ttype);
++            pStmt.setString(5, Ttime);
++            pStmt.setString(6, Tadress);
++            pStmt.setString(7, editTextTextMultiLine);
++            pStmt.executeUpdate();
++        }catch (Exception e){
++            e.printStackTrace();
++        }finally {
++            closeAll();
++        }
++        //return false;
++    }
++
++    /*
++    获取数据库中任务编号的最大值
++     */
++    public int getMax_ntask(){
++        int n=0;
++        try{
++            getConnection();
++            String sql = "select max(Tid) as tid from Task_List";
++            pStmt = conn.prepareStatement(sql);
++            rs = pStmt.executeQuery();
++            while(rs.next())
++            {
++                n = rs.getInt("tid");
++            }
++        }catch (Exception e){
++            e.printStackTrace();
++        }finally {
++            closeAll();
++        }
++        return n;
++    }
++}
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.example.login\">\r\n    <!-- 拍照 -->\r\n    <uses-permission android:name=\"android.permission.CAMERA\" /> <!-- 读写 -->\r\n    <uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />\r\n    <uses-permission android:name=\"android.permission.PERMISSIONS_STORAGE\" />\r\n\r\n    <application\r\n        android:allowBackup=\"false\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:requestLegacyExternalStorage=\"true\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/AppTheme.NoActionBar\">\r\n\r\n<!--        //社区活动-->\r\n        <activity android:name=\".community.CommunitylistActivity\" />\r\n        <activity android:name=\".community.CommunitymainActivity\" />\r\n        <activity android:name=\".community.CommunityaddActivity\"/>\r\n\r\n<!--        //工作者活动-->\r\n        <activity android:name=\".worker.WorkerOrder\" android:exported=\"false\" />\r\n        <activity android:name=\".worker.WorkmaininterfaceAcitvity\"\r\n            android:windowSoftInputMode=\"adjustUnspecified|stateHidden\">\r\n        </activity>\r\n        <activity android:name=\".worker.workwalletActivity\" />\r\n\r\n<!--        //机构活动-->\r\n        <activity android:name=\".institution.InstitutionActivity\" />\r\n        <activity android:name=\".institution.ShenheActivity\" />\r\n        <activity android:name=\".institution.XiangqingActivity\" />\r\n        <activity android:name=\".institution.ZhuangtaiActivity\" />\r\n\r\n<!--        //用户活动-->\r\n        <activity android:name=\".user.UserOrder\" android:exported=\"false\" />\r\n        <activity android:name=\".user.InfoResourceActivity\" />\r\n        <activity android:name=\".user.CommunityActivityActivity\" />\r\n        <activity android:name=\".user.TaskRelease\" />\r\n        <activity android:name=\".user.UserWallet\" />\r\n        <activity android:name=\".user.UserMainInterfaceActivity\" />\r\n        <activity android:name=\".user.ModifyUserlInfo\" />\r\n        <activity android:name=\".user.HealthInfoActivity\"/>\r\n        <activity\r\n            android:name=\".user.SkimInstitution\"\r\n            android:exported=\"false\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.user.TitlePage\" />\r\n\r\n                <category android:name=\"android.intent.category.DEFAULT\" />\r\n            </intent-filter>\r\n        </activity>\r\n\r\n<!--        //主要活动-->\r\n        <activity android:name=\".IdentiChooseActivity\" />\r\n        <activity android:name=\".EnrollActicity\" />\r\n        <activity android:name=\".ForgetPasswordActivity\" />\r\n        <activity android:name=\".UserLoginActivity\" />\r\n        <activity android:name=\".CameraActivity\" />\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n\r\n        <provider\r\n            android:name=\"androidx.core.content.FileProvider\"\r\n            android:authorities=\"com.example.cameratest.fileprovider\"\r\n            android:exported=\"false\"\r\n            android:grantUriPermissions=\"true\">\r\n            <meta-data\r\n                android:name=\"android.support.FILE_PROVIDER_PATHS\"\r\n                android:resource=\"@xml/file_path\" />\r\n        </provider>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 4a900efef2361fc6574aad5dc35bfabe80764aa2)
++++ b/app/src/main/AndroidManifest.xml	(date 1648033370422)
+@@ -6,6 +6,11 @@
+     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+     <uses-permission android:name="android.permission.PERMISSIONS_STORAGE" />
+ 
++    <!--网络许可-->
++    <uses-permission android:name="android.permission.INTERNET" />
++    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
++    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
++
+     <application
+         android:allowBackup="false"
+         android:icon="@mipmap/ic_launcher"
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"PLATFORM\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n        <option name=\"useQualifiedModuleNames\" value=\"true\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+--- a/.idea/gradle.xml	(revision 4a900efef2361fc6574aad5dc35bfabe80764aa2)
++++ b/.idea/gradle.xml	(date 1648031181110)
+@@ -4,7 +4,7 @@
+   <component name="GradleSettings">
+     <option name="linkedExternalProjectsSettings">
+       <GradleProjectSettings>
+-        <option name="testRunner" value="PLATFORM" />
++        <option name="testRunner" value="GRADLE" />
+         <option name="distributionType" value="DEFAULT_WRAPPED" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+         <option name="modules">
+@@ -14,7 +14,6 @@
+           </set>
+         </option>
+         <option name="resolveModulePerSourceSet" value="false" />
+-        <option name="useQualifiedModuleNames" value="true" />
+       </GradleProjectSettings>
+     </option>
+   </component>
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>apply plugin: 'com.android.application'\r\n\r\nandroid {\r\n    compileSdkVersion 32\r\n    buildToolsVersion \"30.0.3\"\r\n    defaultConfig {\r\n        applicationId \"com.example.login\"\r\n        minSdkVersion 16\r\n        targetSdkVersion 32\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n        vectorDrawables.useSupportLibrary = true\r\n    }\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n}\r\n\r\ndependencies {\r\n    implementation fileTree(dir: 'libs', include: ['*.jar'])\r\n    implementation 'androidx.appcompat:appcompat:1.0.2'\r\n    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'\r\n    implementation 'com.google.android.material:material:1.1.0'\r\n    implementation 'androidx.navigation:navigation-fragment:2.2.2'\r\n    implementation 'androidx.navigation:navigation-ui:2.2.2'\r\n    implementation 'androidx.legacy:legacy-support-v4:1.0.0'\r\n    testImplementation 'junit:junit:4.12'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.0'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle b/app/build.gradle
+--- a/app/build.gradle	(revision 4a900efef2361fc6574aad5dc35bfabe80764aa2)
++++ b/app/build.gradle	(date 1648033413009)
+@@ -28,6 +28,7 @@
+     implementation 'androidx.navigation:navigation-fragment:2.2.2'
+     implementation 'androidx.navigation:navigation-ui:2.2.2'
+     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
++    implementation files('libs\\jtds-1.3.0.jar')
+     testImplementation 'junit:junit:4.12'
+     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'

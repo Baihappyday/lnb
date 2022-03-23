@@ -59,4 +59,5 @@ public class ImagePagerAdapater extends PagerAdapter {
 		return mGoodsList.get(position).name;
 	}
 
+
 }
