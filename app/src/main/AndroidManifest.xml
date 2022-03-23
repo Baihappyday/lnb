@@ -15,25 +15,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
 
-        //社区活动
-        <activity android:name=".community.CommunitylistActivity"></activity>
+<!--        //社区活动-->
+        <activity android:name=".community.CommunitylistActivity" />
         <activity android:name=".community.CommunitymainActivity" />
         <activity android:name=".community.CommunityaddActivity"/>
 
-        //工作者活动
+<!--        //工作者活动-->
         <activity android:name=".worker.WorkerOrder" android:exported="false" />
         <activity android:name=".worker.WorkmaininterfaceAcitvity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden">
         </activity>
         <activity android:name=".worker.workwalletActivity" />
 
-        //机构活动
+<!--        //机构活动-->
         <activity android:name=".institution.InstitutionActivity" />
         <activity android:name=".institution.ShenheActivity" />
         <activity android:name=".institution.XiangqingActivity" />
         <activity android:name=".institution.ZhuangtaiActivity" />
 
-        //用户活动
+<!--        //用户活动-->
         <activity android:name=".user.UserOrder" android:exported="false" />
         <activity android:name=".user.InfoResourceActivity" />
         <activity android:name=".user.CommunityActivityActivity" />
@@ -52,7 +52,7 @@
             </intent-filter>
         </activity>
 
-        //主要活动
+<!--        //主要活动-->
         <activity android:name=".IdentiChooseActivity" />
         <activity android:name=".EnrollActicity" />
         <activity android:name=".ForgetPasswordActivity" />

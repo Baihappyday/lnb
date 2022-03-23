@@ -10,25 +10,40 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.login.R;
+import com.example.login.adapter.ImagePagerAdapater;
+import com.example.login.bean.GoodsInfo;
 import com.example.login.util.ClickMotion;
 
+import java.util.ArrayList;
 
-public class TitlePage extends Fragment implements View.OnClickListener, View.OnTouchListener {
+
+public class TitlePage extends Fragment implements View.OnClickListener, View.OnTouchListener, ViewPager.OnPageChangeListener {
     protected Context mContext;
     protected View v;
     Button btn1;
     Button btn2;
     Button btn3;
+    private ArrayList<GoodsInfo> goodsList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        ViewPager vp_content = (ViewPager) v.findViewById(R.id.vp_content);
+        goodsList = GoodsInfo.getDefaultList();
+        ImagePagerAdapater adapter = new ImagePagerAdapater(getActivity(), goodsList);
+        vp_content.setAdapter(adapter);
+        vp_content.setCurrentItem(0);
+        vp_content.addOnPageChangeListener(this);
+
         v = inflater.inflate(R.layout.fragment_title_page, container, false);
         mContext = getActivity();
         btn1 = v.findViewById(R.id.button1);
@@ -87,5 +102,18 @@ public class TitlePage extends Fragment implements View.OnClickListener, View.On
                 break;
         }
         return false;
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int arg0) {
+    }
+
+    @Override
+    public void onPageScrolled(int arg0, float arg1, int arg2) {
+    }
+
+    @Override
+    public void onPageSelected(int arg0) {
+
     }
 }
