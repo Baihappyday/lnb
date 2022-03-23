@@ -19,17 +19,12 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/vp_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/img1" />
+            android:layout_height="200dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="80dp"
+            android:layout_marginTop="10dp"
             android:background="@color/white"
             android:orientation="horizontal">
 

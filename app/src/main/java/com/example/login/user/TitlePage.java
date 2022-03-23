@@ -5,11 +5,16 @@ import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
@@ -36,6 +41,14 @@ public class TitlePage extends Fragment implements View.OnClickListener, View.On
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        v = inflater.inflate(R.layout.fragment_title_page, container, false);
+
+        WindowManager manager = getActivity().getWindowManager();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        manager.getDefaultDisplay().getMetrics(outMetrics);
+        int width = outMetrics.widthPixels;
+        int height = outMetrics.heightPixels;
+
 
         ViewPager vp_content = (ViewPager) v.findViewById(R.id.vp_content);
         goodsList = GoodsInfo.getDefaultList();
@@ -43,8 +56,12 @@ public class TitlePage extends Fragment implements View.OnClickListener, View.On
         vp_content.setAdapter(adapter);
         vp_content.setCurrentItem(0);
         vp_content.addOnPageChangeListener(this);
+        //动态设置vp高度
+        DisplayMetrics dm =getActivity().getResources().getDisplayMetrics();
+        LinearLayout.LayoutParams relativeParams =(LinearLayout.LayoutParams) vp_content.getLayoutParams();
+        relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, width, dm))*3/16;
 
-        v = inflater.inflate(R.layout.fragment_title_page, container, false);
+
         mContext = getActivity();
         btn1 = v.findViewById(R.id.button1);
         btn1.setOnClickListener(this);
