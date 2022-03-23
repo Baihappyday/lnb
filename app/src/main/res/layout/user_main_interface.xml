@@ -40,7 +40,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/grey" />
+            android:background="@color/grey"
+            android:visibility="invisible" />
 
         <LinearLayout
             android:layout_width="match_parent"

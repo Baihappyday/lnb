@@ -12,4 +12,6 @@
     <color name="grey1">#FFCCCCCC</color>
     <color name="purple_200">#ff00ff</color>
     <color name="red">#FF0033</color>
+    <color name="slightblue">#DFE0E3</color>
+    <color name="transparent">#00000000</color>
 </resources>
