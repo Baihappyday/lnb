@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -14,8 +13,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -24,7 +21,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.login.R;
 import com.example.login.adapter.ImagePagerAdapater;
 import com.example.login.bean.GoodsInfo;
-import com.example.login.util.ClickMotion;
 
 import java.util.ArrayList;
 

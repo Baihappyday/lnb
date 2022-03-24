@@ -18,51 +18,51 @@ public class ClickMotion {
             public void run() {
                 RelativeLayout.LayoutParams relativeParams =(RelativeLayout.LayoutParams) v.getLayoutParams(); //取控件当前的布局参数
 
-                relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, dm));// 控件的高强制设置
+                relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, dm));// 控件的高强制设置
                 Handler h2 = new Handler();
                 h2.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         RelativeLayout.LayoutParams relativeParams =(RelativeLayout.LayoutParams) v.getLayoutParams(); //取控件当前的布局参数
 
-                        relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 52, dm));// 控件的高强制设置
+                        relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 57, dm));// 控件的高强制设置
                         Handler h3 = new Handler();
                         h3.postDelayed(new Runnable() {
                             @Override
                             public void run() {
                                 RelativeLayout.LayoutParams relativeParams =(RelativeLayout.LayoutParams) v.getLayoutParams(); //取控件当前的布局参数
 
-                                relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 54, dm));// 控件的高强制设置
+                                relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 55, dm));// 控件的高强制设置
                                 Handler h4 = new Handler();
                                 h4.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
                                         RelativeLayout.LayoutParams relativeParams =(RelativeLayout.LayoutParams) v.getLayoutParams(); //取控件当前的布局参数
 
-                                        relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 56, dm));// 控件的高强制设置
+                                        relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 57, dm));// 控件的高强制设置
                                         Handler h5 = new Handler();
                                         h5.postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
                                                 RelativeLayout.LayoutParams relativeParams =(RelativeLayout.LayoutParams) v.getLayoutParams(); //取控件当前的布局参数
 
-                                                relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 58, dm));// 控件的高强制设置
+                                                relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, dm));// 控件的高强制设置
 
                                                 v.setLayoutParams(relativeParams); //使设置好的布局参数应用到控件
                                             }
-                                        },40);
+                                        },20);
                                         v.setLayoutParams(relativeParams); //使设置好的布局参数应用到控件
                                     }
-                                },40);
+                                },20);
                                 v.setLayoutParams(relativeParams); //使设置好的布局参数应用到控件
                             }
-                        },40);
+                        },20);
                         v.setLayoutParams(relativeParams); //使设置好的布局参数应用到控件
                     }
-                },40);
+                },20);
                 v.setLayoutParams(relativeParams); //使设置好的布局参数应用到控件
             }
-        },40);
+        },20);
     }
 
 }

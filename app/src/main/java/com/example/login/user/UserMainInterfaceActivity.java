@@ -4,19 +4,14 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.example.login.IdentiChooseActivity;
-import com.example.login.MainActivity;
 import com.example.login.util.ClickMotion;
 import com.example.login.R;
 
@@ -50,6 +45,7 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_main_interface);
+
 
         TitlePage tp = new TitlePage();
         PersonalCenter pc = new PersonalCenter();

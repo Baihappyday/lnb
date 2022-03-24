@@ -23,135 +23,135 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="150dp"
                 android:layout_weight="1">
 
                 <Button
                     android:id="@+id/button6"
-                    android:background="#00000000"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="#00000000" />
 
                 <Button
                     android:id="@+id/bt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/touxiang2"
                     android:layout_toEndOf="@id/touxiang2"
+                    android:layout_toRightOf="@id/touxiang2"
                     android:background="@null"
                     android:text="点击登录"
-                    android:textSize="17sp" />
+                    android:textSize="25sp" />
 
-                <ImageView
+                <com.example.login.widget.CircleImageView
                     android:id="@+id/touxiang2"
-                    android:layout_width="150dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:src="@drawable/touxiang" />
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/ic_not_logged_in" />
 
             </RelativeLayout>
 
         </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/slightblue"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/grey"
-            android:orientation="vertical">
+            android:layout_height="146dp"
+            android:gravity="center">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="146dp"
-                android:gravity="center">
+            <Button
+                android:id="@+id/bt2"
+                android:layout_width="410dp"
+                android:layout_height="100dp"
+                android:background="@color/white"
+                android:text="完善个人信息"
+                android:textSize="24sp" />
+        </LinearLayout>
 
-                <Button
-                    android:id="@+id/bt2"
-                    android:layout_width="410dp"
-                    android:layout_height="100dp"
-                    android:background="@color/white"
-                    android:text="完善个人信息"
-                    android:textSize="24sp" />
-            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="我的订单"
-                    android:textSize="20sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:background="@color/white"
-                android:layout_width="match_parent"
-                android:layout_height="121dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/bt3_1"
-                    android:textSize="20sp"
-                    android:background="@color/white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="进行中" />
-
-                <Button
-                    android:id="@+id/bt3_2"
-                    android:textSize="20sp"
-                    android:background="@color/white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="已完成" />
-
-                <Button
-                    android:id="@+id/bt3_3"
-                    android:textSize="20sp"
-                    android:background="@color/white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="待评价" />
-
-                <Button
-                    android:id="@+id/bt3_4"
-                    android:textSize="20sp"
-                    android:background="@color/white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="未付款" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:layout_marginBottom="50dp">
-
-                <Button
-                    android:id="@+id/bt4"
-                    android:layout_width="match_parent"
-                    android:layout_height="99dp"
-                    android:background="@color/white"
-                    android:text="我的钱包"
-
-                    android:textSize="25sp" />
-
-            </LinearLayout>
+                android:layout_weight="1"
+                android:text="我的订单"
+                android:textSize="20sp" />
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="121dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bt3_1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:text="进行中"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/bt3_2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:text="已完成"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/bt3_3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:text="待评价"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/bt3_4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:text="未付款"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="50dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/bt4"
+                android:layout_width="match_parent"
+                android:layout_height="99dp"
+                android:background="@color/white"
+                android:text="我的钱包"
+
+                android:textSize="25sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     </LinearLayout>
