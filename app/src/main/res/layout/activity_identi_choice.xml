@@ -11,60 +11,168 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/layout_style_user"
             android:layout_weight="1"
+
             android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/user_identi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="个人用户"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
+
+
+            <com.example.login.widget.CircleImageView
+                android:id="@+id/user_identi_ic"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/ic_user_identi" />
 
             <Button
                 android:id="@+id/user"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="我是用户" />
-        </LinearLayout>
+                android:background="@color/transparent" />
 
-        <LinearLayout
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/layout_style_worker"
+
             android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/workers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="志愿者/家政"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+
+            <com.example.login.widget.CircleImageView
+                android:id="@+id/worker_identi_ic"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/ic_worker_identi" />
 
             <Button
                 android:id="@+id/worker"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="志愿者/家政" />
-        </LinearLayout>
+                android:background="@color/transparent" />
 
-        <LinearLayout
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/layout_style_community"
+
             android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/communities"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="社区"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+
+            <com.example.login.widget.CircleImageView
+                android:id="@+id/community_identi_ic"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/ic_community_identi" />
 
             <Button
                 android:id="@+id/community"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="社区" />
-        </LinearLayout>
+                android:background="@color/transparent" />
 
-        <LinearLayout
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/layout_style_institution"
+
             android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/institutions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="养老机构"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+
+            <com.example.login.widget.CircleImageView
+                android:id="@+id/institution_identi_ic"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/ic_institution_identi" />
 
             <Button
                 android:id="@+id/institution"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="养老机构" />
-        </LinearLayout>
+                android:background="@color/transparent" />
+
+        </RelativeLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

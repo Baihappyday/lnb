@@ -125,11 +125,11 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
             case MotionEvent.ACTION_DOWN:
                 //按下
                 if (view.getId()==R.id.button||view.getId()==R.id.homepage)
-                    ClickMotion.motion(UserMainInterfaceActivity.this,button);
+                    ClickMotion.motion(UserMainInterfaceActivity.this,button,60);
                 if (view.getId()==R.id.imageButton2||view.getId()==R.id.personalcenter)
-                    ClickMotion.motion(UserMainInterfaceActivity.this,imageButton2);
+                    ClickMotion.motion(UserMainInterfaceActivity.this,imageButton2,60);
                 if (view.getId()==R.id.taskk)
-                    ClickMotion.motion(UserMainInterfaceActivity.this,button2);
+                    ClickMotion.motion(UserMainInterfaceActivity.this,button2,85);
                 break;
             case MotionEvent.ACTION_MOVE:
                 //移动

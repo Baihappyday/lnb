@@ -11,9 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.login.R;
 
 public class ClickMotion {
-    //参数一为活动，参数二为控件名
-    public static void motion(AppCompatActivity a, final View v){
+    public static void motion(AppCompatActivity a, final View v, final int height){//活动，控件，控件原始高度（单位dp）
         final DisplayMetrics dm =a.getResources().getDisplayMetrics();
+        final int decline = height/20;
         if (v.getId()== R.id.taskk){
             Handler h1 = new Handler();
             h1.postDelayed(new Runnable() {
@@ -21,35 +21,35 @@ public class ClickMotion {
                 public void run() {
                     RelativeLayout.LayoutParams relativeParams =(RelativeLayout.LayoutParams) v.getLayoutParams(); //取控件当前的布局参数
 
-                    relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 85, dm));// 控件的高强制设置
+                    relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, height, dm));// 控件的高强制设置
                     Handler h2 = new Handler();
                     h2.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             RelativeLayout.LayoutParams relativeParams =(RelativeLayout.LayoutParams) v.getLayoutParams(); //取控件当前的布局参数
 
-                            relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 81, dm));// 控件的高强制设置
+                            relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, height-decline, dm));// 控件的高强制设置
                             Handler h3 = new Handler();
                             h3.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
                                     RelativeLayout.LayoutParams relativeParams =(RelativeLayout.LayoutParams) v.getLayoutParams(); //取控件当前的布局参数
 
-                                    relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 77, dm));// 控件的高强制设置
+                                    relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, height-2*decline, dm));// 控件的高强制设置
                                     Handler h4 = new Handler();
                                     h4.postDelayed(new Runnable() {
                                         @Override
                                         public void run() {
                                             RelativeLayout.LayoutParams relativeParams =(RelativeLayout.LayoutParams) v.getLayoutParams(); //取控件当前的布局参数
 
-                                            relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 81, dm));// 控件的高强制设置
+                                            relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, height-decline, dm));// 控件的高强制设置
                                             Handler h5 = new Handler();
                                             h5.postDelayed(new Runnable() {
                                                 @Override
                                                 public void run() {
                                                     RelativeLayout.LayoutParams relativeParams =(RelativeLayout.LayoutParams) v.getLayoutParams(); //取控件当前的布局参数
 
-                                                    relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 85, dm));// 控件的高强制设置
+                                                    relativeParams.height=((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, height, dm));// 控件的高强制设置
 
                                                     v.setLayoutParams(relativeParams); //使设置好的布局参数应用到控件
                                                 }

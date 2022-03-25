@@ -15,19 +15,22 @@
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/img1" />
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/welcome_page" />
 
         <Button
             android:id="@+id/skip"
             android:text="@string/skip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:textSize="18sp"
-            android:background="@null"
+            android:background="@drawable/layout_style_skip"
             />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
