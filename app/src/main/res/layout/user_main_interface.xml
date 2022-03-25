@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".MainActivity">
 
 
@@ -19,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@color/slightblue"
             android:fillViewport="true">
 
             <LinearLayout
@@ -30,22 +30,18 @@
                     android:id="@+id/fragment"
                     android:name="com.example.login.user.BlankFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:layout="@layout/fragment_blank" />
+
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/grey"
-            android:visibility="invisible" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:background="#ffffffff"
             android:orientation="horizontal">
 
             <RelativeLayout

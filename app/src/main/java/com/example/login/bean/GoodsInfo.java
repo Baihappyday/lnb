@@ -44,8 +44,8 @@ public class GoodsInfo {
 //			R.drawable.vivo_s, R.drawable.oppo_9p_s, R.drawable.meizu_s
 			};
 	private static int[] mPicArray = {
-			R.drawable.img1, R.drawable.img1, R.drawable.img1,
-			R.drawable.img1, R.drawable.img1, R.drawable.img1
+			R.drawable.ic_sample_for_vp, R.drawable.img1, R.drawable.ic_sample_for_vp,
+			R.drawable.img1, R.drawable.ic_sample_for_vp, R.drawable.img1
 			};
 	public static ArrayList<GoodsInfo> getDefaultList() {
 		ArrayList<GoodsInfo> goodsList = new ArrayList<GoodsInfo>();

@@ -2,18 +2,23 @@ package com.example.login.user;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.login.util.ClickMotion;
 import com.example.login.R;
+import com.qweather.plugin.view.HeContent;
+import com.qweather.plugin.view.LeftLargeView;
+import com.qweather.plugin.view.QWeatherConfig;
 
 
 public class UserMainInterfaceActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener
@@ -21,6 +26,8 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
     TitlePage tpa ;
     PersonalCenter pca;
     BlankFragment bla;
+    //发布任务
+    ImageButton button2;
     //首页
     ImageButton button;
     Button homepage;
@@ -78,7 +85,7 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
         personalcenter.setOnClickListener(this);
         personalcenter.setOnTouchListener(this);
         //发布任务按钮与其监听器
-        ImageButton button2=findViewById(R.id.taskk);
+        button2=findViewById(R.id.taskk);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,6 +93,7 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
                 startActivity(intent);
             }
         });
+        button2.setOnTouchListener(this);
 
     }
 
@@ -120,6 +128,8 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
                     ClickMotion.motion(UserMainInterfaceActivity.this,button);
                 if (view.getId()==R.id.imageButton2||view.getId()==R.id.personalcenter)
                     ClickMotion.motion(UserMainInterfaceActivity.this,imageButton2);
+                if (view.getId()==R.id.taskk)
+                    ClickMotion.motion(UserMainInterfaceActivity.this,button2);
                 break;
             case MotionEvent.ACTION_MOVE:
                 //移动

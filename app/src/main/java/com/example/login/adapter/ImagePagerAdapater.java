@@ -28,7 +28,7 @@ public class ImagePagerAdapater extends PagerAdapter {
 			view.setLayoutParams(new LayoutParams(
 					LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 			view.setImageResource(mGoodsList.get(i).pic);
-			view.setScaleType(ScaleType.FIT_CENTER);
+			view.setScaleType(ScaleType.CENTER_CROP);
 			mViewList.add(view);
 		}
 	}
