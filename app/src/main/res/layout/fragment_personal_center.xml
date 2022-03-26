@@ -38,16 +38,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layout_toEndOf="@id/touxiang2"
                     android:layout_toRightOf="@id/touxiang2"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
                     android:background="@null"
                     android:text="点击登录"
                     android:textSize="25sp" />
 
                 <com.example.login.widget.CircleImageView
                     android:id="@+id/touxiang2"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:src="@drawable/ic_not_logged_in" />
 
@@ -61,24 +66,52 @@
         android:background="@color/slightblue"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="146dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
             android:gravity="center">
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/arrow" />
+
+            <TextView
+                android:id="@+id/self_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="完善个人信息"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black"
+                android:layout_centerVertical="true"
+                android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/bt2"
-                android:layout_width="410dp"
-                android:layout_height="100dp"
-                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
                 android:text="完善个人信息"
+                android:textColor="@color/transparent"
                 android:textSize="24sp" />
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:background="@color/white"
+            android:layout_marginBottom="1dp"
             android:orientation="horizontal">
 
             <TextView
@@ -87,70 +120,181 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="我的订单"
+                android:textColor="@color/black"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:paddingLeft="5dp"
                 android:textSize="20sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="121dp"
+            android:layout_height="120dp"
             android:background="@color/white"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/bt3_1"
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:text="进行中"
-                android:textSize="20sp" />
+                android:layout_weight="1">
 
-            <Button
-                android:id="@+id/bt3_2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:text="已完成"
-                android:textSize="20sp" />
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitStart"
+                    android:padding="20dp"
+                    app:srcCompat="@drawable/ic_user_pc_waitpay" />
 
-            <Button
-                android:id="@+id/bt3_3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:text="待评价"
-                android:textSize="20sp" />
+                <Button
+                    android:id="@+id/bt3_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:textSize="20sp" />
 
-            <Button
-                android:id="@+id/bt3_4"
+                <TextView
+                    android:id="@+id/wait_pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="未付款" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:text="未付款"
-                android:textSize="20sp" />
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/process"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="23dp"
+                    android:scaleType="fitStart"
+                    app:srcCompat="@drawable/ic_user_pc_process" />
+
+                <Button
+                    android:id="@+id/bt3_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/processing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="进行中" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/finish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="21dp"
+                    android:scaleType="fitStart"
+                    app:srcCompat="@drawable/ic_user_pc_finish" />
+
+                <Button
+                    android:id="@+id/bt3_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/finishing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="已完成" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/evaluation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="21dp"
+                    android:scaleType="fitStart"
+                    app:srcCompat="@drawable/ic_user_pc_evaluation" />
+
+                <Button
+                    android:id="@+id/bt3_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/evaluate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="待评价" />
+            </RelativeLayout>
+
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_marginBottom="50dp"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_marginTop="50dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:paddingRight="20dp"
+                android:paddingEnd="20dp"
+                app:srcCompat="@drawable/wallett" />
 
             <Button
                 android:id="@+id/bt4"
                 android:layout_width="match_parent"
-                android:layout_height="99dp"
-                android:background="@color/white"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
                 android:text="我的钱包"
 
                 android:textSize="25sp" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
 
