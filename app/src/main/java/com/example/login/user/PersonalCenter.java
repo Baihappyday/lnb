@@ -27,6 +27,8 @@ public class PersonalCenter extends Fragment implements View.OnClickListener, Vi
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_personal_center, container, false);
         mContext = getActivity();
+        Button bt1 = v.findViewById(R.id.bt1);
+        bt1.setOnClickListener(this);
         Button bt2 = v.findViewById(R.id.bt2);
         bt2.setOnClickListener(this);
         Button bt4 = v.findViewById(R.id.bt4);
@@ -46,6 +48,10 @@ public class PersonalCenter extends Fragment implements View.OnClickListener, Vi
 
     @Override
     public void onClick(View view) {
+        if (view.getId() == R.id.bt1){//按钮：我的钱包
+            Intent intent=new Intent(mContext,UserLoginActivity.class);
+            startActivity(intent);
+        }
         if (view.getId() == R.id.bt4){//按钮：我的钱包
             Intent intent=new Intent(mContext,UserWallet.class);
             startActivity(intent);
