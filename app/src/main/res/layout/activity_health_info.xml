@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:constraint_referenced_ids="xingbie"
+    android:background="@color/slightblue"
     tools:context=".user.HealthInfoActivity">
 
     <ScrollView
@@ -27,16 +29,16 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="8dp">
 
                 <TextView
                     android:id="@+id/hi_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="5dp"
                     android:text="姓名："
-                    android:textSize="30sp" />
+                    android:textSize="20sp" />
 
                 <EditText
 
@@ -50,7 +52,7 @@
                     android:importantForAutofill="no"
                     android:textColor="@color/black"
                     android:textColorHint="@color/grey"
-                    android:textCursorDrawable="@drawable/text_cursor"
+                    android:textCursorDrawable="@drawable/text_cursorr"
                     android:textSize="17sp" />
             </LinearLayout>
 
@@ -64,19 +66,22 @@
                     android:id="@+id/gender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
                     android:text="@string/gender"
-                    android:textSize="30sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/colon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
                     android:text="@string/colon"
-                    android:textSize="30sp" />
+                    android:textSize="20sp" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/xingbie"
                     android:orientation="horizontal">
 
                     <RadioButton
@@ -85,7 +90,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/male"
-                        android:textSize="30sp" />
+                        android:textSize="17sp" />
 
                     <RadioButton
                         android:id="@+id/female"
@@ -93,23 +98,23 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/female"
-                        android:textSize="30sp" />
+                        android:textSize="17sp" />
                 </RadioGroup>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="8dp">
 
                 <TextView
                     android:id="@+id/hi_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="5dp"
                     android:text="联系电话："
-                    android:textSize="30sp" />
+                    android:textSize="20sp" />
 
                 <EditText
 
@@ -119,34 +124,35 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/editext_selector"
-                    android:inputType="phone"
                     android:hint="请输入联系电话"
                     android:importantForAutofill="no"
+                    android:inputType="phone"
                     android:textColor="@color/black"
                     android:textColorHint="@color/grey"
-                    android:textCursorDrawable="@drawable/text_cursor"
+                    android:textCursorDrawable="@drawable/text_cursorr"
                     android:textSize="17sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="8dp">
 
                 <TextView
                     android:id="@+id/minzu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:text="民族："
-                    android:textSize="30sp" />
+                    android:textSize="20sp" />
 
                 <Spinner
                     android:id="@+id/spinner_stuff"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:animationCache="false"
-                    android:background="#FFFFFF" />
+                    android:background="@color/grey"
+                    android:spinnerMode="dialog" />
 
             </LinearLayout>
 
@@ -161,14 +167,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="血型："
-                    android:textSize="30sp" />
+                    android:textSize="20sp" />
 
                 <Spinner
                     android:id="@+id/interval"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:animationCache="false"
-                    android:background="#FFFFFF" />
+                    android:background="@color/grey"
+                    android:spinnerMode="dialog"/>
 
             </LinearLayout>
 
@@ -184,7 +191,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="病史："
-                    android:textSize="30sp" />
+                    android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/editTextTextMultiLine"

@@ -32,7 +32,7 @@
                 android:hint="请输入搜索关键字"
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey"
-                android:textCursorDrawable="@drawable/text_cursor"
+                android:textCursorDrawable="@drawable/text_cursorr"
                 android:textSize="17sp"/>
             <Button
                 android:layout_width="match_parent"

@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.login.util.ClickMotion;
 import com.example.login.R;
@@ -45,6 +47,9 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
     private int id3 = R.drawable.ic_personal_center;
     private int id4 = R.drawable.ic_personal_center_selected;
 
+    FragmentManager fragmentManager  = getSupportFragmentManager();
+    FragmentTransaction beginTransaction = fragmentManager.beginTransaction();
+
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -61,7 +66,8 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
         pca = pc;
         bla = bl;
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, tp).commit();
+
+        beginTransaction.add(R.id.right_layout,tp).commit();
 
         button=findViewById(R.id.button);//首页
         homepage = (Button)findViewById(R.id.homepage);
@@ -149,23 +155,21 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
             homepage.setTextColor(getResources().getColor(R.color.choosenGreen));
             imageButton2.setImageDrawable(ic_personal_center);
             personalcenter.setTextColor(getResources().getColor(R.color.black));
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, tpa).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.right_layout, tpa).commit();
         }
         if (v.getId() == R.id.button){
             button.setImageDrawable(ic_user_home_selected);
             homepage.setTextColor(getResources().getColor(R.color.choosenGreen));
             imageButton2.setImageDrawable(ic_personal_center);
             personalcenter.setTextColor(getResources().getColor(R.color.black));
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, tpa).commit();
-
+            getSupportFragmentManager().beginTransaction().replace(R.id.right_layout, tpa).commit();
         }
         if (v.getId() == R.id.imageButton2){
             imageButton2.setImageDrawable(ic_personal_center_selected);
             personalcenter.setTextColor(getResources().getColor(R.color.choosenGreen));
             button.setImageDrawable(ic_user_home);
             homepage.setTextColor(getResources().getColor(R.color.black));
-
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, pca).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.right_layout, pca).commit();
 
         }
         if (v.getId() == R.id.personalcenter){
@@ -173,7 +177,7 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
             personalcenter.setTextColor(getResources().getColor(R.color.choosenGreen));
             button.setImageDrawable(ic_user_home);
             homepage.setTextColor(getResources().getColor(R.color.black));
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, pca).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.right_layout, pca).commit();
 
         }
 

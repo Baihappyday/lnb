@@ -26,14 +26,16 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <fragment
-                    android:id="@+id/fragment"
-                    android:name="com.example.login.user.BlankFragment"
+                <FrameLayout
+                    android:id="@+id/right_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:layout="@layout/fragment_blank" />
+                    >
+                </FrameLayout>
+
+
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

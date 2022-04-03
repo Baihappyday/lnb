@@ -2,7 +2,6 @@ package com.example.login.user;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -10,11 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.login.R;
-import com.example.login.UserLoginActivity;
 
 //用户个人中心界面
 public class PersonalCenter extends Fragment implements View.OnClickListener, View.OnTouchListener {

@@ -59,7 +59,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:hint="请输入时间"
-            android:textCursorDrawable="@drawable/text_cursor"
+            android:textCursorDrawable="@drawable/text_cursorr"
             android:gravity="center"
             android:inputType="textMultiLine" />
     </LinearLayout>
@@ -87,7 +87,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:hint="请输入地点"
-            android:textCursorDrawable="@drawable/text_cursor"
+            android:textCursorDrawable="@drawable/text_cursorr"
             android:gravity="center"
             android:inputType="textMultiLine" />
     </LinearLayout>

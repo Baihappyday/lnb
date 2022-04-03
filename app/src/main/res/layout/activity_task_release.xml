@@ -48,7 +48,7 @@
                     android:importantForAutofill="no"
                     android:textColor="@color/black"
                     android:textColorHint="@color/grey"
-                    android:textCursorDrawable="@drawable/text_cursor"
+                    android:textCursorDrawable="@drawable/text_cursorr"
                     android:textSize="17sp" />
             </LinearLayout>
             <LinearLayout

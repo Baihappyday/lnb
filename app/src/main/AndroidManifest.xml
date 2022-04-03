@@ -63,9 +63,9 @@
             </intent-filter>
         </activity> <!-- //主要活动 -->
         <activity android:name=".IdentiChooseActivity" />
-        <activity android:name=".EnrollActicity" />
-        <activity android:name=".ForgetPasswordActivity" />
-        <activity android:name=".UserLoginActivity" />
+        <activity android:name=".user.EnrollActicity" />
+        <activity android:name=".user.ForgetPasswordActivity" />
+        <activity android:name=".user.UserLoginActivity" />
         <activity android:name=".CameraActivity" />
         <activity
             android:name=".MainActivity"
