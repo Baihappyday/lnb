@@ -3,6 +3,7 @@ package com.example.login.user;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,7 +12,9 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.login.MyApplication;
 import com.example.login.R;
+import com.example.login.util.SharedUtil;
 
 //用户个人中心界面
 public class PersonalCenter extends Fragment implements View.OnClickListener, View.OnTouchListener {
@@ -24,8 +27,8 @@ public class PersonalCenter extends Fragment implements View.OnClickListener, Vi
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_personal_center, container, false);
         mContext = getActivity();
-        Button bt1 = v.findViewById(R.id.bt1);
-        bt1.setOnClickListener(this);
+        MyApplication application = (MyApplication) mContext.getApplicationContext();
+
         Button bt2 = v.findViewById(R.id.bt2);
         bt2.setOnClickListener(this);
         Button bt4 = v.findViewById(R.id.bt4);
@@ -38,8 +41,18 @@ public class PersonalCenter extends Fragment implements View.OnClickListener, Vi
         bt3_3.setOnClickListener(this);
         Button bt3_4 = v.findViewById(R.id.bt3_4);
         bt3_4.setOnClickListener(this);
+        Button bt1 = v.findViewById(R.id.bt1);
         Button button6 = v.findViewById(R.id.button6);
-        button6.setOnClickListener(this);
+        if (application.getLoginState()){//若之前已登录
+            SharedUtil sp = SharedUtil.getIntance(mContext,"logininfo");
+            String s = sp.readShared("username", "null");
+            Log.d("tag", s);
+            bt1.setText("用户"+s);
+        }
+        else {
+            bt1.setOnClickListener(this);
+            button6.setOnClickListener(this);
+        }
         return v;
     }
 
@@ -54,7 +67,7 @@ public class PersonalCenter extends Fragment implements View.OnClickListener, Vi
             startActivity(intent);
         }
         if (view.getId() == R.id.bt2){//按钮：完善个人信息
-            Intent intent=new Intent(mContext,ModifyUserlInfo.class);
+            Intent intent=new Intent(mContext,SkimUserInfo.class);
             startActivity(intent);
         }
         if (view.getId() == R.id.bt3_1) {

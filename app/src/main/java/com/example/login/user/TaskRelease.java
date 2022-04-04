@@ -3,9 +3,7 @@ package com.example.login.user;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -48,7 +46,7 @@ public class TaskRelease extends AppCompatActivity implements View.OnClickListen
         sp1.setOnItemSelectedListener(new TaskRelease.MySelectedListener());
 
 
-        submit = (Button)findViewById(R.id.submit);
+        submit = (Button)findViewById(R.id.modify);
         submit.setOnClickListener(this);
 
         input_adress = (EditText) findViewById(R.id.input_adress);
@@ -82,7 +80,7 @@ public class TaskRelease extends AppCompatActivity implements View.OnClickListen
         /*
         发布任务
          */
-        if (v.getId() == R.id.submit) {//提交订单
+        if (v.getId() == R.id.modify) {//提交订单
             new Thread(new Runnable() {
                 @Override
                 public void run() {

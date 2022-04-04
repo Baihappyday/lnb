@@ -58,6 +58,8 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_main_interface);
 
+        Intent intent = getIntent();
+
 
         TitlePage tp = new TitlePage();
         PersonalCenter pc = new PersonalCenter();
@@ -67,7 +69,8 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
         bla = bl;
 
 
-        beginTransaction.add(R.id.right_layout,tp).commit();
+
+
 
         button=findViewById(R.id.button);//首页
         homepage = (Button)findViewById(R.id.homepage);
@@ -79,8 +82,17 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
         ic_personal_center=ContextCompat.getDrawable(this,id3);
         ic_personal_center_selected=ContextCompat.getDrawable(this,id4);
         //初始化底部栏选中状态
-        button.setImageDrawable(ic_user_home_selected);
-        homepage.setTextColor(getResources().getColor(R.color.choosenGreen));
+        if (intent.getIntExtra("frag", 1) == 1){
+            beginTransaction.add(R.id.right_layout,tp).commit();
+            button.setImageDrawable(ic_user_home_selected);
+            homepage.setTextColor(getResources().getColor(R.color.choosenGreen));
+        }
+        else {
+            beginTransaction.add(R.id.right_layout,pc).commit();
+            imageButton2.setImageDrawable(ic_personal_center_selected);
+            personalcenter.setTextColor(getResources().getColor(R.color.choosenGreen));
+        }
+
         //设置监听器（首页与个人中心）
         button.setOnClickListener(this);
         button.setOnTouchListener(this);

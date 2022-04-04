@@ -31,6 +31,18 @@ public class SharedUtil {
 		editor.commit(); 
 	}
 
+	public void writeShared(String key, String value) {
+		SharedPreferences.Editor editor = mShared.edit();
+		editor.putString(key, value);
+		editor.commit();
+	}
+
+	public void writeShared(String key, boolean value) {
+		SharedPreferences.Editor editor = mShared.edit();
+		editor.putBoolean(key, value);
+		editor.commit();
+	}
+
 	public HashMap<String, String> readShared(ArrayList<String > a) {
 		Iterator<String > i = a.iterator();
 		HashMap<String ,String > hm = new HashMap<>();
@@ -43,6 +55,10 @@ public class SharedUtil {
 
 	public String readShared(String key, String defaultValue) {
 		return mShared.getString(key, defaultValue);
+	}
+
+	public boolean readShared(String key, boolean defaultValue) {
+		return mShared.getBoolean(key, defaultValue);
 	}
 	
 }

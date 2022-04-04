@@ -9,7 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+
 import com.example.login.R;
+import com.example.login.MyApplication;
 
 public class HealthInfoActivity extends AppCompatActivity {
 

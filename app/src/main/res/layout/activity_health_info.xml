@@ -210,7 +210,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/submit"
+                    android:id="@+id/modify"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="提交信息"

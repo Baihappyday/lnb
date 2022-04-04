@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.login.MyApplication;
 import com.example.login.R;
 import com.example.login.util.OkHttp;
-import com.example.login.util.SharedPreference;
 import com.example.login.util.SharedUtil;
 
 import org.json.JSONException;
@@ -18,7 +18,6 @@ import org.json.JSONObject;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 
 public class UserLoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -37,7 +36,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
         login_username=findViewById(R.id.username1);
         login_password=findViewById(R.id.password1);
 
-        btn_login_user = findViewById(R.id.submit);
+        btn_login_user = findViewById(R.id.modify);
         btn_login_user.setOnClickListener(this);
 //        btn_login_user.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -140,7 +139,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.submit){
+        if(view.getId() == R.id.modify){
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -153,8 +152,14 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                     final ArrayList<String> recieve = new ArrayList<String>();
                     recieve.add("msg");
                     OkHttp okHttp = new OkHttp(send,recieve);
-                    HashMap<String,String> hm = okHttp.sendRequestWithOkHttp(hashMap, "http://192.168.1.9:9090/login");
-                    if (hm.get("msg").equals("登录成功")){
+                    HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hashMap, "http://192.168.1.9:9090/login");
+                    if (rhm.get("msg").equals("登录成功")){
+                        MyApplication application = (MyApplication) UserLoginActivity.this.getApplicationContext();
+                        application.setName(hashMap.get("username"));//设置全局变量name
+                        SharedUtil sp = SharedUtil.getIntance(UserLoginActivity.this,"logininfo");
+                        sp.writeShared(send,hashMap);//写入登录信息
+                        sp.writeShared("loginstate", true);
+                        Log.d("tag", String.valueOf(sp.readShared("loginstate", false)));
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
@@ -174,9 +179,6 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                                 HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(shm, "http://192.168.1.9:9090/display");
                                 SharedUtil sp = SharedUtil.getIntance(UserLoginActivity.this,"healthInfo");
                                 sp.writeShared(recieve,rhm);
-                                Log.d("debug", sp.readShared("msg", "null")+sp.readShared("uage", "null")
-                                        +sp.readShared("usex", "null")+sp.readShared("uaddress", "null"));
-
 
                             }
                         }).start();

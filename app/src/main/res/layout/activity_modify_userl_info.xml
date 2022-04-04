@@ -21,14 +21,74 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:gravity="center"
-                android:text="个人健康信息"
+                android:text="个人信息"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_margin="8dp">
+
+                <TextView
+                    android:id="@+id/hi_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="姓名："
+                    android:textSize="20sp" />
+
+                <EditText
+
+                    android:id="@+id/username1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/editext_selector"
+                    android:hint="请输入姓名"
+                    android:importantForAutofill="no"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textCursorDrawable="@drawable/text_cursorr"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp">
+
+                <TextView
+                    android:id="@+id/age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="年龄："
+                    android:textSize="20sp" />
+
+                <EditText
+
+                    android:id="@+id/agee"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/editext_selector"
+                    android:hint="请输入年龄"
+                    android:importantForAutofill="no"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textCursorDrawable="@drawable/text_cursorr"
+                    android:textSize="17sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="8dp">
 
                 <TextView
                     android:id="@+id/gender"
@@ -45,6 +105,7 @@
                     android:textSize="20sp" />
 
                 <RadioGroup
+                    android:id="@+id/rg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -72,7 +133,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingTop="20dp">
+                android:layout_margin="8dp">
 
                 <TextView
                     android:id="@+id/address"
@@ -89,44 +150,59 @@
                     android:text="@string/colon"
                     android:textSize="20sp" />
 
-                <HorizontalScrollView
+                <EditText
+
+                    android:id="@+id/addresss"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scrollbars="none">
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/editext_selector"
+                    android:hint="请输入电话号码"
+                    android:importantForAutofill="no"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textCursorDrawable="@drawable/text_cursorr"
+                    android:textSize="17sp" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:paddingTop="5dp"
-                        android:orientation="horizontal" >
 
-                        <Spinner
-                            android:id="@+id/province"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:spinnerMode="dialog" />
-
-                        <Spinner
-                            android:id="@+id/city"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:spinnerMode="dialog" />
-
-                        <Spinner
-                            android:id="@+id/county"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:spinnerMode="dialog" />
-                    </LinearLayout>
-                </HorizontalScrollView>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp">
+
+                <TextView
+                    android:id="@+id/phonenum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="电话号码："
+                    android:textSize="20sp" />
+
+                <EditText
+
+                    android:id="@+id/input_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/editext_selector"
+                    android:hint="请输入电话号码"
+                    android:importantForAutofill="no"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textCursorDrawable="@drawable/text_cursorr"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingTop="20dp">
+                android:layout_margin="8dp">
 
                 <TextView
                     android:id="@+id/birthday"
@@ -173,7 +249,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/submit"
+                    android:id="@+id/modify"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="提交信息"
@@ -184,3 +260,34 @@
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--<HorizontalScrollView-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--android:scrollbars="none">-->
+
+<!--<LinearLayout-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:paddingTop="5dp"-->
+<!--    android:orientation="horizontal" >-->
+
+<!--    <Spinner-->
+<!--        android:id="@+id/province"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:spinnerMode="dialog" />-->
+
+<!--    <Spinner-->
+<!--        android:id="@+id/city"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:spinnerMode="dialog" />-->
+
+<!--    <Spinner-->
+<!--        android:id="@+id/county"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:spinnerMode="dialog" />-->
+<!--</LinearLayout>-->
+<!--</HorizontalScrollView>-->
