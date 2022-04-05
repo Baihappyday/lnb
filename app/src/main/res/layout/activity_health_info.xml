@@ -29,135 +29,6 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp">
-
-                <TextView
-                    android:id="@+id/hi_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="姓名："
-                    android:textSize="20sp" />
-
-                <EditText
-
-                    android:id="@+id/username1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/editext_selector"
-                    android:hint="请输入姓名"
-                    android:importantForAutofill="no"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/grey"
-                    android:textCursorDrawable="@drawable/text_cursorr"
-                    android:textSize="17sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/gender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:text="@string/gender"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/colon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:text="@string/colon"
-                    android:textSize="20sp" />
-
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/xingbie"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/male"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/male"
-                        android:textSize="17sp" />
-
-                    <RadioButton
-                        android:id="@+id/female"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/female"
-                        android:textSize="17sp" />
-                </RadioGroup>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp">
-
-                <TextView
-                    android:id="@+id/hi_phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="联系电话："
-                    android:textSize="20sp" />
-
-                <EditText
-
-                    android:id="@+id/phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/editext_selector"
-                    android:hint="请输入联系电话"
-                    android:importantForAutofill="no"
-                    android:inputType="phone"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/grey"
-                    android:textCursorDrawable="@drawable/text_cursorr"
-                    android:textSize="17sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp">
-
-                <TextView
-                    android:id="@+id/minzu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="民族："
-                    android:textSize="20sp" />
-
-                <Spinner
-                    android:id="@+id/spinner_stuff"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:animationCache="false"
-                    android:background="@color/grey"
-                    android:spinnerMode="dialog" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_margin="8dp">
 
@@ -190,11 +61,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="病史："
+                    android:text="健康状况："
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/editTextTextMultiLine"
+                    android:id="@+id/healthcondition"
                     android:layout_width="wrap_content"
                     android:layout_height="200dp"
                     android:layout_weight="1"
@@ -213,7 +84,7 @@
                     android:id="@+id/modify"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="提交信息"
+                    android:text="修改信息"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
             </LinearLayout>

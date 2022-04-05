@@ -28,20 +28,16 @@ public class OkHttp {
     public static final MediaType JSON
             = MediaType.get("application/json; charset=utf-8");
 
-    private ArrayList<String> send;
-    private ArrayList<String> recieve;
+    private ArrayList<String> send;//发送的每个数据对应的key
+    private ArrayList<String> recieve;//接受的每个数据的对应的key
 
-    public OkHttp(ArrayList<String> send, ArrayList<String> recieve){
+    public OkHttp(ArrayList<String> send, ArrayList<String> recieve){//构造方法
         this.send = send;
         this.recieve = recieve;
     }
 
 
-
-    OkHttpClient client = new OkHttpClient();
-
-
-    public HashMap<String, String> sendRequestWithOkHttp(HashMap<String, String> hashMap, String url) {
+    public HashMap<String, String> sendRequestWithOkHttp(HashMap<String, String> hashMap, String url) {//hashMap为发送的数据集合
 
         JSONObject obj = new JSONObject();
         try {
@@ -84,7 +80,6 @@ public class OkHttp {
 
             //日志
             Log.d("name", "结果是："+hm.get("msg"));
-
             return hm;
         } catch (JSONException e) {
             e.printStackTrace();
@@ -92,3 +87,17 @@ public class OkHttp {
         }
     }
 }
+
+/*
+示例用法：
+OkHttp okHttp = new OkHttp(send,recieve);
+HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hashMap, url);
+我们发送的数据可以用hashmap存储为一对对数据，如：<username, john> <age, 18> --><key, value>
+我们收到的数据也可以用hashmap存储，
+则我们需要准备一个hashmap来存储我们需要发送的数据（对应sendRequestWithOkHttp方法中的hashMap参数，
+send为发送数据集合中的所有key值，recieve为接收数据集合中的所有key值，（有哪些取决于后端需要）(send与recieve都为ArrayList）
+url为端口（如"http://192.168.1.9:9090/login")
+sendRequestWithOkHttp的返回值为收到的数据
+
+目前只写了请求后接收的方法，还没有只等待接收的方法
+ */

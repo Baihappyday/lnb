@@ -52,7 +52,7 @@ public class TaskRelease extends AppCompatActivity implements View.OnClickListen
         input_adress = (EditText) findViewById(R.id.input_adress);
         input_adress.setOnClickListener(this);
 
-        editTextTextMultiLine = (EditText) findViewById(R.id.editTextTextMultiLine);
+        editTextTextMultiLine = (EditText) findViewById(R.id.healthcondition);
         editTextTextMultiLine.setOnClickListener(this);
     }
 
