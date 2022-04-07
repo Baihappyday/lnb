@@ -1,19 +1,23 @@
 package com.example.login.user;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Fragment;
 import android.app.TabActivity;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.TabHost;
-import android.widget.Toast;
 
 import com.example.login.MyApplication;
 import com.example.login.R;
 import com.example.login.util.OkHttp;
 import com.example.login.util.SharedUtil;
+import com.google.android.material.tabs.TabLayout;
+
+import org.intellij.lang.annotations.JdkConstants;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +26,8 @@ import java.util.List;
 public class UserOrder /*extends AppCompatActivity*/extends TabActivity {
     TabHost tabHost;
     int ostate = 0;
+    ArrayList<OrderFragment0> list = new ArrayList<>();
+    ArrayList<HashMap> order;//订单集合
 
 
     @Override
@@ -75,11 +81,14 @@ public class UserOrder /*extends AppCompatActivity*/extends TabActivity {
                 startActivity(intent);*//*
             }
         });*/
-
-
+//        getFragmentManager().beginTransaction().add(R.id.tab01, of0).commit();
+//        getFragmentManager().beginTransaction().add(R.id.tab01, new OrderFragment0()).commit();
+//        getFragmentManager().beginTransaction().add(R.id.tab01, new OrderFragment0()).commit();
+//        getFragmentManager().beginTransaction().add(R.id.tab01, new OrderFragment0()).commit();
     }
 
     private void getDate(final int ostate){
+        boolean threadFlag = false;
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -108,13 +117,40 @@ public class UserOrder /*extends AppCompatActivity*/extends TabActivity {
 
                 }
                 ArrayList<HashMap> order = okHttp.getOrder();//获取订单
-                for (int i = 0; i < order.size(); i++) {
-                    HashMap<String, Object> rhm = order.get(i);
-                    Log.d("TAG", rhm.get("username") +" "+ rhm.get("oprice"));
-                }
+                UserOrder.this.getOrder(order);
+
                 Log.d("tag", " ");
 
             }
         }).start();
+        while (!threadFlag){
+
+        }
+        switch (ostate){
+            case 0:
+                for (int i = 0; i < order.size(); i++) {
+                    HashMap<String, Object> rhm = order.get(i);//获取一个订单的信息
+                    list.add(new OrderFragment0());
+
+                    getFragmentManager().beginTransaction().add(R.id.tab01, list.get(i)).commit();
+
+                    Log.d("TAG", rhm.get("username") +" "+ rhm.get("oprice"));
+                }
+                break;
+//            case 1
+//            case 2
+//            case 3
+        }
+
     }
+
+    void getOrder(ArrayList<HashMap> order){
+        this.order = order;
+    }
+
+    void getDate(){
+
+    }
+
+
 }

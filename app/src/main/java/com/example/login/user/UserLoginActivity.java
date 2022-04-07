@@ -152,13 +152,15 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                     final ArrayList<String> recieve = new ArrayList<String>();
                     recieve.add("msg");
                     OkHttp okHttp = new OkHttp(send,recieve);
-                    HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hashMap, "http://192.168.1.9:9090/login");
+                    HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hashMap, "http://192.168.1.9:9090/login/users");
                     if (rhm.get("msg").equals("登录成功")){
                         MyApplication application = (MyApplication) UserLoginActivity.this.getApplicationContext();
                         application.setName(hashMap.get("username"));//设置全局变量name
+                        application.setLoginState(true);//设置登录状态
                         SharedUtil sp = SharedUtil.getIntance(UserLoginActivity.this,"logininfo");
                         sp.writeShared(send,hashMap);//写入登录信息
                         sp.writeShared("loginstate", true);
+
                         Log.d("tag", String.valueOf(sp.readShared("loginstate", false)));
                         new Thread(new Runnable() {
                             @Override

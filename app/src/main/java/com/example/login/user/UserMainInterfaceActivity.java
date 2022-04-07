@@ -2,14 +2,12 @@ package com.example.login.user;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -18,9 +16,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.login.util.ClickMotion;
 import com.example.login.R;
-import com.qweather.plugin.view.HeContent;
-import com.qweather.plugin.view.LeftLargeView;
-import com.qweather.plugin.view.QWeatherConfig;
 
 
 public class UserMainInterfaceActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener
