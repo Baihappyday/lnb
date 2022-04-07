@@ -137,9 +137,12 @@ public class HealthInfoActivity extends AppCompatActivity implements View.OnClic
                             Log.d("tag", sp.readShared("usex", "null") + sp.readShared("uaddress","null"));
                             Looper.prepare();
                             Toast.makeText(HealthInfoActivity.this,"修改成功", Toast.LENGTH_SHORT).show();
+                            Looper.loop();
                         }
                         else {
+                            Looper.prepare();
                             Toast.makeText(HealthInfoActivity.this,"修改失败", Toast.LENGTH_SHORT).show();
+                            Looper.loop();
                         }
                     }
                 }).start();

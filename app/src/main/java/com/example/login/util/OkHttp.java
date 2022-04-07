@@ -1,19 +1,26 @@
 package com.example.login.util;
 
 
+import android.app.Activity;
 import android.util.Log;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.example.login.MyApplication;
 import com.example.login.user.UserLoginActivity;
+import com.example.login.user.UserOrder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
+import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -25,27 +32,50 @@ public class OkHttp {
 
     private static final String TAG = "OkHttp" ;
 
+    private static int state_JSON = 0;//判断返回Json数据格式
+    private static Activity activity;
+
+
     public static final MediaType JSON
             = MediaType.get("application/json; charset=utf-8");
 
     private ArrayList<String> send;//发送的每个数据对应的key
     private ArrayList<String> recieve;//接受的每个数据的对应的key
 
+    private ArrayList<HashMap> order = new ArrayList<>();//state_JSON为1时使用
+
     public OkHttp(ArrayList<String> send, ArrayList<String> recieve){//构造方法
         this.send = send;
         this.recieve = recieve;
+    }
+
+    public OkHttp(ArrayList<String> send, ArrayList<String> recieve, int state_JSON, Activity activity){//构造方法
+        this.send = send;
+        this.recieve = recieve;
+        this.state_JSON = state_JSON;
+        this.activity = activity;
     }
 
 
     public HashMap<String, String> sendRequestWithOkHttp(HashMap<String, String> hashMap, String url) {//hashMap为发送的数据集合
 
         JSONObject obj = new JSONObject();
+        FormBody.Builder params = new FormBody.Builder();
         try {
             Iterator<String> i = send.iterator();
-            while (i.hasNext()){
-                String s = i.next();
-                obj.put(s,hashMap.get(s));
+            if (state_JSON == 0){
+                while (i.hasNext()){
+                    String s = i.next();
+                    obj.put(s,hashMap.get(s));
+                }
             }
+            else if (state_JSON == 1){
+                while (i.hasNext()){
+                    String s = i.next();
+                    params.add(s,hashMap.get(s));
+                }
+            }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -54,13 +84,35 @@ public class OkHttp {
         RequestBody RequestBody2 = RequestBody.create(type,""+obj.toString());
         try {
             OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder()
-                    // 指定访问的服务器地址
-                    .url(url).post(RequestBody2)
-                    .build();
-            Response response = client.newCall(request).execute();
-            String responseData = response.body().string();
-            return parseJSONWithJSONObject(responseData);
+            if (state_JSON == 0){
+                Request request = new Request.Builder()
+                        // 指定访问的服务器地址
+                        .url(url).post(RequestBody2)
+                        .build();
+                Response response = client.newCall(request).execute();
+                String responseData = response.body().string();
+                return parseJSONWithJSONObject(responseData);
+            }
+            else if (state_JSON == 1){
+                Request request = new Request.Builder()
+                        // 指定访问的服务器地址
+                        .url(url).post(params.build())
+                        .build();
+                Response response = client.newCall(request).execute();
+                String responseData = response.body().string();
+                return parseJSONWithJSONObject(responseData);
+            }
+            else {
+                Request request = new Request.Builder()
+                        // 指定访问的服务器地址
+                        .url(url).post(RequestBody2)
+                        .build();
+                Response response = client.newCall(request).execute();
+                String responseData = response.body().string();
+                return parseJSONWithJSONObject(responseData);
+            }
+
+
         } catch (Exception e) {
             e.printStackTrace();
             return new HashMap<String, String>();
@@ -69,22 +121,74 @@ public class OkHttp {
 
 
     private HashMap<String, String > parseJSONWithJSONObject(String jsonData) {
-        try {
-            JSONObject object=new JSONObject(jsonData);
-            Iterator<String> i = recieve.iterator();
-            HashMap<String, String> hm = new HashMap<>();
-            while (i.hasNext()){
-                String s = i.next();
-                hm.put(s ,object.getString(s));
-            }
+        if (state_JSON == 0){
+            try {
+                JSONObject object=new JSONObject(jsonData);
+                Log.d("name", "JSON length: "+object.length());
+                Iterator<String> i = recieve.iterator();
+                HashMap<String, String> hm = new HashMap<>();
+                while (i.hasNext()){
+                    String s = i.next();
+                    if (s.equals("oid")){
+                        hm.put(s ,String.valueOf(object.getInt(s)));
+                    }
+                    else if (s.equals("oprice")){
+                        hm.put(s ,String.valueOf(object.getInt(s)));
+                    }
+                    else {
+                        hm.put(s ,object.getString(s));
+                    }
 
-            //日志
-            Log.d("name", "结果是："+hm.get("msg"));
-            return hm;
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return new HashMap<String, String>();
+                }
+
+                //日志
+                Log.d("name", "结果是："+hm.get("msg"));
+                return hm;
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return new HashMap<String, String>();
+            }
         }
+        else if (state_JSON == 1){
+            try {
+                JSONArray array = new JSONArray(jsonData);
+                int len = array.length();
+                for (int j = 0; j < len; j++) {
+                    JSONObject object = array.getJSONObject(j);
+                    Log.d("name", "JSON length: "+object.length());
+                    Iterator<String> i = recieve.iterator();
+                    HashMap<String, String> hm = new HashMap<>();
+                    while (i.hasNext()){
+                        String s = i.next();
+                        if (s.equals("oid")){
+                            hm.put(s ,String.valueOf(object.getInt(s)));
+                        }
+                        else if (s.equals("oprice")){
+                            hm.put(s ,String.valueOf(object.getInt(s)));
+                        }
+                        else {
+                            hm.put(s ,object.getString(s));
+                        }
+
+                    }
+
+                    //日志
+                    Log.d("name", "结果是："+hm.get("msg"));
+                    order.add(hm);
+                }
+                MyApplication application = (MyApplication) activity.getApplicationContext();
+                application.orderSynFlag = true;
+                return new HashMap<String, String>();
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return new HashMap<String, String>();
+            }
+        }
+        return new HashMap<String, String>();
+    }
+
+    public ArrayList<HashMap> getOrder() {
+        return order;
     }
 }
 

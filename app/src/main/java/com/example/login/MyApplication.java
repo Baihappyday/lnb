@@ -26,6 +26,8 @@ public class MyApplication extends Application {
     static private int identification = 0; //0未选择，1用户，2工作人员，3社区，4机构
     static private String name;
 
+    public boolean orderSynFlag = false;
+
     @Override
     public void onCreate() {
         // TODO Auto-generated method stub
