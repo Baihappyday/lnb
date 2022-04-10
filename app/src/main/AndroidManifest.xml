@@ -36,6 +36,9 @@
             android:name=".worker.WorkmaininterfaceAcitvity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity android:name=".worker.workwalletActivity" /> <!-- //机构活动 -->
+        <activity android:name=".worker.WorkerLogin"/>
+        <activity android:name=".worker.WorkerEnroll"/>
+        <activity android:name=".worker.WorkerForgetPassword"/>
         <activity android:name=".institution.InstitutionActivity" />
         <activity android:name=".institution.ShenheActivity" />
         <activity android:name=".institution.XiangqingActivity" />

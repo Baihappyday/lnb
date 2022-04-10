@@ -42,7 +42,7 @@ public class WorkpersonalActivity extends Fragment  implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.bt1){//登录
-            Intent intent=new Intent(mContext, UserLoginActivity.class);
+            Intent intent=new Intent(mContext, WorkerLogin.class);
             startActivity(intent);
         }
 
@@ -66,7 +66,7 @@ public class WorkpersonalActivity extends Fragment  implements View.OnClickListe
             startActivity(intent);
         }
 
-        if (view.getId() == R.id.bt6){
+        if (view.getId() == R.id.bt6){//收入钱包
             Intent intent=new Intent(mContext, workwalletActivity.class);
             startActivity(intent);
         }

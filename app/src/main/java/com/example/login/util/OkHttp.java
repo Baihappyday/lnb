@@ -125,6 +125,7 @@ public class OkHttp {
             try {
                 JSONObject object=new JSONObject(jsonData);
                 Log.d("name", "JSON length: "+object.length());
+                Log.d("name", object.getString("msg"));
                 Iterator<String> i = recieve.iterator();
                 HashMap<String, String> hm = new HashMap<>();
                 while (i.hasNext()){

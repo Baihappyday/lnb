@@ -25,7 +25,7 @@ public class WorkmaininterfaceAcitvity extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment, mi).commit();
             }
         });
-        Button button2=findViewById(R.id.button2);
+        Button button2=findViewById(R.id.button2);//个人中心
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

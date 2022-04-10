@@ -1,4 +1,4 @@
-package com.example.login.user;
+package com.example.login.worker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,7 +20,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class UserLoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class WorkerLogin extends AppCompatActivity implements View.OnClickListener {
     private EditText login_username;
     private EditText login_password;
     private Button btn_login_user;
@@ -144,20 +144,22 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                 @Override
                 public void run() {
                     HashMap<String, String> hashMap = new HashMap<>();
-                    hashMap.put("username", login_username.getText().toString());
-                    hashMap.put("password", login_password.getText().toString());
+                    hashMap.put("wusername", login_username.getText().toString());
+                    hashMap.put("wpassword", login_password.getText().toString());
                     ArrayList<String> send = new ArrayList<String>();
-                    send.add("username");
-                    send.add("password");
+                    send.add("wusername");
+                    send.add("wpassword");
                     final ArrayList<String> recieve = new ArrayList<String>();
                     recieve.add("msg");
                     OkHttp okHttp = new OkHttp(send,recieve);
-                    HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hashMap, "http://192.168.56.1:9090/login/users");
+                    HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hashMap, "http://192.168.56.1:9090/login/workers");
+                    System.out.println(rhm.get("msg")+"为");
+                    Log.d("tag",rhm.get("msg")+"为");
                     if (rhm.get("msg").equals("登录成功")){
-                        MyApplication application = (MyApplication) UserLoginActivity.this.getApplicationContext();
-                        application.setName(hashMap.get("username"));//设置全局变量name
+                        MyApplication application = (MyApplication) com.example.login.worker.WorkerLogin.this.getApplicationContext();
+                        application.setName(hashMap.get("wusername"));//设置全局变量name
                         application.setLoginState(true);//设置登录状态
-                        SharedUtil sp = SharedUtil.getIntance(UserLoginActivity.this,"logininfo");
+                        SharedUtil sp = SharedUtil.getIntance(com.example.login.worker.WorkerLogin.this,"logininfo");
                         sp.writeShared(send,hashMap);//写入登录信息
                         sp.writeShared("loginstate", true);
 
@@ -166,25 +168,25 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                             @Override
                             public void run() {
                                 HashMap<String, String> shm = new HashMap<>();
-                                shm.put("uusername", login_username.getText().toString());
+                                shm.put("wusername", login_username.getText().toString());
                                 ArrayList<String> send = new ArrayList<String>();
-                                send.add("uusername");
+                                send.add("wusername");
                                 ArrayList<String> recieve = new ArrayList<String>();
                                 recieve.add("msg");
-                                recieve.add("uage");
-                                recieve.add("usex");
-                                recieve.add("uaddress");
-                                recieve.add("uphone");
-                                recieve.add("ubloodtype");
-                                recieve.add("uhealthcondition");
+//                                recieve.add("uage");
+//                                recieve.add("usex");
+//                                recieve.add("uaddress");
+//                                recieve.add("uphone");
+//                                recieve.add("ubloodtype");
+//                                recieve.add("uhealthcondition");
                                 OkHttp okHttp = new OkHttp(send,recieve);
                                 HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(shm, "http://192.168.56.1:9090/display");
-                                SharedUtil sp = SharedUtil.getIntance(UserLoginActivity.this,"healthInfo");
+                                SharedUtil sp = SharedUtil.getIntance(com.example.login.worker.WorkerLogin.this,"wInfo");
                                 sp.writeShared(recieve,rhm);
 
                             }
                         }).start();*/
-                        Intent i= new Intent(UserLoginActivity.this, UserMainInterfaceActivity.class);
+                        Intent i= new Intent(com.example.login.worker.WorkerLogin.this, WorkmaininterfaceAcitvity.class);
                         startActivity(i);
                     }
                 }
@@ -192,15 +194,16 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
         }
         if (view.getId() == R.id.enroll){
             //填写页面跳转的逻辑UserLoginActivity
-            Intent intent=new Intent(UserLoginActivity.this, EnrollActicity/*UserMainInterfaceActivity*/.class);
+            Intent intent=new Intent(com.example.login.worker.WorkerLogin.this, WorkerEnroll/*UserMainInterfaceActivity*/.class);
             startActivity(intent);
         }
         if (view.getId() == R.id.forget){
             //填写页面跳转的逻辑
-                Intent i = new Intent(UserLoginActivity.this, ForgetPasswordActivity.class);
-                //启动
-                startActivity(i);
+            Intent i = new Intent(com.example.login.worker.WorkerLogin.this, WorkerForgetPassword.class);
+            //启动
+            startActivity(i);
         }
     }
 
 }
+

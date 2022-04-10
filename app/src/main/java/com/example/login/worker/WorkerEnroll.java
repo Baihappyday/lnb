@@ -1,4 +1,4 @@
-package com.example.login.user;
+package com.example.login.worker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.login.R;
+import com.example.login.user.UserLoginActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,7 +23,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 
-public class EnrollActicity extends AppCompatActivity {
+public class WorkerEnroll extends AppCompatActivity {
     private EditText enroll_username;
     private EditText enroll_password;
     @Override
@@ -43,8 +44,8 @@ public class EnrollActicity extends AppCompatActivity {
                     public void run() {
                         JSONObject obj = new JSONObject();
                         try {
-                            obj.put("username",username);
-                            obj.put("password",password);
+                            obj.put("wusername",username);
+                            obj.put("wpassword",password);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -55,7 +56,7 @@ public class EnrollActicity extends AppCompatActivity {
                             OkHttpClient client = new OkHttpClient();
                             Request request = new Request.Builder()
                                     // 指定访问的服务器地址
-                                    .url("http://192.168.56.1:9090/register/users").post(RequestBody2)
+                                    .url("http://192.168.56.1:9090/register/workers").post(RequestBody2)
                                     .build();
                             Response response = client.newCall(request).execute();
                             String responseData = response.body().string();
@@ -64,7 +65,7 @@ public class EnrollActicity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        Toast.makeText(EnrollActicity.this,"注册成功！",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(com.example.login.worker.WorkerEnroll.this,"注册成功！",Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }
@@ -72,7 +73,7 @@ public class EnrollActicity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        Toast.makeText(EnrollActicity.this,"用户名已存在!",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(com.example.login.worker.WorkerEnroll.this,"用户名已存在!",Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }
@@ -81,7 +82,7 @@ public class EnrollActicity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(EnrollActicity.this,"网络错误",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(com.example.login.worker.WorkerEnroll.this,"网络错误",Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -111,7 +112,7 @@ public class EnrollActicity extends AppCompatActivity {
             public void onClick(View v){
                 //Intent是一种运行时绑定（run-time binding）机制，它能在程序运行过程中连接两个不同的组件。
                 //在存放资源代码的文件夹下下，
-                Intent i = new Intent(EnrollActicity.this, UserLoginActivity.class);//跳转至登录界面
+                Intent i = new Intent(com.example.login.worker.WorkerEnroll.this, UserLoginActivity.class);//跳转至登录界面
                 //启动
                 startActivity(i);
             }
@@ -130,3 +131,4 @@ public class EnrollActicity extends AppCompatActivity {
         }
     }
 }
+

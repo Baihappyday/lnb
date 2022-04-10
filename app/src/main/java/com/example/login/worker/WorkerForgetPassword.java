@@ -1,4 +1,5 @@
-package com.example.login.user;
+package com.example.login.worker;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,7 +15,7 @@ import com.example.login.util.OkHttp;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ForgetPasswordActivity extends AppCompatActivity implements View.OnClickListener {
+public class WorkerForgetPassword extends AppCompatActivity implements View.OnClickListener {
     private Button btn;
     private EditText username1;
     private EditText password1;
@@ -38,17 +39,17 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
                 @Override
                 public void run() {
                     HashMap<String, String> hashMap = new HashMap<>();
-                    hashMap.put("username", username1.getText().toString());
-                    hashMap.put("password", password1.getText().toString());
+                    hashMap.put("wusername", username1.getText().toString());
+                    hashMap.put("wpassword", password1.getText().toString());
                     ArrayList<String> send = new ArrayList<String>();
-                    send.add("username");
-                    send.add("password");
+                    send.add("wusername");
+                    send.add("wpassword");
                     final ArrayList<String> recieve = new ArrayList<String>();
                     recieve.add("msg");
                     OkHttp okHttp = new OkHttp(send,recieve);
-                    HashMap<String,String> hm = okHttp.sendRequestWithOkHttp(hashMap, "http://192.168.56.1:9090/login/users");
+                    HashMap<String,String> hm = okHttp.sendRequestWithOkHttp(hashMap, "http://192.168.56.1:9090/login/workers");
                     if (hm.get("msg").equals("登录成功")){
-                        Intent i= new Intent(ForgetPasswordActivity.this, UserMainInterfaceActivity.class);
+                        Intent i= new Intent(WorkerForgetPassword.this, WorkmaininterfaceAcitvity.class);
                         startActivity(i);
                     }
                 }
