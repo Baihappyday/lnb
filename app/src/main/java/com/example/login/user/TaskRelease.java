@@ -98,17 +98,19 @@ public class TaskRelease extends AppCompatActivity implements View.OnClickListen
                     hm.put("username", application.getName());
 
                     String servicetype = sp1.getSelectedItem().toString();
-                    if (servicetype.equals("0~30分钟")) hm.put("otype", String.valueOf(0));
-                    else if (servicetype.equals("30~60分钟")) hm.put("otype", String.valueOf(1));
-                    else if (servicetype.equals("1~2小时")) hm.put("otype", String.valueOf(2));
-                    else if (servicetype.equals("2小时以上")) hm.put("otype", String.valueOf(3));
+                    if (servicetype.equals("洗衣")) hm.put("otype", String.valueOf(0));
+                    else if (servicetype.equals("做饭")) hm.put("otype", String.valueOf(1));
+                    else if (servicetype.equals("打扫卫生")) hm.put("otype", String.valueOf(2));
+                    else if (servicetype.equals("理发")) hm.put("otype", String.valueOf(3));
 
 
                     String duration = sp2.getSelectedItem().toString();
-                    if (duration.equals("洗衣")) hm.put("oduration", String.valueOf(0));
-                    else if (duration.equals("做饭")) hm.put("oduration", String.valueOf(1));
-                    else if (duration.equals("打扫卫生")) hm.put("oduration", String.valueOf(2));
-                    else if (duration.equals("理发")) hm.put("oduration", String.valueOf(3));
+                    Log.d(" ", "run: "+duration);
+                    if (duration.equals("0~30分钟")) hm.put("oduration", String.valueOf(0));
+                    else if (duration.equals("30~60分钟")) hm.put("oduration", String.valueOf(1));
+                    else if (duration.equals("1~2小时")) hm.put("oduration", String.valueOf(2));
+                    else if (duration.equals("2小时以上")) hm.put("oduration", String.valueOf(3));
+
 
                     hm.put("oprice", String.valueOf((int)(Math.random()*100)));//待修改
                     hm.put("odescription", editTextTextMultiLine.getText().toString());
@@ -116,7 +118,7 @@ public class TaskRelease extends AppCompatActivity implements View.OnClickListen
                     send.add("username");
                     send.add("otype");
                     send.add("oduration");
-                    send.add("uprice");
+                    send.add("oprice");
                     send.add("odescription");
                     ArrayList<String> recieve = new ArrayList<>();
                     recieve.add("msg");
@@ -130,8 +132,9 @@ public class TaskRelease extends AppCompatActivity implements View.OnClickListen
                     recieve.add("odescription");
                     recieve.add("oid");
                     OkHttp okHttp = new OkHttp(send, recieve);
-                    HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.9:9090/publish-order");
-                    Log.d("tag", rhm.get("msg"));
+                    HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.11:9090/publish-order");
+                    Log.d("rhm length", String.valueOf(rhm.size()));
+                    Log.d("tag", rhm.get("otype"));
                     if (rhm.get("msg").equals("true")){
                         Looper.prepare();
                         Toast.makeText(TaskRelease.this,"提交成功", Toast.LENGTH_SHORT).show();

@@ -5,14 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Fragment;
 import android.app.TabActivity;
+import android.net.Network;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.widget.TabHost;
 
 import com.example.login.MyApplication;
 import com.example.login.R;
+import com.example.login.util.NetWorkUtil;
 import com.example.login.util.OkHttp;
 import com.example.login.util.SharedUtil;
 import com.google.android.material.tabs.TabLayout;
@@ -26,8 +29,10 @@ import java.util.List;
 public class UserOrder /*extends AppCompatActivity*/extends TabActivity {
     TabHost tabHost;
     int ostate = 0;
-    ArrayList<OrderFragment0> list = new ArrayList<>();
+    ArrayList<OrderFragment0> list = new ArrayList<>();//fragment集合
     ArrayList<HashMap> order;//订单集合
+
+    boolean threadFlag = false;
 
 
     @Override
@@ -40,14 +45,33 @@ public class UserOrder /*extends AppCompatActivity*/extends TabActivity {
         LayoutInflater.from(this).inflate(R.layout.user_order,
                 tabHost.getTabContentView(), true);
 
-        getDate(0);
+        boolean netFlag = NetWorkUtil.isNetworkConnected(this);
+
+        if (netFlag){
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    getDate(0);
+                }
+            }).start();
+
+        }
+        else {
+
+        }
+
+
 
         /* 以上创建和添加标签页也可以用如下代码实现 */
-        tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("未付款").setContent(R.id.tab01));
-        tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("进行中").setContent(R.id.tab02));
-        tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator("已完成").setContent(R.id.tab03));
-        tabHost.addTab(tabHost.newTabSpec("tab4").setIndicator("待评价").setContent(R.id.tab04));
-        tabHost.addTab(tabHost.newTabSpec("tab5").setIndicator("全部").setContent(R.id.tab05));
+        tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("未付款").setContent(R.id.tab011));
+        tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("进行中").setContent(R.id.tab022));
+        tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator("已完成").setContent(R.id.tab033));
+        tabHost.addTab(tabHost.newTabSpec("tab4").setIndicator("待评价").setContent(R.id.tab044));
+        tabHost.addTab(tabHost.newTabSpec("tab5").setIndicator("全部").setContent(R.id.tab055));
+//        tabHost.setCurrentTabByTag(R.id.tab01);
+
+        int a = getIntent().getIntExtra("page", 0);
+        tabHost.setCurrentTab(a);
 
         //标签切换事件处理，setOnTabChangedListener
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener(){
@@ -87,8 +111,8 @@ public class UserOrder /*extends AppCompatActivity*/extends TabActivity {
 //        getFragmentManager().beginTransaction().add(R.id.tab01, new OrderFragment0()).commit();
     }
 
-    private void getDate(final int ostate){
-        boolean threadFlag = false;
+    private void getDate(final int ostate){//获取服务器端数据并显示
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -112,45 +136,54 @@ public class UserOrder /*extends AppCompatActivity*/extends TabActivity {
                 recieve.add("odescription");
                 recieve.add("oid");
                 OkHttp okHttp = new OkHttp(send, recieve, 1, UserOrder.this);
-                okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.9:9090/userOrderList");
+                okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.11:9090/userOrderList");
                 while (!application.orderSynFlag){
 
                 }
+                application.orderSynFlag = false;
+                Log.d("TAG", "flag true");
                 ArrayList<HashMap> order = okHttp.getOrder();//获取订单
                 UserOrder.this.getOrder(order);
 
                 Log.d("tag", " ");
-
+                UserOrder.this.threadFlag = true;
             }
         }).start();
-        while (!threadFlag){
 
+        while (!threadFlag){
+            Log.d("tag", "in threadflag");
         }
+        threadFlag = false;
+        Log.d("tag", "out threadflag");
+        Looper.prepare();
         switch (ostate){
             case 0:
+
                 for (int i = 0; i < order.size(); i++) {
                     HashMap<String, Object> rhm = order.get(i);//获取一个订单的信息
                     list.add(new OrderFragment0());
-
+                    list.get(i).setInfo(rhm);//传入订单数据给fragment
                     getFragmentManager().beginTransaction().add(R.id.tab01, list.get(i)).commit();
 
                     Log.d("TAG", rhm.get("username") +" "+ rhm.get("oprice"));
                 }
+
                 break;
 //            case 1
 //            case 2
 //            case 3
         }
-
+        Looper.loop();
     }
 
     void getOrder(ArrayList<HashMap> order){
         this.order = order;
     }
 
-    void getDate(){
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        return super.onKeyDown(keyCode, event);
     }
-
-
 }

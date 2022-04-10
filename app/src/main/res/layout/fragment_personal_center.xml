@@ -311,6 +311,17 @@
 
         </RelativeLayout>
 
+        <Button
+            android:id="@+id/button13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@color/white"
+            android:text="退  出  登  录"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="italic" />
+
     </LinearLayout>
 
     </LinearLayout>

@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.login.R;
 import com.example.login.MyApplication;
+import com.example.login.util.NetWorkUtil;
 import com.example.login.util.OkHttp;
 import com.example.login.util.SharedUtil;
 
@@ -94,64 +95,74 @@ public class HealthInfoActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.modify){
-            if (modify.getText().toString().equals("修改信息")){
-                sp1.setClickable(true);
-                healthcondition.setFocusableInTouchMode(true);
-                healthcondition.setFocusable(true);
+            if (NetWorkUtil.isNetWorkOK(this)){
+                if (modify.getText().toString().equals("修改信息")){
+                    sp1.setClickable(true);
+                    healthcondition.setFocusableInTouchMode(true);
+                    healthcondition.setFocusable(true);
 
-                modify.setText("提交修改");
-                Toast.makeText(this,"可以开始修改啦", Toast.LENGTH_SHORT).show();
-            }
-            else if (modify.getText().toString().equals("提交修改")){
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        SharedUtil sp = SharedUtil.getIntance(HealthInfoActivity.this, "healthInfo");
-                        HashMap<String, String> hm = new HashMap<>();
-                        MyApplication application = (MyApplication) HealthInfoActivity.this.getApplicationContext();
-                        hm.put("uusername", application.getName());
-                        hm.put("uhealthcondition", healthcondition.getText().toString());
-                        hm.put("ubloodtype", sp1.getSelectedItem().toString());
-                        ArrayList<String> send = new ArrayList<>();
-                        send.add("uusername");
-                        send.add("uhealthcondition");
-                        send.add("ubloodtype");
-                        ArrayList<String> recieve = new ArrayList<>();
-                        recieve.add("msg");
-                        recieve.add("uage");
-                        recieve.add("usex");
-                        recieve.add("uaddress");
-                        recieve.add("uphone");
-                        recieve.add("ubloodtype");
-                        recieve.add("uhealthcondition");
-                        OkHttp okHttp = new OkHttp(send, recieve);
-                        HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.9:9090/update-health");
-                        Log.d("tag", rhm.get("msg") + rhm.get("ubloodtype"));
-                        if (rhm.get("msg").equals("true")){
-                            recieve.remove("msg");
-                            recieve.remove("uage");
-                            recieve.remove("usex");
-                            recieve.remove("uaddress");
-                            recieve.remove("uphone");
-                            sp.writeShared(recieve, rhm);
-                            Log.d("tag", sp.readShared("usex", "null") + sp.readShared("uaddress","null"));
-                            Looper.prepare();
-                            Toast.makeText(HealthInfoActivity.this,"修改成功", Toast.LENGTH_SHORT).show();
-                            Looper.loop();
+                    modify.setText("提交修改");
+                    Toast.makeText(this,"可以开始修改啦", Toast.LENGTH_SHORT).show();
+                }
+                else if (modify.getText().toString().equals("提交修改")){
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            SharedUtil sp = SharedUtil.getIntance(HealthInfoActivity.this, "healthinfo");
+                            HashMap<String, String> hm = new HashMap<>();
+                            MyApplication application = (MyApplication) HealthInfoActivity.this.getApplicationContext();
+                            hm.put("uusername", application.getName());
+                            hm.put("uhealthcondition", healthcondition.getText().toString());
+                            hm.put("ubloodtype", sp1.getSelectedItem().toString());
+                            ArrayList<String> send = new ArrayList<>();
+                            send.add("uusername");
+                            send.add("uhealthcondition");
+                            send.add("ubloodtype");
+                            ArrayList<String> recieve = new ArrayList<>();
+                            recieve.add("msg");
+                            recieve.add("uage");
+                            recieve.add("usex");
+                            recieve.add("uaddress");
+                            recieve.add("uphone");
+                            recieve.add("ubloodtype");
+                            recieve.add("uhealthcondition");
+                            OkHttp okHttp = new OkHttp(send, recieve);
+                            HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.11:9090/update-health");
+                            Log.d("tag", rhm.get("msg") + rhm.get("ubloodtype"));
+                            if (rhm.get("msg").equals("true")){
+                                recieve.remove("msg");
+                                recieve.remove("uage");
+                                recieve.remove("usex");
+                                recieve.remove("uaddress");
+                                recieve.remove("uphone");
+                                sp.writeShared(recieve, rhm);
+                                Log.d("tag", sp.readShared("usex", "null") + sp.readShared("uaddress","null"));
+                                Looper.prepare();
+                                Toast.makeText(HealthInfoActivity.this,"修改成功", Toast.LENGTH_SHORT).show();
+                                Looper.loop();
+                            }
+                            else {
+                                Looper.prepare();
+                                Toast.makeText(HealthInfoActivity.this,"修改失败", Toast.LENGTH_SHORT).show();
+                                Looper.loop();
+                            }
                         }
-                        else {
-                            Looper.prepare();
-                            Toast.makeText(HealthInfoActivity.this,"修改失败", Toast.LENGTH_SHORT).show();
-                            Looper.loop();
-                        }
-                    }
-                }).start();
-                modify.setText("修改信息");
-                sp1.setClickable(false);
-                healthcondition.setFocusable(false);
+                    }).start();
+                    modify.setText("修改信息");
+                    sp1.setClickable(false);
+                    healthcondition.setFocusable(false);
+                }
+                else {
+
+                }
             }
             else {
-
+                if (modify.getText().toString().equals("修改信息")){
+                    Toast.makeText(this,"不可修改", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(this,"修改失败", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }

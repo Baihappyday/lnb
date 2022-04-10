@@ -152,7 +152,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                     final ArrayList<String> recieve = new ArrayList<String>();
                     recieve.add("msg");
                     OkHttp okHttp = new OkHttp(send,recieve);
-                    HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hashMap, "http://192.168.1.9:9090/login/users");
+                    HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hashMap, "http://192.168.1.11:9090/login/users");
                     if (rhm.get("msg").equals("登录成功")){
                         MyApplication application = (MyApplication) UserLoginActivity.this.getApplicationContext();
                         application.setName(hashMap.get("username"));//设置全局变量name
@@ -178,13 +178,15 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                                 recieve.add("ubloodtype");
                                 recieve.add("uhealthcondition");
                                 OkHttp okHttp = new OkHttp(send,recieve);
-                                HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(shm, "http://192.168.1.9:9090/display");
-                                SharedUtil sp = SharedUtil.getIntance(UserLoginActivity.this,"healthInfo");
+                                HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(shm, "http://192.168.1.11:9090/display");
+                                SharedUtil sp = SharedUtil.getIntance(UserLoginActivity.this,"healthinfo");
                                 sp.writeShared(recieve,rhm);
 
                             }
                         }).start();
                         Intent i= new Intent(UserLoginActivity.this, UserMainInterfaceActivity.class);
+                        i.putExtra("frag",0);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(i);
                     }
                 }

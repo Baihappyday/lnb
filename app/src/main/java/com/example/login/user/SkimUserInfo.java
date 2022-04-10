@@ -31,7 +31,7 @@ public class SkimUserInfo extends AppCompatActivity implements View.OnClickListe
         modify = findViewById(R.id.modify);
         modify.setOnClickListener(this);
 
-        SharedUtil sp = SharedUtil.getIntance(this,"healthInfo");
+        SharedUtil sp = SharedUtil.getIntance(this,"healthinfo");
         hi_name = findViewById(R.id.hi_name);
         hi_name.setText(hi_name.getText().toString()+sp.readShared("uusername","无"));
         age = findViewById(R.id.age);

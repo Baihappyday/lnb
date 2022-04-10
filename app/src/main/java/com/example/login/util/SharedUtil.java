@@ -7,9 +7,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class SharedUtil {
 
 	private static com.example.login.util.SharedUtil mUtil;
+
+
+
 	private static SharedPreferences mShared;
 	
 	public static com.example.login.util.SharedUtil getIntance(Context ctx, String fileNameOfInfo) {
@@ -59,6 +64,26 @@ public class SharedUtil {
 
 	public boolean readShared(String key, boolean defaultValue) {
 		return mShared.getBoolean(key, defaultValue);
+	}
+
+	private static SharedPreferences getmShared() {
+		return mShared;
+	}
+
+
+	public static void clearShared(Context activity){
+		SharedUtil sp = SharedUtil.getIntance(activity,"logininfo");
+		if(sp!=null){
+			sp.getmShared().edit().clear().commit();
+		}
+		sp=SharedUtil.getIntance(activity,"healthinfo");
+		if(sp!=null){
+			sp.getmShared().edit().clear().commit();
+		}
+		sp=SharedUtil.getIntance(activity,"taskinfo");
+		if(sp!=null){
+			sp.getmShared().edit().clear().commit();
+		}
 	}
 	
 }

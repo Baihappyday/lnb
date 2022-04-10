@@ -25,6 +25,15 @@ public class MyApplication extends Application {
     static private boolean loginState = false;//登录状态
     static private int identification = 0; //0未选择，1用户，2工作人员，3社区，4机构
     static private String name;
+    static private boolean NetWorkAvailable = true;
+
+    public static boolean isNetWorkAvailable() {
+        return NetWorkAvailable;
+    }
+
+    public static void setNetWorkAvailable(boolean netWorkAvailable) {
+        NetWorkAvailable = netWorkAvailable;
+    }
 
     public boolean orderSynFlag = false;
 

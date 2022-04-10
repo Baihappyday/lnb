@@ -116,7 +116,7 @@ public class ModifyUserlInfo extends AppCompatActivity implements View.OnClickLi
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    SharedUtil sp = SharedUtil.getIntance(ModifyUserlInfo.this, "healthInfo");
+                    SharedUtil sp = SharedUtil.getIntance(ModifyUserlInfo.this, "healthinfo");
                     gender = findViewById(rg.getCheckedRadioButtonId());
                     HashMap<String, String> hm = new HashMap<>();
                     MyApplication application = (MyApplication) ModifyUserlInfo.this.getApplicationContext();
@@ -140,7 +140,7 @@ public class ModifyUserlInfo extends AppCompatActivity implements View.OnClickLi
                     recieve.add("ubloodtype");
                     recieve.add("uhealthcondition");
                     OkHttp okHttp = new OkHttp(send, recieve);
-                    HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.9:9090/update");
+                    HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.11:9090/update");
                     Log.d("tag", rhm.get("msg") + rhm.get("usex"));
                     if (rhm.get("msg").equals("true")){
                         recieve.remove("msg");

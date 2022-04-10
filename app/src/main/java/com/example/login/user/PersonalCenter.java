@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.login.IdentiChooseActivity;
 import com.example.login.MyApplication;
 import com.example.login.R;
 import com.example.login.util.SharedUtil;
@@ -43,11 +44,18 @@ public class PersonalCenter extends Fragment implements View.OnClickListener, Vi
         bt3_4.setOnClickListener(this);
         Button bt1 = v.findViewById(R.id.bt1);
         Button button6 = v.findViewById(R.id.button6);
+        Button button13 = v.findViewById(R.id.button13);
+        button13.setOnClickListener(this);
         if (application.getLoginState()){//若之前已登录
             SharedUtil sp = SharedUtil.getIntance(mContext,"logininfo");
             String s = sp.readShared("username", "null");
             Log.d("tag", s);
-            bt1.setText("用户"+s);
+            if (s.equals("null")){
+                bt1.setText("点击登录");
+            }
+            else {
+                bt1.setText("用户"+s);
+            }
         }
         else {
             bt1.setOnClickListener(this);
@@ -72,22 +80,34 @@ public class PersonalCenter extends Fragment implements View.OnClickListener, Vi
         }
         if (view.getId() == R.id.bt3_1) {
             Intent intent=new Intent(mContext, UserOrder.class);
+            intent.putExtra("page", 0);
             startActivity(intent);
         }
         if (view.getId() == R.id.bt3_2) {
             Intent intent=new Intent(mContext, UserOrder.class);
+            intent.putExtra("page", 1);
             startActivity(intent);
         }
         if (view.getId() == R.id.bt3_3) {
             Intent intent=new Intent(mContext, UserOrder.class);
+            intent.putExtra("page", 2);
             startActivity(intent);
         }
         if (view.getId() == R.id.bt3_4) {
             Intent intent=new Intent(mContext, UserOrder.class);
+            intent.putExtra("page", 3);
             startActivity(intent);
         }
         if (view.getId() == R.id.button6){//按钮：完善个人信息
             Intent intent=new Intent(mContext, UserLoginActivity.class);
+            startActivity(intent);
+        }
+        if (view.getId() == R.id.button13){//按钮：退出登录
+            Intent intent=new Intent(mContext, IdentiChooseActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+            SharedUtil.clearShared(mContext);
+            MyApplication application = (MyApplication) mContext.getApplicationContext();
+            application.setLoginState(false);
             startActivity(intent);
         }
     }

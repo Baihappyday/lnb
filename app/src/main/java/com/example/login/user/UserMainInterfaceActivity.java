@@ -4,22 +4,31 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.login.IdentiChooseActivity;
+import com.example.login.MainActivity;
+import com.example.login.MyApplication;
 import com.example.login.util.ClickMotion;
 import com.example.login.R;
+import com.example.login.util.NetWorkUtil;
+import com.example.login.util.SharedUtil;
 
 
 public class UserMainInterfaceActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener
 {
+    boolean ifHadCheckedNet = false;
     TitlePage tpa ;
     PersonalCenter pca;
     BlankFragment bla;
@@ -45,6 +54,8 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
     FragmentManager fragmentManager  = getSupportFragmentManager();
     FragmentTransaction beginTransaction = fragmentManager.beginTransaction();
 
+    MyApplication application;
+
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -63,9 +74,7 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
         pca = pc;
         bla = bl;
 
-
-
-
+        application = (MyApplication) this.getApplicationContext();
 
         button=findViewById(R.id.button);//首页
         homepage = (Button)findViewById(R.id.homepage);
@@ -110,7 +119,35 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
 
     }
 
-//    @Override
+    @Override
+    protected void onResume() {
+        super.onResume();
+        boolean flag = NetWorkUtil.isNetworkConnected(this);
+        if (!ifHadCheckedNet){
+            if (!flag){
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {//5秒后自动跳转
+                    @Override
+                    public void run() {
+                        Toast.makeText(UserMainInterfaceActivity.this,"网络未连接", Toast.LENGTH_SHORT).show();
+                    }
+                },1500);
+            }
+            if (!NetWorkUtil.isNetworkAvailable(this)&&flag){
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {//5秒后自动跳转
+                    @Override
+                    public void run() {
+                        Toast.makeText(UserMainInterfaceActivity.this,"网络不可用", Toast.LENGTH_SHORT).show();
+                    }
+                },1500);
+            }
+            ifHadCheckedNet = true;
+        }
+
+    }
+
+    //    @Override
 //    public boolean onTouchEvent(MotionEvent event) {
 //        switch (event.getAction()) {
 //
@@ -130,6 +167,13 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
 //        return super.onTouchEvent(event);
 
 //    }
+
+
+    @Override
+    protected void onStart() {
+
+        super.onStart();
+    }
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {

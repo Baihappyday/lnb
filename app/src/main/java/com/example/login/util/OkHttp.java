@@ -80,6 +80,13 @@ public class OkHttp {
             e.printStackTrace();
         }
 
+        try {
+            Log.d(TAG, "sendRequestWithOkHttp: obj"+hashMap.get("otype")+hashMap.get("oduration"));
+            Log.d(TAG, "sendRequestWithOkHttp: obj"+obj.getString("otype")+obj.getString("oduration"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         MediaType type = MediaType.parse("application/json;charset=utf-8");
         RequestBody RequestBody2 = RequestBody.create(type,""+obj.toString());
         try {
@@ -91,6 +98,7 @@ public class OkHttp {
                         .build();
                 Response response = client.newCall(request).execute();
                 String responseData = response.body().string();
+                Log.d("TAG", "sendRequestWithOkHttp: tohere");
                 return parseJSONWithJSONObject(responseData);
             }
             else if (state_JSON == 1){
@@ -125,12 +133,13 @@ public class OkHttp {
             try {
                 JSONObject object=new JSONObject(jsonData);
                 Log.d("name", "JSON length: "+object.length());
+                Log.d("msg", object.get("msg").toString());
                 Iterator<String> i = recieve.iterator();
                 HashMap<String, String> hm = new HashMap<>();
                 while (i.hasNext()){
                     String s = i.next();
                     if (s.equals("oid")){
-                        hm.put(s ,String.valueOf(object.getInt(s)));
+                        //hm.put(s ,String.valueOf(object.getInt(s)));
                     }
                     else if (s.equals("oprice")){
                         hm.put(s ,String.valueOf(object.getInt(s)));
@@ -150,9 +159,11 @@ public class OkHttp {
             }
         }
         else if (state_JSON == 1){
+            state_JSON = 0;
             try {
                 JSONArray array = new JSONArray(jsonData);
                 int len = array.length();
+                Log.d("name", "JSON length: "+len);
                 for (int j = 0; j < len; j++) {
                     JSONObject object = array.getJSONObject(j);
                     Log.d("name", "JSON length: "+object.length());
@@ -173,7 +184,7 @@ public class OkHttp {
                     }
 
                     //日志
-                    Log.d("name", "结果是："+hm.get("msg"));
+                    Log.d("name", "结果是："+hm.get("oprice"));
                     order.add(hm);
                 }
                 MyApplication application = (MyApplication) activity.getApplicationContext();
