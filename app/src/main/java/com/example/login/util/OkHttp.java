@@ -69,20 +69,13 @@ public class OkHttp {
                     obj.put(s,hashMap.get(s));
                 }
             }
-            else if (state_JSON == 1){
+            else if (state_JSON == 1||state_JSON == 2){
                 while (i.hasNext()){
                     String s = i.next();
                     params.add(s,hashMap.get(s));
                 }
             }
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            Log.d(TAG, "sendRequestWithOkHttp: obj"+hashMap.get("otype")+hashMap.get("oduration"));
-            Log.d(TAG, "sendRequestWithOkHttp: obj"+obj.getString("otype")+obj.getString("oduration"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -101,7 +94,7 @@ public class OkHttp {
                 Log.d("TAG", "sendRequestWithOkHttp: tohere");
                 return parseJSONWithJSONObject(responseData);
             }
-            else if (state_JSON == 1){
+            else if (state_JSON == 1||state_JSON == 2){
                 Request request = new Request.Builder()
                         // 指定访问的服务器地址
                         .url(url).post(params.build())
@@ -129,7 +122,9 @@ public class OkHttp {
 
 
     private HashMap<String, String > parseJSONWithJSONObject(String jsonData) {
-        if (state_JSON == 0){
+        Log.d("jsondata", jsonData);
+        if (state_JSON == 0||state_JSON == 2){
+            state_JSON = 0;
             try {
                 JSONObject object=new JSONObject(jsonData);
                 Log.d("name", "JSON length: "+object.length());
@@ -143,6 +138,9 @@ public class OkHttp {
                     }
                     else if (s.equals("oprice")){
                         hm.put(s ,String.valueOf(object.getInt(s)));
+                    }
+                    else if (s.equals("judgeinfo")){
+                        hm.put(s , String.valueOf(object.getBoolean(s)));
                     }
                     else {
                         hm.put(s ,object.getString(s));
@@ -176,6 +174,9 @@ public class OkHttp {
                         }
                         else if (s.equals("oprice")){
                             hm.put(s ,String.valueOf(object.getInt(s)));
+                        }
+                        else if (s.equals("judgeinfo")){
+                            hm.put(s , String.valueOf(object.getBoolean(s)));
                         }
                         else {
                             hm.put(s ,object.getString(s));
