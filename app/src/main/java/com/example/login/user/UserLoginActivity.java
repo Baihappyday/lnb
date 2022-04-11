@@ -159,7 +159,8 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                         application.setLoginState(true);//设置登录状态
                         SharedUtil sp = SharedUtil.getIntance(UserLoginActivity.this,"logininfo");
                         sp.writeShared(send,hashMap);//写入登录信息
-                        sp.writeShared("loginstate", true);
+                        sp.writeShared("loginstate", true);//登录状态设为真，下次进app直接跳转到对应身份主界面
+                        sp.writeShared("identification","0");//设置身份
 
                         Log.d("tag", String.valueOf(sp.readShared("loginstate", false)));
                         new Thread(new Runnable() {

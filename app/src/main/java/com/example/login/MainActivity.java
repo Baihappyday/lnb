@@ -32,16 +32,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         handler.postDelayed(new Runnable() {//5秒后自动跳转
             @Override
             public void run() {
-                SharedUtil sp = SharedUtil.getIntance(MainActivity.this,"logininfo");
-                boolean loginstate = sp.readShared("loginstate", false);
-                if (loginstate){
-                    Intent i= new Intent(MainActivity.this, UserMainInterfaceActivity.class);
-                    startActivity(i);
-                }
                 Intent intent = new Intent();
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);//在跳转到目标activity前销毁所以已经存在的activity（实现不能返回的功能）
-                intent.setClass(MainActivity.this,IdentiChooseActivity.class);
-                startActivity(intent);//要延时的程序
+                SharedUtil sp = SharedUtil.getIntance(MainActivity.this,"logininfo");
+                boolean loginstate = sp.readShared("loginstate", false);
+                String identification = sp.readShared("identification","0");//身份选择页面从上到下依次为0-3
+                application.setName(sp.readShared("username","null"));
+                if (loginstate){
+                    if (identification.equals("0")){
+                        intent.setClass(MainActivity.this,UserMainInterfaceActivity.class);
+                        startActivity(intent);
+                    }
+                    else if (identification.equals("1")){
+
+                    }
+                    else if (identification.equals("2")){
+
+                    }
+                    else if (identification.equals("3")){
+
+                    }
+                }
+                else {
+                    intent.setClass(MainActivity.this,IdentiChooseActivity.class);
+                    startActivity(intent);//要延时的程序
+                }
+
+
             }
         },5000);
     }
@@ -56,11 +73,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             SharedUtil sp = SharedUtil.getIntance(MainActivity.this,"logininfo");
             Log.d("tag", String.valueOf(sp.readShared("loginstate", false)));
             boolean loginstate = sp.readShared("loginstate", false);
+            String identification = sp.readShared("identification","0");//身份选择页面从上到下依次为0-3
             application.setName(sp.readShared("username","null"));
             if (loginstate){
                 application.setLoginState(loginstate);
-                intent.setClass(MainActivity.this,UserMainInterfaceActivity.class);
-                startActivity(intent);
+                if (identification.equals("0")){
+                    intent.setClass(MainActivity.this,UserMainInterfaceActivity.class);
+                    startActivity(intent);
+                }
+                else if (identification.equals("1")){
+
+                }
+                else if (identification.equals("2")){
+
+                }
+                else if (identification.equals("3")){
+
+                }
+
             }
             else {
                 intent.setClass(MainActivity.this,IdentiChooseActivity.class);
