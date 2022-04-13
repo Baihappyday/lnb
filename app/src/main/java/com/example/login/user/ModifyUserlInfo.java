@@ -147,7 +147,11 @@ public class ModifyUserlInfo extends AppCompatActivity implements View.OnClickLi
                     OkHttp okHttp = new OkHttp(send, recieve);
                     HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.11:9090/update");
                     String msg = "true";
+
+
+                    Log.d("tag", rhm.get("msg") + rhm.get("usex"));
                     if (msg.equals(rhm.get("msg"))){
+
                         recieve.remove("msg");
                         recieve.remove("ubloodtype");
                         recieve.remove("uhealthcondition");
