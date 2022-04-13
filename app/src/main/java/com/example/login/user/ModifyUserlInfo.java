@@ -34,6 +34,7 @@ import java.util.HashMap;
 
 public class ModifyUserlInfo extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
     private TextView tv_birthdate;
+    private TextView birthday;
     private Button modify;
     private EditText username1;
     private EditText agee;
@@ -50,6 +51,10 @@ public class ModifyUserlInfo extends AppCompatActivity implements View.OnClickLi
 
         tv_birthdate = (TextView)findViewById(R.id.birthdate);
         tv_birthdate.setOnClickListener(this);
+        tv_birthdate.setVisibility(View.GONE);
+        birthday = findViewById(R.id.birthday);
+        birthday.setVisibility(View.GONE);
+
 
         username1 = findViewById(R.id.username1);
         agee = findViewById(R.id.agee);
@@ -140,9 +145,13 @@ public class ModifyUserlInfo extends AppCompatActivity implements View.OnClickLi
                     recieve.add("ubloodtype");
                     recieve.add("uhealthcondition");
                     OkHttp okHttp = new OkHttp(send, recieve);
+
+                    String msg = "true";
+
                     HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://120.48.5.10:9090/update");
                     Log.d("tag", rhm.get("msg") + rhm.get("usex"));
-                    if (rhm.get("msg").equals("true")){
+                    if (msg.equals(rhm.get("msg"))){
+
                         recieve.remove("msg");
                         recieve.remove("ubloodtype");
                         recieve.remove("uhealthcondition");
