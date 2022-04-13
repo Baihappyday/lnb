@@ -90,6 +90,7 @@
         <activity android:name=".IdentiChooseActivity" />
         <activity android:name=".user.EnrollActicity" />
         <activity android:name=".user.UserLoginActivity" />
+        <activity android:name=".user.ForgetPasswordActivity"/>
         <activity android:name=".CameraActivity" />
         <activity
             android:name=".MainActivity"
