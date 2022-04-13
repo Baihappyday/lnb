@@ -44,6 +44,7 @@ public class SkimUserInfo extends AppCompatActivity implements View.OnClickListe
         phonenum.setText(phonenum.getText().toString()+sp.readShared("uphone","无"));
         birthday = findViewById(R.id.birthday);
         birthday.setText(birthday.getText().toString()+sp.readShared("ubirthday","1900年1月1日"));
+        birthday.setVisibility(View.GONE);
     }
 
     @Override

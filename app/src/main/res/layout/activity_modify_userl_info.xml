@@ -210,16 +210,9 @@
                     android:id="@+id/birthday"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@string/birthday"
+                    android:text="birthday："
                     android:textSize="20sp"
                     android:visibility="visible" />
-
-                <TextView
-                    android:id="@+id/colon3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/colon"
-                    android:textSize="20sp" />
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
