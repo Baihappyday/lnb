@@ -10,6 +10,8 @@ import android.widget.EditText;
 
 import com.example.login.MyApplication;
 import com.example.login.R;
+import com.example.login.user.UserLoginActivity;
+import com.example.login.user.UserMainInterfaceActivity;
 import com.example.login.util.OkHttp;
 import com.example.login.util.SharedUtil;
 
@@ -162,6 +164,7 @@ public class WorkerLogin extends AppCompatActivity implements View.OnClickListen
                         SharedUtil sp = SharedUtil.getIntance(com.example.login.worker.WorkerLogin.this,"logininfo");
                         sp.writeShared(send,hashMap);//写入登录信息
                         sp.writeShared("loginstate", true);
+                        sp.writeShared("identification","1");//设置身份
 
                         Log.d("tag", String.valueOf(sp.readShared("loginstate", false)));
                         /*new Thread(new Runnable() {
@@ -186,7 +189,10 @@ public class WorkerLogin extends AppCompatActivity implements View.OnClickListen
 
                             }
                         }).start();*/
+
                         Intent i= new Intent(com.example.login.worker.WorkerLogin.this, WorkmaininterfaceAcitvity.class);
+                        i.putExtra("frag",0);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(i);
                     }
                 }

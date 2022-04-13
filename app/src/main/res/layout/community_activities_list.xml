@@ -9,28 +9,42 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="189dp"
+        android:layout_height="15dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="36dp"
-            android:layout_height="147dp"
-            android:layout_weight="1"
+            android:layout_width="177dp"
+            android:layout_height="86dp"
+
             app:srcCompat="@drawable/img5" />
 
 
         <Button
-            android:id="@+id/button8"
-            android:layout_width="1dp"
-            android:layout_height="96dp"
-            android:layout_weight="1"
-            android:background="@drawable/selector"
-            android:backgroundTint="@color/grey1"
-            android:text="添加社区活动"
+            android:id="@+id/add_activity"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:textSize="20sp"
+            android:backgroundTint="@color/white"
+            android:text="添加活动"
             android:textColor="@color/red"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/add_community"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="200dp"
+            android:text="添加社区"
+            android:textSize="20sp"
+            android:textColor="@color/red"
+            android:textStyle="bold"
+            android:background="@color/white"/>
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -42,31 +56,9 @@
         <ListView
             android:id="@+id/lv1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="258dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="活动介绍"
-            android:textSize="25dp" />
-
-        <Button
-            android:id="@+id/button9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="300dp"
-            android:layout_marginTop="115dp"
-            android:background="@color/white"
-            android:text="查看详情" />
-    </LinearLayout>
 
 </LinearLayout>

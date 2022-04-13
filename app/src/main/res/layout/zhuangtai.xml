@@ -32,7 +32,7 @@
             android:textSize="15dp"/>
 
         <Button
-            android:id="@+id/button12"
+            android:id="@+id/button13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="添加审核机构"

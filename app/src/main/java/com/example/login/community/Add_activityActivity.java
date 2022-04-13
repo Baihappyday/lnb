@@ -1,5 +1,7 @@
 package com.example.login.community;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,8 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.login.R;
 
@@ -21,38 +21,34 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class CommunityaddActivity extends AppCompatActivity {
-
-    private EditText caddress;
-    private EditText cname;
-    private EditText cid;
-    private EditText cdescription;
-    private Button censure;
+public class Add_activityActivity extends AppCompatActivity {
+    private EditText add_address;
+    private EditText add_time;
+    private EditText add_description;
+    private Button add_submit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.add_commmunity_activities);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.community_add);
-        caddress = findViewById(R.id.Caddress);
-        cname = findViewById(R.id.Cname);
-        cid = findViewById(R.id.Cid);
-        cdescription = findViewById(R.id.Cdescription);
-        censure = findViewById(R.id.Censure1);
-        censure.setOnClickListener(new View.OnClickListener() {
+
+        add_address = findViewById(R.id.address2);
+        add_time = findViewById(R.id.time2);
+        add_description = findViewById(R.id.description2);
+        add_submit = findViewById(R.id.addsubmit);
+        add_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String adress = caddress.getText().toString();
-                final String id = cid.getText().toString();
-                final String name = cname.getText().toString();
-                final String description = cdescription.getText().toString();
+                final String address = add_address.getText().toString();
+                final String time = add_time.getText().toString();
+                final String description = add_description.getText().toString();
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         /*JSONObject obj = new JSONObject();
                         try {
-                            obj.put("ccusername",id);
-                            obj.put("caddress", adress);
-                            obj.put("cname", name);
-                            obj.put("cdescription",description);
+                            obj.put("activityaddress", address);
+                            obj.put("activitytime", time);
+                            obj.put("activitydescription",description);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -61,15 +57,13 @@ public class CommunityaddActivity extends AppCompatActivity {
                         RequestBody RequestBody2 = RequestBody.create(type, "" + obj.toString());*/
                         try {
                             String json = "{\n" +
-                                    "  \"ccusername\": \"" + id + "\",\n" +
-                                    "  \"caddress\": \"" + adress + "\",\n" +
-                                    " \"cname\": \"" + name +"\",\n"+
-                                    "\"cdescription\":\"" + description +"\"\n"+
-                                    "}";
+                                    "  \"activityaddress\": \"" + address + "\",\n" +
+                                    "  \"activitytime\": \"" + time + "\",\n" +
+                                    " \"activitydescription\": \"" +description +"\"\n"+"}";
                             OkHttpClient client = new OkHttpClient();
                             Request request = new Request.Builder()
                                     // 指定访问的服务器地址
-                                    .url("http://192.168.232.1:9090/community-add")
+                                    .url("http://192.168.232.1:9090/activity-add")
                                     //.post(RequestBody2)
                                     .post(RequestBody.create(MediaType.parse("application/json"),json))
                                     .build();
@@ -80,8 +74,8 @@ public class CommunityaddActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        Toast.makeText(CommunityaddActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
-                                        Intent i = new Intent(CommunityaddActivity.this, CommunitylistActivity.class);
+                                        Toast.makeText(Add_activityActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+                                        Intent i = new Intent(Add_activityActivity.this, CommunitylistActivity.class);
                                         startActivity(i);
                                     }
                                 });
@@ -89,7 +83,7 @@ public class CommunityaddActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        Toast.makeText(CommunityaddActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Add_activityActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }
@@ -98,7 +92,7 @@ public class CommunityaddActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(CommunityaddActivity.this, "网络错误", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Add_activityActivity.this, "网络错误", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }

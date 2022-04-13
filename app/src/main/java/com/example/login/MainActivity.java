@@ -13,6 +13,7 @@ import com.example.login.user.UserLoginActivity;
 import com.example.login.user.UserMainInterfaceActivity;
 import com.example.login.util.ActivityCollector;
 import com.example.login.util.SharedUtil;
+import com.example.login.worker.WorkmaininterfaceAcitvity;
 
 /*app启动界面*/
 
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     else if (identification.equals("1")){
 
+                        intent.setClass(MainActivity.this, WorkmaininterfaceAcitvity.class);
+                        startActivity(intent);
                     }
                     else if (identification.equals("2")){
 
@@ -83,6 +86,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 else if (identification.equals("1")){
 
+                    intent.setClass(MainActivity.this, WorkmaininterfaceAcitvity.class);
+                    startActivity(intent);
                 }
                 else if (identification.equals("2")){
 

@@ -3,6 +3,7 @@ package com.example.login.worker;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,10 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.login.MyApplication;
 import com.example.login.R;
 import com.example.login.user.UserLoginActivity;
+import com.example.login.util.SharedUtil;
 
 public class WorkpersonalActivity extends Fragment  implements View.OnClickListener{
     private View v;
@@ -23,6 +26,8 @@ public class WorkpersonalActivity extends Fragment  implements View.OnClickListe
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_worker_personal, container, false);
         mContext = getActivity();
+        MyApplication application = (MyApplication) mContext.getApplicationContext();
+
         Button btn1 = v.findViewById(R.id.bt1);
         btn1.setOnClickListener(this);
         Button btn2 = v.findViewById(R.id.bt2);
@@ -36,6 +41,21 @@ public class WorkpersonalActivity extends Fragment  implements View.OnClickListe
         Button btn6 = v.findViewById(R.id.bt6);
         btn6.setOnClickListener(this);
 
+        if (application.getLoginState()){//若之前已登录
+            SharedUtil sp = SharedUtil.getIntance(mContext,"logininfo");
+            String s = sp.readShared("wusername", "null");
+            Log.d("tag", s);
+            if (s.equals("null")){
+                btn1.setText("点击登录");
+            }
+            else {
+                btn1.setText("用户"+s);
+            }
+        }
+        else {
+            btn1.setOnClickListener(this);
+            //button6.setOnClickListener(this);
+        }
         return v;
     }
 

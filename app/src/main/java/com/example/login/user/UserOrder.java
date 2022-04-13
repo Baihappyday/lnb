@@ -174,7 +174,7 @@ public class UserOrder /*extends AppCompatActivity*/extends TabActivity {
                 recieve.add("odescription");
                 recieve.add("oid");
                 OkHttp okHttp = new OkHttp(send, recieve, 1, UserOrder.this);
-                okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.11:9090/userOrderList");
+                okHttp.sendRequestWithOkHttp(hm, "http://192.168.56.1:9090/userOrderList");
                 while (!application.orderSynFlag){
 
                 }

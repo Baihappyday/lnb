@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.login">
-
     <!-- 拍照 -->
     <uses-permission android:name="android.permission.CAMERA" /> <!-- 读写 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -19,15 +18,34 @@
         android:name=".MyApplication"
         android:allowBackup="false"
         android:icon="@drawable/app_icon"
+        android:usesCleartextTraffic="true"
         android:label="@string/app_name"
-        android:networkSecurityConfig="@xml/network_security_config"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <!-- //社区活动 -->
+        <activity
+            android:name=".community.Add_activityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".institution.Institution_erollActivity"
+            android:exported="false" />
+        <activity
+            android:name=".institution.Institution_forgetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".institution.Institution_loginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.Community_erollActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.Community_forgetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".community.Community_loginActivity"
+            android:exported="false" /> <!-- //社区活动 -->
         <activity android:name=".community.CommunitylistActivity" />
-        <activity android:name=".community.CommunitymainActivity" />
         <activity android:name=".community.CommunityaddActivity" /> <!-- //工作者活动 -->
         <activity
             android:name=".worker.WorkerOrder"
@@ -39,10 +57,10 @@
         <activity android:name=".worker.WorkerLogin"/>
         <activity android:name=".worker.WorkerEnroll"/>
         <activity android:name=".worker.WorkerForgetPassword"/>
-        <activity android:name=".institution.InstitutionActivity" />
-        <activity android:name=".institution.ShenheActivity" />
-        <activity android:name=".institution.XiangqingActivity" />
-        <activity android:name=".institution.ZhuangtaiActivity" /> <!-- //用户活动 -->
+        <activity android:name=".institution.Institution_chooseActivity" />
+        <activity android:name=".institution.Institution_addActivity" />
+        <activity android:name=".institution.Institution_listActivity" />
+        <!-- //用户活动 -->
         <activity
             android:name=".user.UserOrder"
             android:exported="false" />
@@ -56,8 +74,8 @@
         <activity android:name=".user.UserWallet" />
         <activity
             android:name=".user.UserMainInterfaceActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity android:name=".user.ModifyUserlInfo" />
         <activity android:name=".user.HealthInfoActivity" />
         <activity
@@ -71,8 +89,8 @@
         </activity> <!-- //主要活动 -->
         <activity android:name=".IdentiChooseActivity" />
         <activity android:name=".user.EnrollActicity" />
-        <activity android:name=".user.ForgetPasswordActivity" />
         <activity android:name=".user.UserLoginActivity" />
+        <activity android:name=".user.ForgetPasswordActivity"/>
         <activity android:name=".CameraActivity" />
         <activity
             android:name=".MainActivity"
