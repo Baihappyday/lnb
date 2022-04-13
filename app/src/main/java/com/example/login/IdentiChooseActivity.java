@@ -11,8 +11,8 @@ import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.login.community.CommunitymainActivity;
-import com.example.login.institution.InstitutionActivity;
+import com.example.login.community.Community_loginActivity;
+import com.example.login.institution.Institution_loginActivity;
 import com.example.login.user.UserMainInterfaceActivity;
 import com.example.login.util.Utils;
 import com.example.login.worker.WorkmaininterfaceAcitvity;
@@ -74,12 +74,12 @@ public class IdentiChooseActivity extends AppCompatActivity implements View.OnCl
         }
         if (findViewById(R.id.community) == v){
             //社区->
-            Intent i = new Intent(this, CommunitymainActivity.class);
+            Intent i = new Intent(this, Community_loginActivity.class);
             startActivity(i);
         }
         if (findViewById(R.id.institution) == v){
             //养老机构->
-            Intent i = new Intent(this, InstitutionActivity.class);
+            Intent i = new Intent(this, Institution_loginActivity.class);
             startActivity(i);
         }
     }

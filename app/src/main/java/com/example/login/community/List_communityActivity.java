@@ -22,15 +22,15 @@ public class List_communityActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.community_activities_list);
-
+        ListView listview = findViewById(R.id.lv1);
+        listview.setAdapter(new myadapter(data,this));
         for(int i = 1; i <= 50; i++){
             Bean bean = new Bean();
             bean.setName("活动" + i);
             data.add(bean);
 
         }
-        ListView listview = findViewById(R.id.lv1);
-        listview.setAdapter(new myadapter(data,this));
+
 
     }
 }

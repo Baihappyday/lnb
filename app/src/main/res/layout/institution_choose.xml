@@ -7,6 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="241dp"
+        android:layout_marginTop="90dp"
         android:orientation="horizontal">
 
         <Button
@@ -14,13 +15,14 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="查看养老机构"
+            android:text="查看机构信息"
             android:textSize="25sp"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="219dp"
+        android:layout_marginTop="100dp"
         android:orientation="horizontal">
 
         <Button
@@ -28,22 +30,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="我要审核"
+            android:text="添加机构信息"
             android:textSize="25sp"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button11"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="查看机构状态"
-            android:textSize="25sp"/>
-    </LinearLayout>
 
 </LinearLayout>

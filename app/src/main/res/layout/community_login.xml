@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_margin="8dp"
+            android:textColor="@color/black"
+            android:text="社区登录" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+
+        <EditText
+
+            android:id="@+id/communityname1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/editext_selector"
+            android:gravity="start|center"
+            android:hint="@string/input_phone_number"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textCursorDrawable="@drawable/text_cursorr"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/communitypassword1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/editext_selector"
+            android:gravity="start|center"
+            android:hint="@string/please_input_password"
+            android:importantForAutofill="no"
+            android:inputType="numberPassword"
+            android:maxLength="8"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textCursorDrawable="@drawable/text_cursorr"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/communitysubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/log_in"
+            android:textSize="20sp"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <Button
+            android:id="@+id/commubityforget"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/forget_password"
+            android:textSize="17sp"
+            style="?android:attr/buttonBarButtonStyle" />
+
+        <Button
+            android:id="@+id/communityeroll"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/register_account"
+            android:textSize="17sp"
+            style="?android:attr/buttonBarButtonStyle" />
+    </LinearLayout>
+</LinearLayout>

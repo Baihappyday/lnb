@@ -42,22 +42,22 @@
 
                 <ImageView
                     android:id="@+id/insti"
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
                     android:scaleType="centerInside"
                     app:srcCompat="@drawable/ic_institution" />
 
                 <TextView
                     android:id="@+id/select_insti"
-                    android:layout_below="@+id/insti"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:layout_centerHorizontal="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="选机构" />
+                    android:layout_below="@+id/insti"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:text="选机构"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -112,14 +112,14 @@
 
                 <TextView
                     android:id="@+id/c_activity"
-                    android:layout_below="@+id/community_activity"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:layout_centerHorizontal="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="社区活动" />
+                    android:layout_below="@+id/community_activity"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:text="社区活动"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
             </RelativeLayout>
         </LinearLayout>
 

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".community.Community_forgetActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/llc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="20dp">
+
+            <TextView
+                android:id="@+id/ctextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="请输入用户名和密码"
+                android:textColor="@color/black"
+                android:textSize="40sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="8dp">
+                <EditText
+
+                    android:id="@+id/forgetusername"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/editext_selector"
+                    android:gravity="start|center"
+                    android:hint="@string/input_phone_number"
+                    android:importantForAutofill="no"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textCursorDrawable="@drawable/text_cursorr"
+                    android:textSize="17sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="8dp">
+                <EditText
+                    android:id="@+id/forgetpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/editext_selector"
+                    android:gravity="start|center"
+                    android:hint="@string/please_input_password"
+                    android:importantForAutofill="no"
+                    android:inputType="numberPassword"
+                    android:maxLength="8"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textCursorDrawable="@drawable/text_cursorr"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/yanzheng"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="验证"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

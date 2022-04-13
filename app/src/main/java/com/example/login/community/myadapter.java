@@ -17,15 +17,6 @@ public class myadapter extends BaseAdapter {
 
     private List<Bean> data;
     private Context context;
-
-
-    public myadapter(List<Bean> data,Context context) {
-        this.data = data;
-        this.context = context;
-
-    }
-
-
     @Override
     public int getCount() {
         return data.size();
@@ -53,4 +44,13 @@ public class myadapter extends BaseAdapter {
 
         return view;
     }
+
+    public myadapter(List<Bean> data,Context context) {
+        this.data = data;
+        this.context = context;
+
+    }
+
+
+
 }

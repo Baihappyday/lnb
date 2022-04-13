@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.login.R;
 
-public class ShenheActivity extends AppCompatActivity {
+public class Institution_listActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.institutional_audits);
+        setContentView(R.layout.institution);
     }
 }
