@@ -63,7 +63,7 @@ public class Add_activityActivity extends AppCompatActivity {
                             OkHttpClient client = new OkHttpClient();
                             Request request = new Request.Builder()
                                     // 指定访问的服务器地址
-                                    .url("http://192.168.232.1:9090/activity-add")
+                                    .url("http://120.48.5.10:9090/activity-add")
                                     //.post(RequestBody2)
                                     .post(RequestBody.create(MediaType.parse("application/json"),json))
                                     .build();

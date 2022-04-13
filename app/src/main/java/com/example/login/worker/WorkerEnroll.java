@@ -56,7 +56,7 @@ public class WorkerEnroll extends AppCompatActivity {
                             OkHttpClient client = new OkHttpClient();
                             Request request = new Request.Builder()
                                     // 指定访问的服务器地址
-                                    .url("http://192.168.56.1:9090/register/workers").post(RequestBody2)
+                                    .url("http://120.48.5.10:9090/register/workers").post(RequestBody2)
                                     .build();
                             Response response = client.newCall(request).execute();
                             String responseData = response.body().string();

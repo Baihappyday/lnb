@@ -154,7 +154,7 @@ public class WorkerLogin extends AppCompatActivity implements View.OnClickListen
                     final ArrayList<String> recieve = new ArrayList<String>();
                     recieve.add("msg");
                     OkHttp okHttp = new OkHttp(send,recieve);
-                    HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hashMap, "http://192.168.56.1:9090/login/workers");
+                    HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hashMap, "http://120.48.5.10:9090/login/workers");
                     System.out.println(rhm.get("msg")+"为");
                     Log.d("tag",rhm.get("msg")+"为");
                     if (rhm.get("msg").equals("登录成功")){

@@ -58,7 +58,7 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
                         final ArrayList<String> recieve = new ArrayList<String>();
                         recieve.add("msg");
                         OkHttp okHttp = new OkHttp(send,recieve);
-                        HashMap<String,String> hm = okHttp.sendRequestWithOkHttp(hashMap, "http://192.168.56.1:9090/login/users");
+                        HashMap<String,String> hm = okHttp.sendRequestWithOkHttp(hashMap, "http://120.48.5.10:9090/login/users");
                         Log.d("TAG", hm.get("msg"));
                         if (hm.get("msg").equals("登录成功")){
                             Looper.prepare();
@@ -94,7 +94,7 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
                             recieve.add("msg");
                             recieve.add("judgeinfo");
                             OkHttp okHttp = new OkHttp(send,recieve,2,ForgetPasswordActivity.this);
-                            HashMap<String,String> hm = okHttp.sendRequestWithOkHttp(hashMap, "http://192.168.56.1:9090/chpassword/users");
+                            HashMap<String,String> hm = okHttp.sendRequestWithOkHttp(hashMap, "http://120.48.5.10:9090/chpassword/users");
                             Log.d("TAG", hm.get("msg"));
                             if (hm.get("judgeinfo").equals("true")){
                                 runOnUiThread(new Runnable() {

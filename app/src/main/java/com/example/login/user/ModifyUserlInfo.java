@@ -140,7 +140,7 @@ public class ModifyUserlInfo extends AppCompatActivity implements View.OnClickLi
                     recieve.add("ubloodtype");
                     recieve.add("uhealthcondition");
                     OkHttp okHttp = new OkHttp(send, recieve);
-                    HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://192.168.56.1:9090/update");
+                    HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://120.48.5.10:9090/update");
                     Log.d("tag", rhm.get("msg") + rhm.get("usex"));
                     if (rhm.get("msg").equals("true")){
                         recieve.remove("msg");
