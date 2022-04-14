@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import com.example.login.MyApplication;
 import com.example.login.user.UserLoginActivity;
 import com.example.login.user.UserOrder;
+import com.example.login.worker.WorkermainActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,6 +56,7 @@ public class OkHttp {
         this.state_JSON = state_JSON;
         this.activity = activity;
     }
+
 
 
     public HashMap<String, String> sendRequestWithOkHttp(HashMap<String, String> hashMap, String url) {//hashMap为发送的数据集合

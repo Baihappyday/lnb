@@ -68,6 +68,7 @@
         </LinearLayout>
 
         <ScrollView
+            android:id="@+id/scr"
             android:layout_width="match_parent"
             android:layout_height="480dp">
 
