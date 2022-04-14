@@ -4,6 +4,7 @@ public class Bean {
     String name;
 
 
+
     public String getName() {
         return name;
     }
