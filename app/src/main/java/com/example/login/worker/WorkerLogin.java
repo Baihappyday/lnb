@@ -18,6 +18,7 @@ import com.example.login.util.SharedUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -194,6 +195,13 @@ public class WorkerLogin extends AppCompatActivity implements View.OnClickListen
                         i.putExtra("frag",0);
                         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(i);
+                    }else if (rhm.get("msg").equals("用户名或密码错误")){
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(WorkerLogin.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 }
             }).start();

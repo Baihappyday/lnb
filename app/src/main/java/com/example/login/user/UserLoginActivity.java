@@ -10,12 +10,14 @@ import android.widget.EditText;
 
 import com.example.login.MyApplication;
 import com.example.login.R;
+import com.example.login.community.Community_loginActivity;
 import com.example.login.util.OkHttp;
 import com.example.login.util.SharedUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -154,6 +156,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                     OkHttp okHttp = new OkHttp(send,recieve);
                     HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hashMap, "http://120.48.5.10:9090/login/users");
                     if (rhm.get("msg").equals("登录成功")){
+                        //Toast.makeText(UserLoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                         MyApplication application = (MyApplication) UserLoginActivity.this.getApplicationContext();
                         application.setName(hashMap.get("username"));//设置全局变量name
                         application.setLoginState(true);//设置登录状态
@@ -161,7 +164,6 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                         sp.writeShared(send,hashMap);//写入登录信息
                         sp.writeShared("loginstate", true);//登录状态设为真，下次进app直接跳转到对应身份主界面
                         sp.writeShared("identification","0");//设置身份
-
                         Log.d("tag", String.valueOf(sp.readShared("loginstate", false)));
                         new Thread(new Runnable() {
                             @Override
@@ -189,10 +191,23 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                         i.putExtra("frag",0);
                         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(i);
+                    }else if (rhm.get("msg").equals("用户名或密码错误")){
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(UserLoginActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 }
             }).start();
         }
+
+
+
+
+
+
         if (view.getId() == R.id.enroll){
             //填写页面跳转的逻辑UserLoginActivity
             Intent intent=new Intent(UserLoginActivity.this, EnrollActicity/*UserMainInterfaceActivity*/.class);
