@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.login.R;
+import com.example.login.institution.Institution_loginActivity;
 import com.example.login.util.OkHttp;
 
 import java.util.ArrayList;
@@ -49,7 +50,6 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-
                         hashMap.put("username", username1.getText().toString());
                         hashMap.put("password", password1.getText().toString());
                         ArrayList<String> send = new ArrayList<String>();
@@ -66,11 +66,15 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
                             textview.setText("请输入新密码");
                             username1.setHint("请输入新密码");
                             username1.setText(null);
-                            password1.setHint("请输入新密码");
+                            password1.setHint("请确认新密码");
                             password1.setText(null);
                             btn.setText("确认修改");
                             Looper.loop();
 
+                        } else{
+                            Looper.prepare();
+                            Toast.makeText(ForgetPasswordActivity.this,"身份验证未通过", Toast.LENGTH_SHORT).show();
+                            Looper.loop();
                         }
                     }
                 }).start();
@@ -100,10 +104,9 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        textview.setText("密码修改成功");
-                                        username1.setVisibility(View.INVISIBLE);
-                                        password1.setVisibility(View.INVISIBLE);
-                                        btn.setText("返回");
+                                        Toast.makeText(ForgetPasswordActivity.this, "修改密码成功", Toast.LENGTH_SHORT).show();
+                                        Intent i = new Intent(ForgetPasswordActivity.this,UserLoginActivity.class);
+                                        startActivity(i);
                                     }
                                 });
                             }
@@ -129,9 +132,7 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
                     Looper.loop();
                 }
                 else {
-                    Looper.prepare();
                     Toast.makeText(ForgetPasswordActivity.this,"两次密码输入不一致", Toast.LENGTH_SHORT).show();
-                    Looper.loop();
                 }
             }
             else if (btnText.equals("返回")){

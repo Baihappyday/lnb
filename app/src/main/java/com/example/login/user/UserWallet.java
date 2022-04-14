@@ -17,7 +17,7 @@ public class UserWallet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_wallet);
-        QRCode = (ImageButton)findViewById(R.id.qr_code);
-        Wallet = (ImageButton)findViewById(R.id.wallet);
+        //QRCode = (ImageButton)findViewById(R.id.qr_code);
+        //Wallet = (ImageButton)findViewById(R.id.wallet);
     }
 }

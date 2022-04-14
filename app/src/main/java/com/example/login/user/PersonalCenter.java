@@ -47,6 +47,9 @@ public class PersonalCenter extends Fragment implements View.OnClickListener, Vi
         Button button6 = v.findViewById(R.id.button6);
         Button button13 = v.findViewById(R.id.button13);
         button13.setOnClickListener(this);
+        if (!application.getLoginState()){
+            button13.setVisibility(View.GONE);
+        }
         if (application.getLoginState()){//若之前已登录
             SharedUtil sp = SharedUtil.getIntance(mContext,"logininfo");
             String s = sp.readShared("username", "null");

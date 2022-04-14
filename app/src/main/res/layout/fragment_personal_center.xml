@@ -166,7 +166,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="10dp"
                     android:layout_centerHorizontal="true"
-                    android:text="未付款" />
+                    android:text="已发布" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -203,38 +203,7 @@
             </RelativeLayout>
 
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
 
-                <ImageView
-                    android:id="@+id/finish"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="21dp"
-                    android:scaleType="fitStart"
-                    app:srcCompat="@drawable/ic_user_pc_finish" />
-
-                <Button
-                    android:id="@+id/bt3_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/transparent"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/finishing"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="10dp"
-                    android:layout_centerHorizontal="true"
-                    android:text="已完成" />
-            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -269,12 +238,46 @@
                     android:text="待评价" />
             </RelativeLayout>
 
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/finish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="21dp"
+                    android:scaleType="fitStart"
+                    app:srcCompat="@drawable/ic_user_pc_finish" />
+
+                <Button
+                    android:id="@+id/bt3_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/finishing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="已完成" />
+            </RelativeLayout>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="140dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="12dp"
             android:background="@color/white">
 
             <ImageView

@@ -83,11 +83,12 @@
                     android:id="@+id/bt2"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:background="@null"
-                    android:text="进行中"
-                    android:textSize="17sp"
                     android:layout_weight="1"
-                    android:gravity="center"/>
+                    android:background="@null"
+                    android:gravity="center"
+                    android:text="已接单"
+                    android:textSize="17sp" />
+
                 <Button
                     android:id="@+id/bt3"
                     android:layout_width="match_parent"
@@ -97,15 +98,7 @@
                     android:textSize="17sp"
                     android:layout_weight="1"
                     android:gravity="center"/>
-                <Button
-                    android:id="@+id/bt4"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@null"
-                    android:text="已完成"
-                    android:layout_weight="1"
-                    android:textSize="17sp"
-                    android:gravity="center"/>
+
                 <Button
                     android:id="@+id/bt5"
                     android:layout_width="match_parent"
@@ -115,6 +108,17 @@
                     android:layout_weight="1"
                     android:textSize="17sp"
                     android:gravity="center"/>
+
+                <Button
+                    android:id="@+id/bt4"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@null"
+                    android:text="已完成"
+                    android:layout_weight="1"
+                    android:textSize="17sp"
+                    android:gravity="center"/>
+
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
