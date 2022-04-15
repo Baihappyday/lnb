@@ -67,17 +67,17 @@ public class WorkerOrder /*extends AppCompatActivity*/extends TabActivity {
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            Log.d("tag", "run:come here ");
+                            Log.d("tag", "run:come here 1");
                             getDate(1);
                             new Thread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Log.d("tag", "run:come here ");
+                                    Log.d("tag", "run:come here 2");
                                     getDate(2);
                                     new Thread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            Log.d("tag", "run:come here ");
+                                            Log.d("tag", "run:come here 3");
                                             getDate(3);
 
                                         }
@@ -169,12 +169,12 @@ public class WorkerOrder /*extends AppCompatActivity*/extends TabActivity {
                 recieve.add("odescription");
                 recieve.add("oid");
                 OkHttp okHttp = new OkHttp(send, recieve, 1, com.example.login.worker.WorkerOrder.this);
-                okHttp.sendRequestWithOkHttp(hm, "http://120.48.5.10:9090/serOrderList");
+                okHttp.sendRequestWithOkHttp(hm, "http://192.168.56.1:9090/serOrderList");
                 while (!application.orderSynFlag){
 
                 }
                 application.orderSynFlag = false;
-                Log.d("TAG", "flag true");
+                Log.d("TAG1", "flag true");
                 ArrayList<HashMap> order = okHttp.getOrder();//获取订单
                 com.example.login.worker.WorkerOrder.this.getOrder(order,ostate);
 

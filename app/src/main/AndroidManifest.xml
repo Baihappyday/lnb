@@ -57,6 +57,7 @@
         <activity android:name=".worker.WorkerLogin"/>
         <activity android:name=".worker.WorkerEnroll"/>
         <activity android:name=".worker.WorkerForgetPassword"/>
+        <activity android:name=".worker.WorkpersonalActivity"/>
         <activity android:name=".institution.Institution_chooseActivity" />
         <activity android:name=".institution.Institution_addActivity" />
         <activity android:name=".institution.Institution_listActivity" />

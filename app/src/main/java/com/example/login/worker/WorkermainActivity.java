@@ -1,3 +1,4 @@
+//useless
 package com.example.login.worker;
 
 
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -46,7 +48,7 @@ public class WorkermainActivity extends Fragment {
         EditText edit=v.findViewById(R.id.text1);
         edit.clearFocus();
 
-
+        //getFragmentManager().beginTransaction().add(R.id.scrll, new OrderFragment0()).commit();
         mContext = getActivity();
         final MyApplication application = (MyApplication) mContext.getApplicationContext();
 
@@ -160,8 +162,7 @@ public class WorkermainActivity extends Fragment {
                     HashMap<String, Object> rhm = order0.get(i);//获取一个订单的信息
                     list0.add(new OrderFragment0());
                     list0.get(i).setInfo(rhm);//传入订单数据给fragment
-                    //getFragmentManager().beginTransaction().add(R.id.scr, list0.get(i)).commit();
-
+                    //getFragmentManager().beginTransaction().add(R.id.scrll, list0.get(i)).commit();
 //            FragmentManager fm;
 //            fm = parent.getChildFragmentManager();
 //            FragmentTransaction ft = fm.beginTransaction();

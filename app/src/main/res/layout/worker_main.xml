@@ -16,20 +16,93 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:fillViewport="true">
+
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:id="@+id/worker_main_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <fragment
-                    android:id="@+id/fragment"
-                    android:name="com.example.login.user.BlankFragment"
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center"
+                    android:text="任务列表"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/text1"
+                        android:layout_width="320dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/editext_selector"
+                        android:gravity="start|center"
+                        android:hint="请输入搜索关键字"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey"
+                        android:textCursorDrawable="@drawable/text_cursorr"
+                        android:textSize="17sp" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@null"
+                        android:text="搜索"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+                    <Spinner
+                        android:id="@+id/distance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:entries="@array/address"
+                        android:spinnerMode="dropdown" />
+
+                    <Spinner
+                        android:id="@+id/typeofservice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:entries="@array/typeofservice"
+                        android:spinnerMode="dropdown" />
+
+                    <Spinner
+                        android:id="@+id/timeofservice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:entries="@array/timeofservice"
+                        android:spinnerMode="dropdown" />
+                </LinearLayout>
+
+                <ScrollView
+                    android:id="@+id/scr"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:fillViewport="true">
+
+                    <LinearLayout
+                        android:id="@+id/scrll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+                </ScrollView>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 

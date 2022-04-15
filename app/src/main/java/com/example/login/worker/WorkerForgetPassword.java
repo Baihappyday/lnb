@@ -94,7 +94,7 @@ public class WorkerForgetPassword extends AppCompatActivity implements View.OnCl
                             recieve.add("msg");
                             recieve.add("judgeinfo");
                             OkHttp okHttp = new OkHttp(send,recieve,2, com.example.login.worker.WorkerForgetPassword.this);
-                            HashMap<String,String> hm = okHttp.sendRequestWithOkHttp(hashMap, "http://1120.48.5.10:9090/chpassword/workers");
+                            HashMap<String,String> hm = okHttp.sendRequestWithOkHttp(hashMap, "http://120.48.5.10:9090/chpassword/workers");
                             Log.d("TAG", hm.get("msg"));
                             if (hm.get("judgeinfo").equals("true")){
                                 runOnUiThread(new Runnable() {
