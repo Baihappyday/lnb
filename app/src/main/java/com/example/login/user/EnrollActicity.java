@@ -64,7 +64,10 @@ public class EnrollActicity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
+
                                         Toast.makeText(EnrollActicity.this,"注册成功！",Toast.LENGTH_SHORT).show();
+                                        Intent i = new Intent(EnrollActicity.this, UserLoginActivity.class);//跳转至登录界面
+                                        startActivity(i);
                                     }
                                 });
                             }
@@ -95,13 +98,12 @@ public class EnrollActicity extends AppCompatActivity {
         });
 
         //按钮：获取验证码
-        Button getcode = (Button)findViewById(R.id.get_code);
+        /*Button getcode = (Button)findViewById(R.id.get_code);
         getcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*****此处获取验证码界面缺失******/
             }
-        });
+        });*/
 
 
         //按钮：已有账号？直接登录

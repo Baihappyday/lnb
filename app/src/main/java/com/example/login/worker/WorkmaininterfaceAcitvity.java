@@ -13,12 +13,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.login.MyApplication;
 import com.example.login.R;
+
 import com.example.login.user.ForgetPasswordActivity;
 import com.example.login.user.OrderFragment0;
 import com.example.login.util.OkHttp;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.example.login.user.UserMainInterfaceActivity;
+
 
 
 public class WorkmaininterfaceAcitvity extends AppCompatActivity
@@ -42,9 +46,14 @@ public class WorkmaininterfaceAcitvity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.worker_main);
 
+
         display();
         
         //getSupportFragmentManager().beginTransaction().replace(R.id.fragment, mi).commit();
+
+        Toast.makeText(WorkmaininterfaceAcitvity.this,"欢迎使用老年宝，请前往个人中心登录",Toast.LENGTH_SHORT).show();
+        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment, mi).commit();
+
         Button button1=findViewById(R.id.button1);//首页
         button1.setOnClickListener(new View.OnClickListener() {
             @Override

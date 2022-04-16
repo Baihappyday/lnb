@@ -29,11 +29,12 @@ public class PersonalCenter extends Fragment implements View.OnClickListener, Vi
         v = inflater.inflate(R.layout.fragment_personal_center, container, false);
         mContext = getActivity();
         MyApplication application = (MyApplication) mContext.getApplicationContext();
-
         Button bt2 = v.findViewById(R.id.bt2);
         bt2.setOnClickListener(this);
-        Button bt4 = v.findViewById(R.id.bt4);
-        bt4.setOnClickListener(this);
+        Button bt101 = v.findViewById(R.id.bt101);
+        bt101.setOnClickListener(this);
+        //Button bt4 = v.findViewById(R.id.bt4);
+        //bt4.setOnClickListener(this);
         Button bt3_1 = v.findViewById(R.id.bt3_1);
         bt3_1.setOnClickListener(this);
         Button bt3_2 = v.findViewById(R.id.bt3_2);
@@ -46,6 +47,9 @@ public class PersonalCenter extends Fragment implements View.OnClickListener, Vi
         Button button6 = v.findViewById(R.id.button6);
         Button button13 = v.findViewById(R.id.button13);
         button13.setOnClickListener(this);
+        if (!application.getLoginState()){
+            button13.setVisibility(View.GONE);
+        }
         if (application.getLoginState()){//若之前已登录
             SharedUtil sp = SharedUtil.getIntance(mContext,"logininfo");
             String s = sp.readShared("username", "null");
@@ -66,11 +70,11 @@ public class PersonalCenter extends Fragment implements View.OnClickListener, Vi
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.bt1){//按钮：我的钱包
+        if (view.getId() == R.id.bt1){//按钮：登录
             Intent intent=new Intent(mContext,UserLoginActivity.class);
             startActivity(intent);
         }
-        if (view.getId() == R.id.bt4){//按钮：我的钱包
+        if (view.getId() == R.id.bt101){//按钮：我的钱包
             Intent intent=new Intent(mContext,UserWallet.class);
             startActivity(intent);
         }

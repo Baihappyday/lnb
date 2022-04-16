@@ -41,12 +41,13 @@
                     android:textSize="20sp" />
 
                 <Spinner
+                    android:layout_marginTop="8dp"
                     android:id="@+id/interval"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:animationCache="false"
                     android:background="@color/grey"
-                    android:spinnerMode="dialog"/>
+                    android:spinnerMode="dialog" />
 
             </LinearLayout>
 
@@ -65,9 +66,10 @@
                     android:textSize="20sp" />
 
                 <EditText
+                    android:layout_marginTop="8dp"
                     android:id="@+id/healthcondition"
                     android:layout_width="wrap_content"
-                    android:layout_height="200dp"
+                    android:layout_height="150dp"
                     android:layout_weight="1"
                     android:background="@drawable/editext_selector"
                     android:ems="10"

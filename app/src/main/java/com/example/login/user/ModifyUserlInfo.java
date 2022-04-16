@@ -33,8 +33,8 @@ import java.util.HashMap;
 //用户修改个人信息界面
 
 public class ModifyUserlInfo extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
-    private TextView tv_birthdate;
-    private TextView birthday;
+    //private TextView tv_birthdate;
+    //private TextView birthday;
     private Button modify;
     private EditText username1;
     private EditText agee;
@@ -49,11 +49,11 @@ public class ModifyUserlInfo extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_userl_info);
 
-        tv_birthdate = (TextView)findViewById(R.id.birthdate);
-        tv_birthdate.setOnClickListener(this);
-        tv_birthdate.setVisibility(View.GONE);
-        birthday = findViewById(R.id.birthday);
-        birthday.setVisibility(View.GONE);
+        //tv_birthdate = (TextView)findViewById(R.id.birthdate);
+        //tv_birthdate.setOnClickListener(this);
+        //tv_birthdate.setVisibility(View.GONE);
+        //birthday = findViewById(R.id.birthday);
+        //birthday.setVisibility(View.GONE);
 
 
         username1 = findViewById(R.id.username1);
@@ -174,6 +174,6 @@ public class ModifyUserlInfo extends AppCompatActivity implements View.OnClickLi
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
         String desc = String.format("%d年%d月%d日",
                 year, monthOfYear+1, dayOfMonth);
-        tv_birthdate.setText(desc);
+        //tv_birthdate.setText(desc);
     }
 }

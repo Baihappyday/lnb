@@ -32,19 +32,19 @@ public class SkimUserInfo extends AppCompatActivity implements View.OnClickListe
         modify.setOnClickListener(this);
 
         SharedUtil sp = SharedUtil.getIntance(this,"healthinfo");
-        hi_name = findViewById(R.id.hi_name);
-        hi_name.setText(hi_name.getText().toString()+sp.readShared("uusername","无"));
+        /*hi_name = findViewById(R.id.hi_name);
+        hi_name.setText(hi_name.getText().toString()+sp.readShared("uusername","无"));*/
         age = findViewById(R.id.age);
-        age.setText(age.getText().toString()+sp.readShared("uage","0"));
+        age.setText(age.getText().toString()+sp.readShared("uage",""));
         gender = findViewById(R.id.gender);
-        gender.setText(gender.getText().toString()+sp.readShared("usex","男"));
+        gender.setText(gender.getText().toString()+sp.readShared("usex",""));
         address = findViewById(R.id.address);
-        address.setText(address.getText().toString()+sp.readShared("uaddress","无"));
+        address.setText(address.getText().toString()+sp.readShared("uaddress",""));
         phonenum = findViewById(R.id.phonenum);
-        phonenum.setText(phonenum.getText().toString()+sp.readShared("uphone","无"));
-        birthday = findViewById(R.id.birthday);
+        phonenum.setText(phonenum.getText().toString()+sp.readShared("uphone",""));
+        /*birthday = findViewById(R.id.birthday);
         birthday.setText(birthday.getText().toString()+sp.readShared("ubirthday","1900年1月1日"));
-        birthday.setVisibility(View.GONE);
+        birthday.setVisibility(View.GONE);*/
     }
 
     @Override

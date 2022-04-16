@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.login.R;
+import com.example.login.user.ForgetPasswordActivity;
+import com.example.login.user.UserLoginActivity;
 import com.example.login.util.OkHttp;
 
 import java.util.ArrayList;
@@ -71,6 +73,10 @@ public class WorkerForgetPassword extends AppCompatActivity implements View.OnCl
                             btn.setText("确认修改");
                             Looper.loop();
 
+                        }else{
+                            Looper.prepare();
+                            Toast.makeText(WorkerForgetPassword.this,"身份验证未通过", Toast.LENGTH_SHORT).show();
+                            Looper.loop();
                         }
                     }
                 }).start();
@@ -100,10 +106,9 @@ public class WorkerForgetPassword extends AppCompatActivity implements View.OnCl
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        textview.setText("密码修改成功");
-                                        username1.setVisibility(View.INVISIBLE);
-                                        password1.setVisibility(View.INVISIBLE);
-                                        btn.setText("返回");
+                                        Toast.makeText(WorkerForgetPassword.this, "修改密码成功", Toast.LENGTH_SHORT).show();
+                                        Intent ii = new Intent(WorkerForgetPassword.this, WorkerLogin.class);
+                                        startActivity(ii);
                                     }
                                 });
                             }
@@ -129,9 +134,7 @@ public class WorkerForgetPassword extends AppCompatActivity implements View.OnCl
                     Looper.loop();
                 }
                 else {
-                    Looper.prepare();
                     Toast.makeText(com.example.login.worker.WorkerForgetPassword.this,"两次密码输入不一致", Toast.LENGTH_SHORT).show();
-                    Looper.loop();
                 }
             }
             else if (btnText.equals("返回")){

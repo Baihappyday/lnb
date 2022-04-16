@@ -32,11 +32,11 @@ public class SkimInstitution extends AppCompatActivity {
         ArrayAdapter<String> filterAdapter = new ArrayAdapter<String>(this,
                 R.layout.item_select_insti, filterArray);
 
-        Spinner sp = (Spinner) findViewById(R.id.multi_arrange);
+        /*Spinner sp = (Spinner) findViewById(R.id.multi_arrange);
         Spinner sp1 = (Spinner) findViewById(R.id.insti_type);
         Spinner sp2 = (Spinner) findViewById(R.id.region_choose);
-        Spinner sp3 = (Spinner) findViewById(R.id.filter);
-        sp.setPrompt("综合排序");
+        Spinner sp3 = (Spinner) findViewById(R.id.filter);*/
+        /*sp.setPrompt("综合排序");
         sp.setAdapter(multiarrangeAdapter);
         sp.setSelection(0);
         sp.setOnItemSelectedListener(new SkimInstitution.MySelectedListener());
@@ -51,7 +51,7 @@ public class SkimInstitution extends AppCompatActivity {
         sp3.setPrompt("筛选");
         sp3.setAdapter(filterAdapter);
         sp3.setSelection(0);
-        sp3.setOnItemSelectedListener(new SkimInstitution.MySelectedListener());
+        sp3.setOnItemSelectedListener(new SkimInstitution.MySelectedListener());*/
         //养老院信息等待连接数据库后加载
 
 //        LinearLayout ll = (LinearLayout)findViewById(R.id.institution_list);

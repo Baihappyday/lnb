@@ -103,13 +103,13 @@ public class Institution_erollActivity extends AppCompatActivity {
         });
 
         //按钮：获取验证码
-        Button getcode = (Button)findViewById(R.id.get_code4);
+        /*Button getcode = (Button)findViewById(R.id.get_code4);
         getcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*****此处获取验证码界面缺失******/
+
             }
-        });
+        });*/
 
 
         //按钮：已有账号？直接登录

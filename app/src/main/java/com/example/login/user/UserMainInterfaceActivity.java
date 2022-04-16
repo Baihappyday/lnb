@@ -20,11 +20,11 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.login.IdentiChooseActivity;
 import com.example.login.MainActivity;
 import com.example.login.MyApplication;
+import com.example.login.ToastUtils;
 import com.example.login.util.ClickMotion;
 import com.example.login.R;
 import com.example.login.util.NetWorkUtil;
 import com.example.login.util.SharedUtil;
-
 
 public class UserMainInterfaceActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener
 {
@@ -63,7 +63,7 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_main_interface);
-
+        ToastUtils.showNOrmalToast(UserMainInterfaceActivity.this,"欢迎使用老年宝，请前往个人中心登录");
         Intent intent = getIntent();
 
 

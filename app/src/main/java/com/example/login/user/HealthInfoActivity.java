@@ -46,7 +46,7 @@ public class HealthInfoActivity extends AppCompatActivity implements View.OnClic
 //        sp.setOnItemSelectedListener(new MySelectedListener("nation"));
 
         SharedUtil su = SharedUtil.getIntance(this,"healthInfo");
-        String bt = su.readShared("ubloodtype", "A");
+        String bt = su.readShared("ubloodtype", "");
 
         //血型spinner
         ArrayAdapter<String> bloodTypeAdapter = new ArrayAdapter<String>(this,
