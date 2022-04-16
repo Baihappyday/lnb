@@ -3,22 +3,22 @@ package com.example.login.worker;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.login.MyApplication;
 import com.example.login.R;
+import com.example.login.user.ForgetPasswordActivity;
 import com.example.login.user.OrderFragment0;
 import com.example.login.util.OkHttp;
-import com.example.login.util.SharedUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.zip.Inflater;
 
 
 public class WorkmaininterfaceAcitvity extends AppCompatActivity
@@ -32,8 +32,8 @@ public class WorkmaininterfaceAcitvity extends AppCompatActivity
     private Context mContext;
     
     int ostate = 0;
-    ArrayList<OrderFragment0> list0 = new ArrayList<>();//fragment集合
-    ArrayList<OrderFragment0> list0All = new ArrayList<>();//fragment集合
+    ArrayList<OrderFragment1> list0 = new ArrayList<OrderFragment1>();//fragment集合
+   // ArrayList<OrderFragment0> list0All = new ArrayList<>();//fragment集合
     ArrayList<HashMap> order0;//订单集合
     boolean threadFlag = false;
     
@@ -75,7 +75,7 @@ public class WorkmaininterfaceAcitvity extends AppCompatActivity
             public void run() {
                 displayflag=true;
                 //SharedUtil sp = SharedUtil.getIntance(mContext, "taskinfo");
-                HashMap<String, String> hm = new HashMap<>();
+                final HashMap<String, String> hm = new HashMap<>();//**********
                 MyApplication application = (MyApplication) com.example.login.worker.WorkmaininterfaceAcitvity.this.getApplicationContext();
 
                 //hm.put("wusername", application.getName());
@@ -109,14 +109,15 @@ public class WorkmaininterfaceAcitvity extends AppCompatActivity
 
                 for (int i = 0; i < order0.size(); i++) {
                     HashMap<String, Object> rhm = order0.get(i);//获取一个订单的信息
-                    list0.add(new OrderFragment0());
+                    list0.add(new OrderFragment1());
                     list0.get(i).setInfo(rhm);//传入订单数据给fragment
                     getFragmentManager().beginTransaction().add(R.id.scrll, list0.get(i)).commit();
 //                            list0All.add(new OrderFragment0());
 //                            list0All.get(i).setInfo(rhm);
 //                            getFragmentManager().beginTransaction().add(R.id.scr, list0All.get(i)).commit();
 
-                    Log.d("TAG", rhm.get("wusername") +" "+ rhm.get("oprice"));
+
+
                 }
             }
         }).start();

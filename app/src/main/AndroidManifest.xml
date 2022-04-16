@@ -18,12 +18,18 @@
         android:name=".MyApplication"
         android:allowBackup="false"
         android:icon="@drawable/app_icon"
-        android:usesCleartextTraffic="true"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme.NoActionBar"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".worker.WorkerAccessOrder"
+            android:exported="false" />
+        <activity
+            android:name=".worker.OrderFragment1"
+            android:exported="false" />
         <activity
             android:name=".community.Add_activityActivity"
             android:exported="false" />
@@ -54,14 +60,13 @@
             android:name=".worker.WorkmaininterfaceAcitvity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity android:name=".worker.workwalletActivity" /> <!-- //机构活动 -->
-        <activity android:name=".worker.WorkerLogin"/>
-        <activity android:name=".worker.WorkerEnroll"/>
-        <activity android:name=".worker.WorkerForgetPassword"/>
-        <activity android:name=".worker.WorkpersonalActivity"/>
+        <activity android:name=".worker.WorkerLogin" />
+        <activity android:name=".worker.WorkerEnroll" />
+        <activity android:name=".worker.WorkerForgetPassword" />
+        <activity android:name=".worker.WorkpersonalActivity" />
         <activity android:name=".institution.Institution_chooseActivity" />
         <activity android:name=".institution.Institution_addActivity" />
-        <activity android:name=".institution.Institution_listActivity" />
-        <!-- //用户活动 -->
+        <activity android:name=".institution.Institution_listActivity" /> <!-- //用户活动 -->
         <activity
             android:name=".user.UserOrder"
             android:exported="false" />
@@ -91,7 +96,7 @@
         <activity android:name=".IdentiChooseActivity" />
         <activity android:name=".user.EnrollActicity" />
         <activity android:name=".user.UserLoginActivity" />
-        <activity android:name=".user.ForgetPasswordActivity"/>
+        <activity android:name=".user.ForgetPasswordActivity" />
         <activity android:name=".CameraActivity" />
         <activity
             android:name=".MainActivity"

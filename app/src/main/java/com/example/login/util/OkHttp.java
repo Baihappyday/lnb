@@ -2,6 +2,7 @@ package com.example.login.util;
 
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.util.Log;
 
 
@@ -56,7 +57,6 @@ public class OkHttp {
         this.state_JSON = state_JSON;
         this.activity = activity;
     }
-
 
 
     public HashMap<String, String> sendRequestWithOkHttp(HashMap<String, String> hashMap, String url) {//hashMap为发送的数据集合
