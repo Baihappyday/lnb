@@ -1,8 +1,5 @@
 package com.example.login.user;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
@@ -13,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.login.MyApplication;
 import com.example.login.R;
@@ -48,11 +47,11 @@ public class TaskRelease extends AppCompatActivity implements View.OnClickListen
         sp1.setPrompt("服务类型");
         sp1.setAdapter(stuffAdapter);
         sp1.setSelection(0);
-        sp1.setOnItemSelectedListener(new TaskRelease.MySelectedListener());
+        sp1.setOnItemSelectedListener(new MySelectedListener());
         sp2.setPrompt("服务时长");
         sp2.setAdapter(intervalAdapter);
         sp2.setSelection(0);
-        sp2.setOnItemSelectedListener(new TaskRelease.MySelectedListener());
+        sp2.setOnItemSelectedListener(new MySelectedListener());
 
 
         submit = (Button)findViewById(R.id.modify);
@@ -132,7 +131,7 @@ public class TaskRelease extends AppCompatActivity implements View.OnClickListen
                     recieve.add("odescription");
                     recieve.add("oid");
                     OkHttp okHttp = new OkHttp(send, recieve);
-                    HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://120.48.5.10:9090/publish-order");
+                    HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.11:9090/publish-order");
                     Log.d("rhm length", String.valueOf(rhm.size()));
                     Log.d("tag", rhm.get("otype"));
                     if (rhm.get("msg").equals("true")){

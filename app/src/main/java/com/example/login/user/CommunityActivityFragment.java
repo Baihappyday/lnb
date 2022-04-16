@@ -3,14 +3,12 @@ package com.example.login.user;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RelativeLayout;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.login.R;
 
@@ -34,7 +32,7 @@ public class CommunityActivityFragment extends Fragment implements View.OnClickL
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.button5){
-            Intent intent=new Intent(mContext,InfoResourceActivity.class);
+            Intent intent=new Intent(mContext, InfoResourceActivity.class);
             startActivity(intent);
 
         }

@@ -71,15 +71,15 @@ public class PersonalCenter extends Fragment implements View.OnClickListener, Vi
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.bt1){//按钮：登录
-            Intent intent=new Intent(mContext,UserLoginActivity.class);
+            Intent intent=new Intent(mContext, UserLoginActivity.class);
             startActivity(intent);
         }
         if (view.getId() == R.id.bt101){//按钮：我的钱包
-            Intent intent=new Intent(mContext,UserWallet.class);
+            Intent intent=new Intent(mContext, UserWallet.class);
             startActivity(intent);
         }
         if (view.getId() == R.id.bt2){//按钮：完善个人信息
-            Intent intent=new Intent(mContext,SkimUserInfo.class);
+            Intent intent=new Intent(mContext, SkimUserInfo.class);
             startActivity(intent);
         }
         if (view.getId() == R.id.bt3_1) {
@@ -92,12 +92,12 @@ public class PersonalCenter extends Fragment implements View.OnClickListener, Vi
             intent.putExtra("page", 1);
             startActivity(intent);
         }
-        if (view.getId() == R.id.bt3_3) {
+        if (view.getId() == R.id.bt3_4) {
             Intent intent=new Intent(mContext, UserOrder.class);
             intent.putExtra("page", 2);
             startActivity(intent);
         }
-        if (view.getId() == R.id.bt3_4) {
+        if (view.getId() == R.id.bt3_3) {
             Intent intent=new Intent(mContext, UserOrder.class);
             intent.putExtra("page", 3);
             startActivity(intent);

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -17,14 +16,11 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.login.IdentiChooseActivity;
-import com.example.login.MainActivity;
 import com.example.login.MyApplication;
+import com.example.login.R;
 import com.example.login.ToastUtils;
 import com.example.login.util.ClickMotion;
-import com.example.login.R;
 import com.example.login.util.NetWorkUtil;
-import com.example.login.util.SharedUtil;
 
 public class UserMainInterfaceActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener
 {
@@ -57,13 +53,15 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
     MyApplication application;
 
 
-
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_main_interface);
-        ToastUtils.showNOrmalToast(UserMainInterfaceActivity.this,"欢迎使用老年宝，请前往个人中心登录");
+        setContentView(R.layout.user_main_interface1);
+        application = (MyApplication) this.getApplicationContext();
+        if (!application.getLoginState()){
+            ToastUtils.showNOrmalToast(UserMainInterfaceActivity.this,"欢迎使用老年宝，请前往个人中心登录");
+        }
         Intent intent = getIntent();
 
 
@@ -97,6 +95,7 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
             personalcenter.setTextColor(getResources().getColor(R.color.choosenGreen));
         }
 
+
         //设置监听器（首页与个人中心）
         button.setOnClickListener(this);
         button.setOnTouchListener(this);
@@ -111,7 +110,7 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(UserMainInterfaceActivity.this,TaskRelease.class);
+                Intent intent=new Intent(UserMainInterfaceActivity.this, TaskRelease.class);
                 startActivity(intent);
             }
         });
@@ -181,12 +180,15 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
 
             case MotionEvent.ACTION_DOWN:
                 //按下
-                if (view.getId()==R.id.button||view.getId()==R.id.homepage)
+                if (view.getId()== R.id.button||view.getId()== R.id.homepage) {
                     ClickMotion.motion(UserMainInterfaceActivity.this,button,60);
-                if (view.getId()==R.id.imageButton2||view.getId()==R.id.personalcenter)
+                }
+                if (view.getId()== R.id.imageButton2||view.getId()== R.id.personalcenter) {
                     ClickMotion.motion(UserMainInterfaceActivity.this,imageButton2,60);
-                if (view.getId()==R.id.taskk)
+                }
+                if (view.getId()== R.id.taskk) {
                     ClickMotion.motion(UserMainInterfaceActivity.this,button2,85);
+                }
                 break;
             case MotionEvent.ACTION_MOVE:
                 //移动
@@ -200,6 +202,7 @@ public class UserMainInterfaceActivity extends AppCompatActivity implements View
         return false;
     }
 
+    @Override
     public void onClick(View v) {
         if (v.getId() == R.id.homepage){
             button.setImageDrawable(ic_user_home_selected);

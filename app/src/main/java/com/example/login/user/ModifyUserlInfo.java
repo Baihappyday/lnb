@@ -1,32 +1,24 @@
 package com.example.login.user;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.login.IdentiChooseActivity;
-import com.example.login.MainActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.login.MyApplication;
 import com.example.login.R;
 import com.example.login.util.OkHttp;
 import com.example.login.util.SharedUtil;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 
 
@@ -125,7 +117,7 @@ public class ModifyUserlInfo extends AppCompatActivity implements View.OnClickLi
                     gender = findViewById(rg.getCheckedRadioButtonId());
                     HashMap<String, String> hm = new HashMap<>();
                     MyApplication application = (MyApplication) ModifyUserlInfo.this.getApplicationContext();
-                    hm.put("uusername", application.getName());
+                    hm.put("uusername", MyApplication.getName());
                     hm.put("uage", agee.getText().toString());
                     hm.put("usex", gender.getText().toString());
                     hm.put("uaddress", addresss.getText().toString());
@@ -148,7 +140,7 @@ public class ModifyUserlInfo extends AppCompatActivity implements View.OnClickLi
 
                     String msg = "true";
 
-                    HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://120.48.5.10:9090/update");
+                    HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.11:9090/update");
                     Log.d("tag", rhm.get("msg") + rhm.get("usex"));
                     if (msg.equals(rhm.get("msg"))){
 
@@ -161,7 +153,7 @@ public class ModifyUserlInfo extends AppCompatActivity implements View.OnClickLi
                     Intent intent = new Intent();
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);//在跳转到目标activity前销毁所以已经存在的activity（实现不能返回的功能）
 
-                    intent.setClass(ModifyUserlInfo.this,SkimUserInfo.class);
+                    intent.setClass(ModifyUserlInfo.this, SkimUserInfo.class);
                     startActivity(intent);
                 }
             }).start();

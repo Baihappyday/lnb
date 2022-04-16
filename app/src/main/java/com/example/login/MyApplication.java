@@ -48,7 +48,7 @@ public class MyApplication extends Application {
     }
 
     public void setLoginState(boolean loginState) {
-        this.loginState = loginState;
+        MyApplication.loginState = loginState;
     }
 
     public static String getName() {

@@ -46,7 +46,7 @@ public class Institution_listActivity extends AppCompatActivity {
 
                     Request request=new Request.Builder()
                             .get()
-                            .url("http://192.168.232.1:9090/institutions/all")
+                            .url("http://192.168.1.9:9090/institutions/all")
 
                             .build();
 

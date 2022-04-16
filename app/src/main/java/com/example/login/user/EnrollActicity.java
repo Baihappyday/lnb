@@ -1,14 +1,14 @@
 package com.example.login.user;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.login.R;
 
@@ -55,7 +55,7 @@ public class EnrollActicity extends AppCompatActivity {
                             OkHttpClient client = new OkHttpClient();
                             Request request = new Request.Builder()
                                     // 指定访问的服务器地址
-                                    .url("http://120.48.5.10:9090/register/users").post(RequestBody2)
+                                    .url("http://192.168.1.11:9090/register/users").post(RequestBody2)
                                     .build();
                             Response response = client.newCall(request).execute();
                             String responseData = response.body().string();

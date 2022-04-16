@@ -1,13 +1,7 @@
 package com.example.login.user;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Fragment;
 import android.app.TabActivity;
-import android.net.Network;
 import android.os.Bundle;
-import android.os.Looper;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -18,17 +12,14 @@ import com.example.login.R;
 import com.example.login.util.NetWorkUtil;
 import com.example.login.util.OkHttp;
 import com.example.login.util.SharedUtil;
-import com.google.android.material.tabs.TabLayout;
-
-import org.intellij.lang.annotations.JdkConstants;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class UserOrder /*extends AppCompatActivity*/extends TabActivity {
     TabHost tabHost;
     int ostate = 0;
+    int a;//页数
     ArrayList<OrderFragment0> list0 = new ArrayList<>();//fragment集合
     ArrayList<OrderFragment0> list0All = new ArrayList<>();//fragment集合
     ArrayList<OrderFragment0> list1 = new ArrayList<>();//fragment集合
@@ -101,14 +92,14 @@ public class UserOrder /*extends AppCompatActivity*/extends TabActivity {
 
 
         /* 以上创建和添加标签页也可以用如下代码实现 */
-        tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("未付款").setContent(R.id.tab011));
+        tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("未接单").setContent(R.id.tab011));
         tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("进行中").setContent(R.id.tab022));
-        tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator("已完成").setContent(R.id.tab033));
-        tabHost.addTab(tabHost.newTabSpec("tab4").setIndicator("待评价").setContent(R.id.tab044));
+        tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator("待评价").setContent(R.id.tab033));
+        tabHost.addTab(tabHost.newTabSpec("tab4").setIndicator("已完成").setContent(R.id.tab044));
         tabHost.addTab(tabHost.newTabSpec("tab5").setIndicator("全部").setContent(R.id.tab055));
 //        tabHost.setCurrentTabByTag(R.id.tab01);
 
-        int a = getIntent().getIntExtra("page", 0);
+        a = getIntent().getIntExtra("page", 0);
         tabHost.setCurrentTab(a);
 
         //标签切换事件处理，setOnTabChangedListener
@@ -157,7 +148,7 @@ public class UserOrder /*extends AppCompatActivity*/extends TabActivity {
                 SharedUtil sp = SharedUtil.getIntance(UserOrder.this, "taskinfo");
                 HashMap<String, String> hm = new HashMap<>();
                 MyApplication application = (MyApplication) UserOrder.this.getApplicationContext();
-                hm.put("username", application.getName());
+                hm.put("username", MyApplication.getName());
 
                 hm.put("ostate", String.valueOf(ostate));
                 ArrayList<String> send = new ArrayList<>();
@@ -174,13 +165,14 @@ public class UserOrder /*extends AppCompatActivity*/extends TabActivity {
                 recieve.add("odescription");
                 recieve.add("oid");
                 OkHttp okHttp = new OkHttp(send, recieve, 1, UserOrder.this);
-                okHttp.sendRequestWithOkHttp(hm, "http://120.48.5.10:9090/userOrderList");
+                okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.11:9090/userOrderList");
                 while (!application.orderSynFlag){
 
                 }
                 application.orderSynFlag = false;
                 Log.d("TAG", "flag true");
                 ArrayList<HashMap> order = okHttp.getOrder();//获取订单
+
                 UserOrder.this.getOrder(order,ostate);
 
                 Log.d("tag", " ");
@@ -217,8 +209,10 @@ public class UserOrder /*extends AppCompatActivity*/extends TabActivity {
                         case 1:
                             for (int i = 0; i < order1.size(); i++) {
                                 HashMap<String, Object> rhm = order1.get(i);//获取一个订单的信息
+
                                 list1.add(new OrderFragment0());
                                 list1.get(i).setInfo(rhm);//传入订单数据给fragment
+
                                 getFragmentManager().beginTransaction().add(R.id.tab02, list1.get(i)).commit();
                                 list1All.add(new OrderFragment0());
                                 list1All.get(i).setInfo(rhm);

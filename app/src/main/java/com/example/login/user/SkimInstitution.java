@@ -1,22 +1,33 @@
 package com.example.login.user;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
-import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.login.R;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 //用户的机构列表界面
 public class SkimInstitution extends AppCompatActivity {
+    OkHttpClient client = new OkHttpClient();
+    List<InstitutionFragment> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +43,7 @@ public class SkimInstitution extends AppCompatActivity {
         ArrayAdapter<String> filterAdapter = new ArrayAdapter<String>(this,
                 R.layout.item_select_insti, filterArray);
 
+        getData();
         /*Spinner sp = (Spinner) findViewById(R.id.multi_arrange);
         Spinner sp1 = (Spinner) findViewById(R.id.insti_type);
         Spinner sp2 = (Spinner) findViewById(R.id.region_choose);
@@ -68,11 +80,59 @@ public class SkimInstitution extends AppCompatActivity {
 
 
     class MySelectedListener implements AdapterView.OnItemSelectedListener {
+        @Override
         public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
             //Toast.makeText(SkimInstitution.this, "您选择的是"+institypeArray[arg2], Toast.LENGTH_SHORT).show();
         }
 
+        @Override
         public void onNothingSelected(AdapterView<?> arg0) {
+        }
+    }
+
+    void getData(){
+        new Thread(new Runnable() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void run() {
+                try {
+                    String json = get("http://192.168.1.11:9090/institutions/all");
+                    Log.d("json", json);
+                    JSONArray o = new JSONArray(json);
+
+                    for (int i = 0; i < o.length(); i++) {
+                        JSONObject jo = o.getJSONObject(i);
+                        InstitutionFragment i_f = new InstitutionFragment();
+                        list.add(i_f);
+
+                        HashMap<String,Object> hashMap =new HashMap<>();
+                        hashMap.put("iname",jo.getString("iname"));
+                        hashMap.put("iaddress",jo.getString("iaddress"));
+                        hashMap.put("iprice",jo.getInt("iprice"));
+                        hashMap.put("idescription",jo.getString("idescription"));
+                       // Log.d("json", );
+                        i_f.setInfo(hashMap);
+                        getSupportFragmentManager().beginTransaction().add(R.id.list_insti, i_f).commit();
+
+                    }
+                }catch (Exception e){
+
+                }
+
+            }
+        }).start();
+    }
+
+
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    String get(String url) throws IOException {
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            return response.body().string();
         }
     }
 }

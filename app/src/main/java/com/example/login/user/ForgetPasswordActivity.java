@@ -1,7 +1,5 @@
 package com.example.login.user;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
@@ -12,8 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.login.R;
-import com.example.login.institution.Institution_loginActivity;
 import com.example.login.util.OkHttp;
 
 import java.util.ArrayList;
@@ -58,7 +57,7 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
                         final ArrayList<String> recieve = new ArrayList<String>();
                         recieve.add("msg");
                         OkHttp okHttp = new OkHttp(send,recieve);
-                        HashMap<String,String> hm = okHttp.sendRequestWithOkHttp(hashMap, "http://120.48.5.10:9090/login/users");
+                        HashMap<String,String> hm = okHttp.sendRequestWithOkHttp(hashMap, "http://192.168.1.11:9090/login/users");
                         Log.d("TAG", hm.get("msg"));
                         if (hm.get("msg").equals("登录成功")){
                             Looper.prepare();
@@ -97,15 +96,15 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
                             final ArrayList<String> recieve = new ArrayList<String>();
                             recieve.add("msg");
                             recieve.add("judgeinfo");
-                            OkHttp okHttp = new OkHttp(send,recieve,2,ForgetPasswordActivity.this);
-                            HashMap<String,String> hm = okHttp.sendRequestWithOkHttp(hashMap, "http://120.48.5.10:9090/chpassword/users");
+                            OkHttp okHttp = new OkHttp(send,recieve,2, ForgetPasswordActivity.this);
+                            HashMap<String,String> hm = okHttp.sendRequestWithOkHttp(hashMap, "http://192.168.1.11:9090/chpassword/users");
                             Log.d("TAG", hm.get("msg"));
                             if (hm.get("judgeinfo").equals("true")){
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
                                         Toast.makeText(ForgetPasswordActivity.this, "修改密码成功", Toast.LENGTH_SHORT).show();
-                                        Intent i = new Intent(ForgetPasswordActivity.this,UserLoginActivity.class);
+                                        Intent i = new Intent(ForgetPasswordActivity.this, UserLoginActivity.class);
                                         startActivity(i);
                                     }
                                 });

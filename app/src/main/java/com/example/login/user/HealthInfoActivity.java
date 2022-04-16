@@ -1,8 +1,5 @@
 package com.example.login.user;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
@@ -14,9 +11,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.login.R;
 import com.example.login.MyApplication;
+import com.example.login.R;
 import com.example.login.util.NetWorkUtil;
 import com.example.login.util.OkHttp;
 import com.example.login.util.SharedUtil;
@@ -127,7 +125,7 @@ public class HealthInfoActivity extends AppCompatActivity implements View.OnClic
                             recieve.add("ubloodtype");
                             recieve.add("uhealthcondition");
                             OkHttp okHttp = new OkHttp(send, recieve);
-                            HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://120.48.5.10:9090/update-health");
+                            HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.11:9090/update-health");
                             Log.d("tag", rhm.get("msg") + rhm.get("ubloodtype"));
                             if (rhm.get("msg").equals("true")){
                                 recieve.remove("msg");
