@@ -26,7 +26,7 @@ public class List_communityActivity extends AppCompatActivity {
         listview.setAdapter(new myadapter(data,this));
         for(int i = 1; i <= 50; i++){
             Bean bean = new Bean();
-            bean.setName("活动" + i);
+            bean.setDes("活动" + i);
             data.add(bean);
 
         }

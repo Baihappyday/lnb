@@ -17,25 +17,30 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/text10"
+            android:id="@+id/text14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp" />
         <TextView
-            android:id="@+id/text11"
+            android:id="@+id/text15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp" />
         <TextView
-            android:id="@+id/text12"
+            android:id="@+id/text16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp" />
+        <TextView
+            android:id="@+id/text17"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/text13"
+            android:id="@+id/text18"
             android:layout_width="match_parent"
-            android:layout_height="85dp"
+            android:layout_height="56dp"
             android:textSize="20dp" />
 
     </LinearLayout>
