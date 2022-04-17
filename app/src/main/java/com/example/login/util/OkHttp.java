@@ -138,7 +138,7 @@ public class OkHttp {
                     if (s.equals("oid")){
                         //hm.put(s ,String.valueOf(object.getInt(s)));
                     }
-                    else if (s.equals("oprice")){
+                    else if (s.equals("oprice")||s.equals("waccount")||s.equals("wscore")){
                         hm.put(s ,String.valueOf(object.getInt(s)));
                     }
                     else if (s.equals("judgeinfo")){

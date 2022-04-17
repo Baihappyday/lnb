@@ -33,7 +33,7 @@ public class OrderFragment1 extends Fragment {
     private TextView description;
     private Button accept;
     boolean click=false;
-    String ostate;
+    String oid1;
 
 
     @Override
@@ -86,8 +86,8 @@ public class OrderFragment1 extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                ostate= (String) info.get("oid");
-                Log.d("oid", String.valueOf(ostate));
+                oid1= (String) info.get("oid");//info.get("oid")返回的是string
+                Log.d("oid_frag", String.valueOf(oid1));
 
 
                 accept.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +97,7 @@ public class OrderFragment1 extends Fragment {
                         click=true;
                         Intent intent=new Intent(getActivity(), WorkerAccessOrder.class);
                         intent.putExtra("btstate",click);//boolean
-                        intent.putExtra("oid",ostate);//string
+                        intent.putExtra("oid",oid1);//string
                         startActivity(intent);
                     }
                 });

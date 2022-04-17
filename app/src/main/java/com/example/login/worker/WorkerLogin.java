@@ -142,7 +142,7 @@ public class WorkerLogin extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.modify){
+        if(view.getId() == R.id.modify){//按钮：登录
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -154,10 +154,14 @@ public class WorkerLogin extends AppCompatActivity implements View.OnClickListen
                     send.add("wpassword");
                     final ArrayList<String> recieve = new ArrayList<String>();
                     recieve.add("msg");
+                    recieve.add("waccount");//余额？？？？？？、
+                    recieve.add("wscore");//评分
                     OkHttp okHttp = new OkHttp(send,recieve);
-                    HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hashMap, "http://192.168.56.1:9090/login/workers");
-                    System.out.println(rhm.get("msg")+"为");
-                    Log.d("tag",rhm.get("msg")+"为");
+                    HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hashMap, "http://120.48.5.10:9090/login/workers");
+                    Log.d("msg1",rhm.get("msg"));
+                    Log.d("account",rhm.get("waccount"));
+                    Log.d("score",rhm.get("wscore"));
+
                     if (rhm.get("msg").equals("登录成功")){
                         MyApplication application = (MyApplication) com.example.login.worker.WorkerLogin.this.getApplicationContext();
                         application.setName(hashMap.get("wusername"));//设置全局变量name

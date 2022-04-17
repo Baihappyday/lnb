@@ -23,9 +23,9 @@ public class WorkerAccessOrder extends AppCompatActivity {
         final int ostate=0;
         boolean btstate=getIntent().getBooleanExtra("btstate",false);
         Log.d("btstate", String.valueOf(btstate));
-        //final String oid=getIntent().getStringExtra("oid");
-        final String oid="6";
-        Log.d("oid", oid);
+        final String oid=getIntent().getStringExtra("oid");
+        //final String oid="23";
+        Log.d("oid11", oid);
 
         if(btstate==true)
         {
@@ -59,8 +59,8 @@ public class WorkerAccessOrder extends AppCompatActivity {
 //                    recieve.add("oprice");
 //                    recieve.add("odescription");
 //                    recieve.add("oid");
-                    OkHttp okHttp = new OkHttp(send, recieve/*,2, com.example.login.worker.WorkerAccessOrder.this*/);
-                    HashMap<String,String> hm_return =okHttp.sendRequestWithOkHttp(hm1, "http://192.168.56.1:9090/AccessOrder");//////
+                    OkHttp okHttp = new OkHttp(send, recieve/*,1, com.example.login.worker.WorkerAccessOrder.this*/);
+                    HashMap<String,String> hm_return =okHttp.sendRequestWithOkHttp(hm1, "http://120.48.5.10:9090/AccessOrder");//////
                     Log.d("msg_out", hm_return.get("msg"));
 
                     while (!application.orderSynFlag){
