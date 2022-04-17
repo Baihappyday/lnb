@@ -2,11 +2,15 @@ package com.example.login.institution;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.login.R;
 import com.example.login.community.Bean;
+import com.example.login.community.CommunityaddActivity;
 import com.example.login.community.CommunitylistActivity;
 import com.example.login.community.myadapter;
 
@@ -29,12 +33,15 @@ public class Institution_listActivity extends AppCompatActivity {
     private Myadapter listAdapter;
     private List<bean> datas = new ArrayList<>();
 
+    private Button bt;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.institution);
         listView = findViewById(R.id.lv2);
+        bt = findViewById(R.id.addis);
 
         new Thread(new Runnable() {
             @Override
@@ -89,5 +96,21 @@ public class Institution_listActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }}).start();
+
+        bt.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view)
+            {
+                if (view.getId() == R.id.add_community){
+                    Intent i = new Intent(Institution_listActivity.this, Institution_addActivity.class);
+                    startActivity(i);
+                }
+
+            }
+        });
+
+
+
+
     }
 }
