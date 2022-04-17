@@ -101,7 +101,7 @@ public class Institution_listActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                if (view.getId() == R.id.add_community){
+                if (view.getId() == R.id.addis){
                     Intent i = new Intent(Institution_listActivity.this, Institution_addActivity.class);
                     startActivity(i);
                 }
