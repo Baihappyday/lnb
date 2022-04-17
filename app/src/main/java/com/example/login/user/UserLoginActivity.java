@@ -1,26 +1,27 @@
 package com.example.login.user;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.login.MyApplication;
 import com.example.login.R;
-import com.example.login.community.Community_loginActivity;
 import com.example.login.util.OkHttp;
 import com.example.login.util.SharedUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import android.util.Log;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+//import com.example.login.community.Community_loginActivity;
 
 public class UserLoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText login_username;
@@ -158,7 +159,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                     if (rhm.get("msg").equals("登录成功")){
                         //Toast.makeText(UserLoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                         MyApplication application = (MyApplication) UserLoginActivity.this.getApplicationContext();
-                        application.setName(hashMap.get("username"));//设置全局变量name
+                        MyApplication.setName(hashMap.get("username"));//设置全局变量name
                         application.setLoginState(true);//设置登录状态
                         SharedUtil sp = SharedUtil.getIntance(UserLoginActivity.this,"logininfo");
                         sp.writeShared(send,hashMap);//写入登录信息
@@ -182,6 +183,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                                 recieve.add("uhealthcondition");
                                 OkHttp okHttp = new OkHttp(send,recieve);
                                 HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(shm, "http://120.48.5.10:9090/display");
+                                Log.d("recieve", "run: "+rhm.get("msg")+rhm.get("uage"));
                                 SharedUtil sp = SharedUtil.getIntance(UserLoginActivity.this,"healthinfo");
                                 sp.writeShared(recieve,rhm);
 

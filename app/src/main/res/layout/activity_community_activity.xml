@@ -27,18 +27,10 @@
             android:fillViewport="true">
 
             <LinearLayout
+                android:id="@+id/list_act"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
-                <fragment
-                    android:id="@+id/fragment2"
-                    android:name="com.example.login.user.BlankFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </LinearLayout>
+                android:orientation="vertical" />
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

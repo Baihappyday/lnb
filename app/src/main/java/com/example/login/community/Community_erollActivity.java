@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.login.R;
+import com.example.login.institution.Institution_erollActivity;
+import com.example.login.institution.Institution_loginActivity;
 import com.example.login.user.EnrollActicity;
 import com.example.login.user.UserLoginActivity;
 
@@ -74,6 +76,8 @@ public class Community_erollActivity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         Toast.makeText(Community_erollActivity.this,"注册成功！",Toast.LENGTH_SHORT).show();
+                                        Intent i = new Intent(Community_erollActivity.this, Community_loginActivity.class);
+                                        startActivity(i);
                                     }
                                 });
                             }

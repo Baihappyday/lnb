@@ -1,7 +1,5 @@
 package com.example.login;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,12 +7,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.login.user.UserLoginActivity;
-import com.example.login.user.UserMainInterfaceActivity;
-import com.example.login.util.ActivityCollector;
-import com.example.login.util.SharedUtil;
-import com.example.login.worker.WorkmaininterfaceAcitvity;
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.login.user.UserMainInterfaceActivity;
+import com.example.login.util.SharedUtil;
 /*app启动界面*/
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -38,16 +34,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 SharedUtil sp = SharedUtil.getIntance(MainActivity.this,"logininfo");
                 boolean loginstate = sp.readShared("loginstate", false);
                 String identification = sp.readShared("identification","0");//身份选择页面从上到下依次为0-3
-                application.setName(sp.readShared("username","null"));
+                MyApplication.setName(sp.readShared("username","null"));
                 if (loginstate){
                     if (identification.equals("0")){
-                        intent.setClass(MainActivity.this,UserMainInterfaceActivity.class);
+                        intent.setClass(MainActivity.this, UserMainInterfaceActivity.class);
                         startActivity(intent);
                     }
                     else if (identification.equals("1")){
 
-                        intent.setClass(MainActivity.this, WorkmaininterfaceAcitvity.class);
-                        startActivity(intent);
+                       // intent.setClass(MainActivity.this, WorkmaininterfaceAcitvity.class);
+                       // startActivity(intent);
                     }
                     else if (identification.equals("2")){
 
@@ -57,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }
                 else {
-                    intent.setClass(MainActivity.this,IdentiChooseActivity.class);
+                    intent.setClass(MainActivity.this, IdentiChooseActivity.class);
                     startActivity(intent);//要延时的程序
                 }
 
@@ -81,13 +77,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (loginstate){
                 application.setLoginState(loginstate);
                 if (identification.equals("0")){
-                    intent.setClass(MainActivity.this,UserMainInterfaceActivity.class);
+                    intent.setClass(MainActivity.this, UserMainInterfaceActivity.class);
                     startActivity(intent);
                 }
                 else if (identification.equals("1")){
 
-                    intent.setClass(MainActivity.this, WorkmaininterfaceAcitvity.class);
-                    startActivity(intent);
+                  //  intent.setClass(MainActivity.this, WorkmaininterfaceAcitvity.class);
+                  //  startActivity(intent);
                 }
                 else if (identification.equals("2")){
 
@@ -98,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
             else {
-                intent.setClass(MainActivity.this,IdentiChooseActivity.class);
+                intent.setClass(MainActivity.this, IdentiChooseActivity.class);
                 startActivity(intent);
             }
         }

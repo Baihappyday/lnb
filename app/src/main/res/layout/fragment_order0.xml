@@ -5,78 +5,97 @@
     android:background="@color/white"
     app:layout_constraintCircleRadius="3dp"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="200dp"
     tools:context=".user.OrderFragment0">
 
-    <FrameLayout
-        android:layout_width="150dp"
-        android:id="@+id/typeimage"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_height="150dp">
-        <ImageView
-            android:id="@+id/typeimageview"
-            android:scaleType="fitXY"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/get_from_db" />
-    </FrameLayout>
+    <RelativeLayout
+        android:id="@+id/rlayout"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/white"
+        app:layout_constraintCircleRadius="3dp">
 
-    <TextView
-        android:id="@+id/type"
-        android:layout_width="wrap_content"
+        <FrameLayout
+            android:id="@+id/typeimage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true">
+
+            <ImageView
+                android:id="@+id/typeimageview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/get_from_db" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/activitytime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_toEndOf="@+id/typeimage"
+            android:layout_toRightOf="@+id/typeimage"
+            android:paddingTop="5dp"
+            android:text="类型："
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/activityaddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activitytime"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/typeimage"
+            android:layout_toRightOf="@+id/typeimage"
+            android:text="时间："
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/activitydescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activityaddress"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/typeimage"
+            android:layout_toRightOf="@+id/typeimage"
+            android:text="价格："
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/idescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activitydescription"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/typeimage"
+            android:layout_toRightOf="@+id/typeimage"
+            android:text="备注："
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/typeimage"
-        android:layout_toEndOf="@+id/typeimage"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:paddingTop="5dp"
-        android:text="类型："
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/duration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/typeimage"
-        android:layout_toEndOf="@+id/typeimage"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/type"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:text="时间："
-        android:textSize="20sp"
-        android:textStyle="italic" />
-
-    <TextView
-        android:id="@+id/price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/typeimage"
-        android:layout_toEndOf="@+id/typeimage"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/duration"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:text="价格："
-        android:textSize="20sp"
-        android:textStyle="italic" />
-
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/typeimage"
-        android:layout_toEndOf="@+id/typeimage"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/price"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:text="备注："
-        android:textSize="20sp"
-        android:textStyle="italic" />
-
+        android:layout_below="@id/rlayout"
+        android:text="确认订单"
+        android:background="@color/white"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
 </RelativeLayout>

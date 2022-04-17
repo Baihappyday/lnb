@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/orange"
     android:orientation="vertical">
 
     <LinearLayout
@@ -15,6 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="#ffff33"
             android:text="查看机构信息"
             android:textSize="25sp"/>
     </LinearLayout>
@@ -31,6 +33,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="添加机构信息"
+            android:background="#ffff33"
             android:textSize="25sp"/>
     </LinearLayout>
 

@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,7 +49,7 @@ public class SkimUserInfo extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if (modify.getId() == R.id.modify){
             Intent i = new Intent();
-            i.setClass(this,ModifyUserlInfo.class);
+            i.setClass(this, ModifyUserlInfo.class);
             startActivity(i);
         }
     }
@@ -61,7 +59,7 @@ public class SkimUserInfo extends AppCompatActivity implements View.OnClickListe
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         Intent i = new Intent();
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-        i.setClass(this,UserMainInterfaceActivity.class);
+        i.setClass(this, UserMainInterfaceActivity.class);
         i.putExtra("frag", 2);
         startActivity(i);
         return true;

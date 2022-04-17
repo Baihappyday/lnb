@@ -1,4 +1,4 @@
-package com.example.login.community;
+package com.example.login.institution;
 
 import android.content.Context;
 import android.nfc.Tag;
@@ -15,13 +15,13 @@ import com.example.login.R;
 
 import java.util.List;
 
-public class myadapter extends BaseAdapter {
+public class Myadapter extends BaseAdapter {
 
-    private List<Bean> datas;
+    private List<bean> datas;
     private Context context;
 
 
-    public myadapter(List<Bean> data,Context context) {
+    public Myadapter(List<bean> data,Context context) {
         this.datas = data;
         this.context = context;
 
@@ -48,21 +48,27 @@ public class myadapter extends BaseAdapter {
 
         if(view == null) {
 
-            view = LayoutInflater.from(context).inflate(R.layout.list_item, viewGroup, false);
+            view = LayoutInflater.from(context).inflate(R.layout.list_item2, viewGroup, false);
 
         }
 
         /*TextView textView1 = view.findViewById(R.id.text10);
         textView1.setText(datas.get(position).getId());*/
 
-        TextView textView2 = view.findViewById(R.id.text11);
-        textView2.setText(datas.get(position).getTime());
+        TextView textView2 = view.findViewById(R.id.text14);
+        textView2.setText(datas.get(position).getIiusername());
 
-        TextView textView3 = view.findViewById(R.id.text12);
-        textView3.setText(datas.get(position).getAddress());
+        TextView textView3 = view.findViewById(R.id.text15);
+        textView3.setText(datas.get(position).getIname());
 
-        TextView textView4 = view.findViewById(R.id.text13);
-        textView4.setText(datas.get(position).getDes());
+        TextView textView4 = view.findViewById(R.id.text16);
+        textView4.setText(datas.get(position).getIaddress());
+
+        //TextView textView5 = view.findViewById(R.id.text17);
+        //textView5.setText(datas.get(position).getIprice());
+
+        TextView textView6 = view.findViewById(R.id.text18);
+        textView6.setText(datas.get(position).getIdescription());
 
         Log.e("leo", "getView: "+position );
 

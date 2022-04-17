@@ -123,10 +123,20 @@
             </RelativeLayout>
         </LinearLayout>
 
-        <com.qweather.plugin.view.HorizonView
-            android:id="@+id/horizon_view"
+        <WebView
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_height="340dp"
+            android:layout_gravity="center"
+            android:id="@+id/webView"
+            />
+        <WebView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="340dp"
+            android:layout_gravity="center"
+            android:id="@+id/webView2"
+            android:layout_marginBottom="20dp"
+            />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

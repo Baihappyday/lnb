@@ -1,32 +1,52 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/institution"
-    android:layout_width="match_parent"
-    android:layout_height="240dp"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="8dp">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="MissingDefaultResource">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/get_from_db" />
 
-    <ImageButton
-        android:id="@+id/bg"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_alignBottom="@id/imageView3"
-        android:background="@color/white" />
+        android:layout_height="120dp"
+        android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/textView4"
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="255dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_institution" />
+
+        <Button
+            android:id="@+id/addis"
+            android:layout_width="wrap_content"
+            android:layout_height="89dp"
+            android:layout_weight="1"
+            android:text="添加机构"
+            android:background="@color/white"
+            android:textColor="@color/red"
+            android:textSize="25sp"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/bg"
-        android:text="养老院名称"
-        android:textSize="25sp" />
+        android:layout_height="300dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/lv2"
+            android:dividerHeight="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:fastScrollEnabled="false"
+            android:stackFromBottom="false"
+            />
+    </LinearLayout>
 
 
 
-</RelativeLayout>
+</LinearLayout>

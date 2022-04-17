@@ -14,4 +14,6 @@
     <color name="red">#FF0033</color>
     <color name="slightblue">#DFE0E3</color>
     <color name="transparent">#00000000</color>
+    <color name="blue">#2278FF</color>
+    <color name="smallblue">#6080ea</color>
 </resources>

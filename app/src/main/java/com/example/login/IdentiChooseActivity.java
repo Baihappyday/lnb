@@ -15,8 +15,10 @@ import com.example.login.community.Community_loginActivity;
 import com.example.login.institution.Institution_loginActivity;
 import com.example.login.user.UserMainInterfaceActivity;
 import com.example.login.util.Utils;
-import com.example.login.worker.WorkmaininterfaceAcitvity;
 import com.example.login.widget.CircleImageView;
+import com.example.login.worker.WorkmaininterfaceAcitvity;
+
+//import com.example.login.community.Community_loginActivity;
 
 public class IdentiChooseActivity extends AppCompatActivity implements View.OnClickListener  {
     private Button btn_user;
@@ -64,7 +66,7 @@ public class IdentiChooseActivity extends AppCompatActivity implements View.OnCl
         if (findViewById(R.id.user) == v){
             Intent intent = new Intent();
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);//在跳转到目标activity前销毁所以已经存在的activity（实现不能返回的功能）
-            intent.setClass(this,UserMainInterfaceActivity.class);
+            intent.setClass(this, UserMainInterfaceActivity.class);
             startActivity(intent);
         }
         if (findViewById(R.id.worker) == v){

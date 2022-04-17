@@ -74,7 +74,7 @@ public class Institution_loginActivity extends AppCompatActivity implements View
                                     @Override
                                     public void run() {
                                         Toast.makeText(Institution_loginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                                        Intent i = new Intent(Institution_loginActivity.this, Institution_chooseActivity.class);
+                                        Intent i = new Intent(Institution_loginActivity.this, Institution_listActivity.class);
                                         startActivity(i);
                                     }
                                 });
