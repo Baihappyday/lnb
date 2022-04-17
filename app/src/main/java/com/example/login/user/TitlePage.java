@@ -11,6 +11,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -69,6 +71,22 @@ public class TitlePage extends Fragment implements View.OnClickListener, View.On
         vp_content.addView(indicator, layoutParams);
 
 
+        WebView webView = v.findViewById(R.id.webView);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl("https://m.baidu.com/sf?county_id=101180101&dspName=iphone&ext={%22bar_sort%22:%22chuanyi,chuyou,xiche,fangshai,huazhuang,ganmao,%22,%22sf_tab_name%22:%22chuanyi%22}&from_sf=1&fromapp=vsgo&openapi=1&pd=life_compare_weather&resource_id=4599&title=%E7%94%9F%E6%B4%BB%E6%B0%94%E8%B1%A1%E6%8C%87%E6%95%B0&word=%E9%83%91%E5%B7%9E&lid=8856305032740678900&referlid=8856305032740678900&ms=1&frsrcid=4982&frorder=1&qq-pf-to=pcqq.c2c");
+
+        WebView webView2 = v.findViewById(R.id.webView2);
+        webView2.getSettings().setJavaScriptEnabled(true);
+        webView2.setWebViewClient(new WebViewClient() {
+            // 重写此方法表明点击网页里面的链接还是在当前的webview里跳转，不跳到浏览器那边
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+        });
+        webView2.loadUrl("http://m.yanglaotoutiao.com/");
+
         mContext = getActivity();
         btn1 = v.findViewById(R.id.button1);
         btn1.setOnClickListener(this);
@@ -119,8 +137,7 @@ public class TitlePage extends Fragment implements View.OnClickListener, View.On
 //        horizonView.setViewPadding(10,10,10,10);
 ////显示控件
 //        horizonView.show();
-
-        return v;
+             return v;
     }
 
     @Override

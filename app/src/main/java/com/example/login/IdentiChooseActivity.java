@@ -11,10 +11,12 @@ import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.login.community.Community_loginActivity;
 import com.example.login.institution.Institution_loginActivity;
 import com.example.login.user.UserMainInterfaceActivity;
 import com.example.login.util.Utils;
 import com.example.login.widget.CircleImageView;
+import com.example.login.worker.WorkmaininterfaceAcitvity;
 
 //import com.example.login.community.Community_loginActivity;
 
@@ -69,13 +71,13 @@ public class IdentiChooseActivity extends AppCompatActivity implements View.OnCl
         }
         if (findViewById(R.id.worker) == v){
             //志愿者/家政->
-            //Intent i = new Intent(this, WorkmaininterfaceAcitvity.class);
-          //  startActivity(i);
+            Intent i = new Intent(this, WorkmaininterfaceAcitvity.class);
+            startActivity(i);
         }
         if (findViewById(R.id.community) == v){
             //社区->
-          //  Intent i = new Intent(this, Community_loginActivity.class);
-          //  startActivity(i);
+            Intent i = new Intent(this, Community_loginActivity.class);
+            startActivity(i);
         }
         if (findViewById(R.id.institution) == v){
             //养老机构->
