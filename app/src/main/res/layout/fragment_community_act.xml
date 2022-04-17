@@ -20,7 +20,7 @@
             android:scaleType="fitXY"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/get_from_db" />
+            android:src="@drawable/huodong" />
     </FrameLayout>
 
     <TextView

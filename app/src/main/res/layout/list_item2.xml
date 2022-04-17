@@ -7,9 +7,10 @@
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="166dp"
-        android:layout_height="164dp"
-        app:srcCompat="@drawable/get_from_db" />
+        android:scaleType="fitXY"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/jigou" />
 
     <LinearLayout
         android:layout_width="match_parent"
