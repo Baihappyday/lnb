@@ -125,7 +125,7 @@ public class HealthInfoActivity extends AppCompatActivity implements View.OnClic
                             recieve.add("ubloodtype");
                             recieve.add("uhealthcondition");
                             OkHttp okHttp = new OkHttp(send, recieve);
-                            HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.11:9090/update-health");
+                            HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://120.48.5.10:9090/update-health");
                             Log.d("tag", rhm.get("msg") + rhm.get("ubloodtype"));
                             if (rhm.get("msg").equals("true")){
                                 recieve.remove("msg");

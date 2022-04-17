@@ -126,7 +126,7 @@ public class OrderFragment0 extends Fragment implements View.OnClickListener {
                         recieve.add("msg");
                         Log.d("gethm", hm.get("oid")+"&username="+hm.get("username"));
                         OkHttp okHttp = new OkHttp(send, recieve, 2, (Activity) mContext);
-                        HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.11:9090/orderFinish");
+                        HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://120.48.5.10:9090/orderFinish");
                         //?OID="+hm.get("uid")+"&username="+hm.get("username")
                         Log.d("hashmap", "onClick: "+rhm);
                         String msg = rhm.get("msg");
@@ -193,7 +193,7 @@ public class OrderFragment0 extends Fragment implements View.OnClickListener {
                         recieve.add("oid");
                         //Log.d("gethm", hm.get("oid")+"&username="+hm.get("username"));
                         OkHttp okHttp = new OkHttp(send, recieve, 2, (Activity) mContext);
-                        HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.11:9090/orderScore");
+                        HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://120.48.5.10:9090/orderScore");
                         if ("true".equals(rhm.get("msg"))&&String.valueOf(score).equals(rhm.get("oscore"))){
                             Looper.prepare();
                             Toast.makeText(mContext,"评分成功",Toast.LENGTH_SHORT).show();

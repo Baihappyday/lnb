@@ -12,7 +12,7 @@ import java.sql.Statement;
 
 public class DBUtil {
     private static final String CLS = "net.sourceforge.jtds.jdbc.Driver";
-    private static final String URL ="jdbc:jtds:sqlserver://192.168.1.11:1433;DatabaseName=DB";
+    private static final String URL ="jdbc:jtds:sqlserver://120.48.5.10:1433;DatabaseName=DB";
     private static final String USER ="sa";
     private static final String PWD ="Lnb123456";
 

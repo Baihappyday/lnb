@@ -140,7 +140,7 @@ public class ModifyUserlInfo extends AppCompatActivity implements View.OnClickLi
 
                     String msg = "true";
 
-                    HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.11:9090/update");
+                    HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://120.48.5.10:9090/update");
                     Log.d("tag", rhm.get("msg") + rhm.get("usex"));
                     if (msg.equals(rhm.get("msg"))){
 

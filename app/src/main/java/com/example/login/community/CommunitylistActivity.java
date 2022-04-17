@@ -59,7 +59,7 @@ public class CommunitylistActivity extends AppCompatActivity  {
 
                 Request request=new Request.Builder()
                         .get()
-                        .url("http://192.168.1.9:9090/activities/all")
+                        .url("http://120.48.5.10:9090/activities/all")
                         //.get(RequestBody.create(MediaType.parse("application/json"),)
                         .build();
 

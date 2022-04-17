@@ -131,7 +131,7 @@ public class TaskRelease extends AppCompatActivity implements View.OnClickListen
                     recieve.add("odescription");
                     recieve.add("oid");
                     OkHttp okHttp = new OkHttp(send, recieve);
-                    HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://192.168.1.11:9090/publish-order");
+                    HashMap<String, String> rhm = okHttp.sendRequestWithOkHttp(hm, "http://120.48.5.10:9090/publish-order");
                     Log.d("rhm length", String.valueOf(rhm.size()));
                     Log.d("tag", rhm.get("otype"));
                     if (rhm.get("msg").equals("true")){

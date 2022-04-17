@@ -41,7 +41,7 @@ public class CommunityActivityActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    String json = get("http://192.168.1.11:9090/activities/all");
+                    String json = get("http://120.48.5.10:9090/activities/all");
                     Log.d("json", json);
                     JSONArray o = new JSONArray(json);
 

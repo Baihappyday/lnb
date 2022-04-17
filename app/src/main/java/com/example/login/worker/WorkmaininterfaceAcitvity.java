@@ -104,7 +104,7 @@ public class WorkmaininterfaceAcitvity extends AppCompatActivity
                 recieve.add("odescription");
                 recieve.add("oid");
                 OkHttp okHttp = new OkHttp(send, recieve,1, com.example.login.worker.WorkmaininterfaceAcitvity.this);
-                okHttp.sendRequestWithOkHttp(hm, "http://192.168.56.1:9090/GetworkerList");//////
+                okHttp.sendRequestWithOkHttp(hm, "http://120.48.5.10:9090/GetworkerList");//////
                 while (!application.orderSynFlag){
 
                 }

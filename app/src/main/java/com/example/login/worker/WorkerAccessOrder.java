@@ -60,7 +60,7 @@ public class WorkerAccessOrder extends AppCompatActivity {
 //                    recieve.add("odescription");
 //                    recieve.add("oid");
                     OkHttp okHttp = new OkHttp(send, recieve/*,2, com.example.login.worker.WorkerAccessOrder.this*/);
-                    HashMap<String,String> hm_return =okHttp.sendRequestWithOkHttp(hm1, "http://192.168.56.1:9090/AccessOrder");//////
+                    HashMap<String,String> hm_return =okHttp.sendRequestWithOkHttp(hm1, "http://120.48.5.10:9090/AccessOrder");//////
                     Log.d("msg_out", hm_return.get("msg"));
 
                     while (!application.orderSynFlag){
