@@ -68,7 +68,7 @@
                 android:id="@+id/dingdan"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
-                android:text="综合评分"
+                android:text="我的订单"
                 android:textSize="17sp"
                 android:textColor="@color/black"
                 android:layout_gravity="top|left"
@@ -140,5 +140,6 @@
                 android:gravity="center"
                 android:layout_gravity="center"/>
         </LinearLayout>
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

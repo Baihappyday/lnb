@@ -73,6 +73,8 @@ public class Institution_erollActivity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         Toast.makeText(Institution_erollActivity.this,"注册成功！",Toast.LENGTH_SHORT).show();
+                                        Intent i = new Intent(Institution_erollActivity.this, Institution_loginActivity.class);
+                                        startActivity(i);
                                     }
                                 });
                             }
