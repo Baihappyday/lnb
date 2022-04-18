@@ -6,6 +6,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
@@ -13,8 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
 
 import com.example.login.MyApplication;
 import com.example.login.R;
@@ -32,9 +37,20 @@ public class OrderFragment0 extends Fragment implements View.OnClickListener {
     private TextView duration;
     private TextView price;
     private TextView description;
+    private ImageView typeimageview;
     private Button confirm;
     private int dialogSelection = 0;
 
+    //用于动态修改页面中图片
+    private Drawable acti_0;
+    private Drawable acti_1;
+    private Drawable acti_2;
+    private Drawable acti_3;
+    //得到本地资源中图片的id
+    final private int id1 = R.drawable.acti_0;
+    final private int id2 = R.drawable.acti_1;
+    final private int id3 = R.drawable.acti_2;
+    final private int id4 = R.drawable.acti_3;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,10 +58,16 @@ public class OrderFragment0 extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_order0, container, false);
         mContext = getActivity();
+        UserOrder uo = (UserOrder) mContext;
         MyApplication application = (MyApplication) mContext.getApplicationContext();
+        acti_0 = ContextCompat.getDrawable(mContext,id1);
+        acti_1 = ContextCompat.getDrawable(mContext,id2);
+        acti_2 = ContextCompat.getDrawable(mContext,id3);
+        acti_3 = ContextCompat.getDrawable(mContext,id4);
 
         Log.d("info", "onCreateView: "+info.get("oid"));
         type = v.findViewById(R.id.activitytime);
+        typeimageview = v.findViewById(R.id.typeimageview);
         duration = v.findViewById(R.id.activityaddress);
         price = v.findViewById(R.id.activitydescription);
         description = v.findViewById(R.id.idescription);
@@ -54,17 +76,22 @@ public class OrderFragment0 extends Fragment implements View.OnClickListener {
         String o = info.get("otype").toString();
         if (o.equals("0")){
             toText = "洗衣";
+            typeimageview.setImageDrawable(acti_0);
         }
         else if (o.equals("1")){
             toText = "做饭";
+            typeimageview.setImageDrawable(acti_1);
         }
         else if (o.equals("2")){
             toText = "打扫卫生";
+            typeimageview.setImageDrawable(acti_2);
         }
         else if (o.equals("3")){
             toText = "理发";
+            typeimageview.setImageDrawable(acti_3);
         }
         type.setText(type.getText().toString()+toText);
+
         //0~30分钟", "30~60分钟", "1~2小时", "2小时以上
         o = info.get("oduration").toString();
         if (o.equals("0")){
