@@ -64,8 +64,8 @@ public class Myadapter extends BaseAdapter {
         TextView textView4 = view.findViewById(R.id.text16);
         textView4.setText(datas.get(position).getIaddress());
 
-        //TextView textView5 = view.findViewById(R.id.text17);
-        //textView5.setText(datas.get(position).getIprice());
+        TextView textView5 = view.findViewById(R.id.text17);
+        textView5.setText(String.valueOf(datas.get(position).getIprice()));
 
         TextView textView6 = view.findViewById(R.id.text18);
         textView6.setText(datas.get(position).getIdescription());
