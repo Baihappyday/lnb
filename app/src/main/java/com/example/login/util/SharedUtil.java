@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import static android.content.Context.MODE_PRIVATE;
-
 public class SharedUtil {
 
 	private static com.example.login.util.SharedUtil mUtil;
@@ -48,6 +46,7 @@ public class SharedUtil {
 		editor.commit();
 	}
 
+
 	public HashMap<String, String> readShared(ArrayList<String > a) {
 		Iterator<String > i = a.iterator();
 		HashMap<String ,String > hm = new HashMap<>();
@@ -65,6 +64,7 @@ public class SharedUtil {
 	public boolean readShared(String key, boolean defaultValue) {
 		return mShared.getBoolean(key, defaultValue);
 	}
+
 
 	private static SharedPreferences getmShared() {
 		return mShared;

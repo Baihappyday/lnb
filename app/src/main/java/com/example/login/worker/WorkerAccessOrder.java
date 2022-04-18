@@ -1,5 +1,5 @@
 package com.example.login.worker;
-
+//useless
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -23,9 +23,10 @@ public class WorkerAccessOrder extends AppCompatActivity {
         final int ostate=0;
         boolean btstate=getIntent().getBooleanExtra("btstate",false);
         Log.d("btstate", String.valueOf(btstate));
-        final String oid=getIntent().getStringExtra("oid");
+        //final String oid=getIntent().getStringExtra("oid");
         //final String oid="23";
-        Log.d("oid11", oid);
+        final int oid=29;
+        Log.d("oid11", String.valueOf(oid));
 
         if(btstate==true)
         {
@@ -40,7 +41,7 @@ public class WorkerAccessOrder extends AppCompatActivity {
 
                     //hm.put("wusername", application.getName());
 
-                    hm1.put("oid", oid);
+                    hm1.put("oid", String.valueOf(oid));
                     hm1.put("ostate",String.valueOf(ostate));
                     Log.d("ostate", String.valueOf(ostate));
 

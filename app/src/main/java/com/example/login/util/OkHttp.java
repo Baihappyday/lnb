@@ -68,7 +68,15 @@ public class OkHttp {
             if (state_JSON == 0){
                 while (i.hasNext()){
                     String s = i.next();
-                    obj.put(s,hashMap.get(s));
+                    if (s.equals("OID")){
+                        int oid = Integer.valueOf(hashMap.get(s));
+                        obj.put(s,oid);
+                        Log.d("InOkHttp", "sendRequestWithOkHttp: oid:"+oid);
+                    }
+                    else {
+                        obj.put(s,hashMap.get(s));
+                    }
+
                 }
             }
             else if (state_JSON == 1||state_JSON == 2){
@@ -82,6 +90,7 @@ public class OkHttp {
             e.printStackTrace();
         }
 
+        Log.d("InOkHttp", "sendRequestWithOkHttp: obj:"+obj.toString());
         MediaType type = MediaType.parse("application/json;charset=utf-8");
         RequestBody RequestBody2 = RequestBody.create(type,""+obj.toString());
         try {
@@ -130,15 +139,17 @@ public class OkHttp {
             try {
                 JSONObject object=new JSONObject(jsonData);
                 Log.d("name", "JSON length: "+object.length());
-                Log.d("msg", object.get("msg").toString());
+                Log.d("msg111", object.get("msg").toString());
                 Iterator<String> i = recieve.iterator();
                 HashMap<String, String> hm = new HashMap<>();
                 while (i.hasNext()){
                     String s = i.next();
                     if (s.equals("oid")){
                         //hm.put(s ,String.valueOf(object.getInt(s)));
+                        //hm.put(s ,String.valueOf(object.getInt(s)));
                     }
-                    else if (s.equals("oprice")||s.equals("waccount")||s.equals("wscore")){
+                    else if (s.equals("oprice")){
+                        //Log.d("waccount1", String.valueOf(object.getInt(s)));
                         hm.put(s ,String.valueOf(object.getInt(s)));
                     }
                     else if (s.equals("judgeinfo")){
@@ -175,7 +186,7 @@ public class OkHttp {
                             hm.put(s ,String.valueOf(object.getInt(s)));
                         }
                         else if (s.equals("oprice")){
-                            hm.put(s ,String.valueOf(object.getInt(s)));
+                            //hm.put(s ,String.valueOf(object.getInt(s)));
                         }
                         else if (s.equals("judgeinfo")){
                             hm.put(s , String.valueOf(object.getBoolean(s)));

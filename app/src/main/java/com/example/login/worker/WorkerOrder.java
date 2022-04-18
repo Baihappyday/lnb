@@ -1,14 +1,8 @@
 package com.example.login.worker;
 
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Fragment;
 import android.app.TabActivity;
-import android.net.Network;
 import android.os.Bundle;
-import android.os.Looper;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -16,29 +10,24 @@ import android.widget.TabHost;
 
 import com.example.login.MyApplication;
 import com.example.login.R;
-import com.example.login.user.OrderFragment0;
 import com.example.login.util.NetWorkUtil;
 import com.example.login.util.OkHttp;
 import com.example.login.util.SharedUtil;
-import com.google.android.material.tabs.TabLayout;
-
-import org.intellij.lang.annotations.JdkConstants;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class WorkerOrder /*extends AppCompatActivity*/extends TabActivity {
     TabHost tabHost;
     int ostate = 0;
-    ArrayList<OrderFragment0> list0 = new ArrayList<>();//fragment集合
-    ArrayList<OrderFragment0> list0All = new ArrayList<>();//fragment集合
-    ArrayList<OrderFragment0> list1 = new ArrayList<>();//fragment集合
-    ArrayList<OrderFragment0> list1All = new ArrayList<>();//fragment集合
-    ArrayList<OrderFragment0> list2 = new ArrayList<>();//fragment集合
-    ArrayList<OrderFragment0> list2All = new ArrayList<>();//fragment集合
-    ArrayList<OrderFragment0> list3 = new ArrayList<>();//fragment集合
-    ArrayList<OrderFragment0> list3All = new ArrayList<>();//fragment集合
+//    ArrayList<OrderFragment1> list0 = new ArrayList<OrderFragment1>();//fragment集合
+//    ArrayList<OrderFragment1> list0All = new ArrayList<OrderFragment1>();//fragment集合
+    ArrayList<OrderFragment1> list1 = new ArrayList<OrderFragment1>();//fragment集合
+    ArrayList<OrderFragment1> list1All = new ArrayList<OrderFragment1>();//fragment集合
+    ArrayList<OrderFragment1> list2 = new ArrayList<OrderFragment1>();//fragment集合
+    ArrayList<OrderFragment1> list2All = new ArrayList<OrderFragment1>();//fragment集合
+    ArrayList<OrderFragment1> list3 = new ArrayList<OrderFragment1>();//fragment集合
+    ArrayList<OrderFragment1> list3All = new ArrayList<OrderFragment1>();//fragment集合
     ArrayList<HashMap> order0;//订单集合
     ArrayList<HashMap> order1;//订单集合
     ArrayList<HashMap> order2;//订单集合
@@ -63,7 +52,7 @@ public class WorkerOrder /*extends AppCompatActivity*/extends TabActivity {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    getDate(0);
+                    //getDate(0);
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
@@ -96,7 +85,7 @@ public class WorkerOrder /*extends AppCompatActivity*/extends TabActivity {
 
 
         /* 以上创建和添加标签页也可以用如下代码实现 */
-        tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("未付款").setContent(R.id.tab011));
+        //tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("未付款").setContent(R.id.tab011));
         tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("进行中").setContent(R.id.tab022));
         tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator("已完成").setContent(R.id.tab033));
         tabHost.addTab(tabHost.newTabSpec("tab4").setIndicator("待评价").setContent(R.id.tab044));
@@ -169,7 +158,7 @@ public class WorkerOrder /*extends AppCompatActivity*/extends TabActivity {
                 recieve.add("odescription");
                 recieve.add("oid");
                 OkHttp okHttp = new OkHttp(send, recieve, 1, com.example.login.worker.WorkerOrder.this);
-                okHttp.sendRequestWithOkHttp(hm, "http://120.48.5.10:9090/serOrderList");
+                okHttp.sendRequestWithOkHttp(hm, "http://192.168.56.1:9090/serOrderList");
                 while (!application.orderSynFlag){
 
                 }
@@ -193,28 +182,28 @@ public class WorkerOrder /*extends AppCompatActivity*/extends TabActivity {
             public void run() {
 
                 switch (ostate){
-                    case 0:
-
-                        for (int i = 0; i < order0.size(); i++) {
-                            HashMap<String, Object> rhm = order0.get(i);//获取一个订单的信息
-                            list0.add(new OrderFragment0());
-                            list0.get(i).setInfo(rhm);//传入订单数据给fragment
-                            getFragmentManager().beginTransaction().add(R.id.tab01, list0.get(i)).commit();
-                            list0All.add(new OrderFragment0());
-                            list0All.get(i).setInfo(rhm);
-                            getFragmentManager().beginTransaction().add(R.id.tab05, list0All.get(i)).commit();
-
-                            Log.d("TAG", rhm.get("wusername") +" "+ rhm.get("oprice"));
-                        }
-
-                        break;
+//                    case 0:
+//
+//                        for (int i = 0; i < order0.size(); i++) {
+//                            HashMap<String, Object> rhm = order0.get(i);//获取一个订单的信息
+//                            list0.add(new OrderFragment1());
+//                            list0.get(i).setInfo(rhm);//传入订单数据给fragment
+//                            getFragmentManager().beginTransaction().add(R.id.tab01, list0.get(i)).commit();
+//                            list0All.add(new OrderFragment1());
+//                            list0All.get(i).setInfo(rhm);
+//                            getFragmentManager().beginTransaction().add(R.id.tab05, list0All.get(i)).commit();
+//
+//                            Log.d("TAG", rhm.get("wusername") +" "+ rhm.get("oprice"));
+//                        }
+//
+//                        break;
                     case 1:
                         for (int i = 0; i < order1.size(); i++) {
                             HashMap<String, Object> rhm = order1.get(i);//获取一个订单的信息
-                            list1.add(new OrderFragment0());
+                            list1.add(new OrderFragment1());
                             list1.get(i).setInfo(rhm);//传入订单数据给fragment
                             getFragmentManager().beginTransaction().add(R.id.tab02, list1.get(i)).commit();
-                            list1All.add(new OrderFragment0());
+                            list1All.add(new OrderFragment1());
                             list1All.get(i).setInfo(rhm);
                             getFragmentManager().beginTransaction().add(R.id.tab05, list1All.get(i)).commit();
 
@@ -224,10 +213,10 @@ public class WorkerOrder /*extends AppCompatActivity*/extends TabActivity {
                     case 2:
                         for (int i = 0; i < order2.size(); i++) {
                             HashMap<String, Object> rhm = order2.get(i);//获取一个订单的信息
-                            list2.add(new OrderFragment0());
+                            list2.add(new OrderFragment1());
                             list2.get(i).setInfo(rhm);//传入订单数据给fragment
                             getFragmentManager().beginTransaction().add(R.id.tab03, list2.get(i)).commit();
-                            list2All.add(new OrderFragment0());
+                            list2All.add(new OrderFragment1());
                             list2All.get(i).setInfo(rhm);
                             getFragmentManager().beginTransaction().add(R.id.tab05, list2All.get(i)).commit();
 
@@ -237,10 +226,10 @@ public class WorkerOrder /*extends AppCompatActivity*/extends TabActivity {
                     case 3:
                         for (int i = 0; i < order3.size(); i++) {
                             HashMap<String, Object> rhm = order3.get(i);//获取一个订单的信息
-                            list3.add(new OrderFragment0());
+                            list3.add(new OrderFragment1());
                             list3.get(i).setInfo(rhm);//传入订单数据给fragment
                             getFragmentManager().beginTransaction().add(R.id.tab04, list3.get(i)).commit();
-                            list3All.add(new OrderFragment0());
+                            list3All.add(new OrderFragment1());
                             list3All.get(i).setInfo(rhm);
                             getFragmentManager().beginTransaction().add(R.id.tab05, list3All.get(i)).commit();
 

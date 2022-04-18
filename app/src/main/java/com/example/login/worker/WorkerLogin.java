@@ -154,10 +154,10 @@ public class WorkerLogin extends AppCompatActivity implements View.OnClickListen
                     send.add("wpassword");
                     final ArrayList<String> recieve = new ArrayList<String>();
                     recieve.add("msg");
-                    recieve.add("waccount");//余额？？？？？？、
+                    recieve.add("waccount");//余额
                     recieve.add("wscore");//评分
                     OkHttp okHttp = new OkHttp(send,recieve);
-                    HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hashMap, "http://120.48.5.10:9090/login/workers");
+                    HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hashMap, "http://192.168.56.1:9090/login/workers");
 
                     Log.d("msg1",rhm.get("msg"));
                     Log.d("account",rhm.get("waccount"));
@@ -170,6 +170,9 @@ public class WorkerLogin extends AppCompatActivity implements View.OnClickListen
                         application.setLoginState(true);//设置登录状态
                         SharedUtil sp = SharedUtil.getIntance(com.example.login.worker.WorkerLogin.this,"logininfo");
                         sp.writeShared(send,hashMap);//写入登录信息
+                        sp.writeShared("wusername",login_username.getText().toString());
+                        sp.writeShared("account",rhm.get("waccount"));
+                        sp.writeShared("score",rhm.get("wscore"));
                         sp.writeShared("loginstate", true);
                         sp.writeShared("identification","1");//设置身份
 

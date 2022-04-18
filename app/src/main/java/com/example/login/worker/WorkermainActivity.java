@@ -136,7 +136,7 @@ public class WorkermainActivity extends Fragment {
                             recieve.add("odescription");
                             recieve.add("oid");
                             OkHttp okHttp = new OkHttp(send, recieve/*,1, com.example.login.worker.WorkermainActivity.this*/);
-                            okHttp.sendRequestWithOkHttp(hm, "http://120.48.5.10:9090/serOrderList");//////
+                            okHttp.sendRequestWithOkHttp(hm, "http://192.168.56.1:9090/serOrderList");//////
                             while (!application.orderSynFlag){
 
                             }

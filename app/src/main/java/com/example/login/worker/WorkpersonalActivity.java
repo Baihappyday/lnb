@@ -8,10 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.login.IdentiChooseActivity;
 import com.example.login.MyApplication;
 import com.example.login.R;
 import com.example.login.user.HealthInfoActivity;
@@ -35,11 +37,18 @@ public class WorkpersonalActivity /*extends Fragment  implements View.OnClickLis
 
         MyApplication application = (MyApplication) WorkpersonalActivity.this.getApplicationContext();
 
+        TextView score=findViewById(R.id.pingfen);
+        SharedUtil sp = SharedUtil.getIntance(WorkpersonalActivity.this, "logininfo");
+        String score_num = sp.readShared("score", null);
+        if(score_num==null)
+            score.setText("综合评分");
+        else
+            score.setText("综合评分"+String.valueOf(score_num));
 
         Button btn1 = findViewById(R.id.bt1);
         btn1.setOnClickListener(this);
-        Button btn2 = findViewById(R.id.bt2);
-        btn2.setOnClickListener(this);
+//        Button btn2 = findViewById(R.id.bt2);
+//        btn2.setOnClickListener(this);
         Button btn3 = findViewById(R.id.bt3);
         btn3.setOnClickListener(this);
         Button btn4 = findViewById(R.id.bt4);
@@ -48,9 +57,18 @@ public class WorkpersonalActivity /*extends Fragment  implements View.OnClickLis
         btn5.setOnClickListener(this);
         Button btn6 = findViewById(R.id.bt6);
         btn6.setOnClickListener(this);
+        Button button13 = findViewById(R.id.button13);
+        button13.setOnClickListener(this);
+        Button home = findViewById(R.id.button1);//首页
+        home.setOnClickListener(this);
+        Button person = findViewById(R.id.button2);//个人中心
+        person.setOnClickListener(this);
 
+        if (!application.getLoginState()){
+            button13.setVisibility(View.GONE);
+        }
         if (application.getLoginState()) {//若之前已登录
-            SharedUtil sp = SharedUtil.getIntance(this, "logininfo");
+            //SharedUtil sp = SharedUtil.getIntance(this, "logininfo");
             String s = sp.readShared("wusername", "null");
             Log.d("tag", s);
             if (s.equals("null")) {
@@ -95,6 +113,22 @@ public class WorkpersonalActivity /*extends Fragment  implements View.OnClickLis
         if (view.getId() == R.id.bt6){//收入钱包
             Intent intent=new Intent(WorkpersonalActivity.this, workwalletActivity.class);
             startActivity(intent);
+        }
+        if(view.getId() == R.id.button13){//退出登录
+            Intent intent=new Intent(WorkpersonalActivity.this, IdentiChooseActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+            SharedUtil.clearShared(WorkpersonalActivity.this);
+            MyApplication application = (MyApplication) WorkpersonalActivity.this.getApplicationContext();
+            application.setLoginState(false);
+            startActivity(intent);
+        }
+        if(view.getId() == R.id.button1){//首页
+            Intent intent=new Intent(WorkpersonalActivity.this, WorkmaininterfaceAcitvity.class);
+            startActivity(intent);
+
+        }
+        if(view.getId() == R.id.button2){//个人中心
+
         }
     }
 }

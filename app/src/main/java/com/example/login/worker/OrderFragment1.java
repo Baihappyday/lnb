@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.login.MyApplication;
 import com.example.login.R;
 import com.example.login.util.OkHttp;
+import com.example.login.util.SharedUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,6 +35,7 @@ public class OrderFragment1 extends Fragment {
     private Button accept;
     boolean click=false;
     String oid1;
+    String wname;
 
 
     @Override
@@ -88,17 +90,74 @@ public class OrderFragment1 extends Fragment {
             public void run() {
                 oid1= (String) info.get("oid");//info.get("oid")返回的是string
                 Log.d("oid_frag", String.valueOf(oid1));
+                //wname=(String) info.get("wusername");
+                SharedUtil sp = SharedUtil.getIntance(mContext, "logininfo");
+                wname = sp.readShared("wusername", "null");
+                Log.d("wusername",wname);
 
+                if (!"0".equals(info.get("ostate"))){
+                    accept.setVisibility(View.GONE);
+                }
 
                 accept.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         accept.setText("已接受");
                         click=true;
-                        Intent intent=new Intent(getActivity(), WorkerAccessOrder.class);
-                        intent.putExtra("btstate",click);//boolean
-                        intent.putExtra("oid",oid1);//string
-                        startActivity(intent);
+//                        Intent intent=new Intent(getActivity(), WorkerAccessOrder.class);
+//                        intent.putExtra("btstate",click);//boolean
+//                        intent.putExtra("oid",oid1);//string
+//                        startActivity(intent);
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(click==true){
+                                    //SharedUtil sp = SharedUtil.getIntance(mContext, "taskinfo");
+                                    HashMap<String, String> hm1 = new HashMap<>();
+                                    //MyApplication application = (MyApplication) com.example.login.worker.OrderFragment1.this.getApplicationContext();
+                                    //MyApplication application = (MyApplication) WorkerAccessOrder.this.getApplicationContext();
+
+
+                                    //hm.put("wusername", application.getName());
+
+                                    hm1.put("oid", oid1);
+                                    hm1.put("wusername",wname);
+                                    //Log.d("ostate", String.valueOf(ostate));
+
+                                    ArrayList<String> send = new ArrayList<>();
+                                    send.add("oid");
+                                    send.add("wusername");
+                                    ArrayList<String> recieve = new ArrayList<>();
+                                    recieve.add("msg");
+//                                    recieve.add("username");
+//                                    recieve.add("wusername");
+//                                    recieve.add("otype");
+//                                    recieve.add("oduration");
+//                                    recieve.add("oscore");
+//                                    recieve.add("ostate");
+//                                    recieve.add("oprice");
+//                                    recieve.add("odescription");
+//                                    recieve.add("oid");
+
+                                    OkHttp okHttp = new OkHttp(send, recieve/*,2, com.example.login.worker.WorkerAccessOrder.this*/);
+
+                                    HashMap<String,String> hm_return =okHttp.sendRequestWithOkHttp(hm1, "http://192.168.56.1:9090/AccessOrder");//////
+                                    Log.d("msg_out", hm_return.get("msg"));
+
+                                    while (!application.orderSynFlag){
+
+                                    }
+                                    application.orderSynFlag = false;
+                                    //Log.d("TAG", "flag true");
+                                    if (hm_return.get("msg").equals("获取任务成功")){
+                                        Looper.prepare();
+                                        Toast.makeText(application,"接单成功！", Toast.LENGTH_SHORT).show();
+                                        Looper.loop();
+
+                                    }
+                                }
+                            }
+                        }).start();
                     }
                 });
             }
