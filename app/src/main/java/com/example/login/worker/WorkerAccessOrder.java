@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.login.MyApplication;
 import com.example.login.util.OkHttp;
+import com.example.login.util.SharedUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,6 +40,9 @@ public class WorkerAccessOrder extends AppCompatActivity {
                     MyApplication application = (MyApplication) WorkerAccessOrder.this.getApplicationContext();
 
 
+                    SharedUtil sp = SharedUtil.getIntance(com.example.login.worker.WorkerAccessOrder.this, "logininfo");
+                    //sp = SharedUtil.getIntance(this, "logininfo");
+                    String s = sp.readShared("wusername", "null");
                     //hm.put("wusername", application.getName());
 
                     hm1.put("oid", String.valueOf(oid));

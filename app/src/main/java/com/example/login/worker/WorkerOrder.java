@@ -34,6 +34,7 @@ public class WorkerOrder /*extends AppCompatActivity*/extends TabActivity {
     ArrayList<HashMap> order3;//订单集合
 
     boolean threadFlag = false;
+    boolean killFlag = false;
 
 
     @Override
@@ -49,9 +50,9 @@ public class WorkerOrder /*extends AppCompatActivity*/extends TabActivity {
         boolean netFlag = NetWorkUtil.isNetworkConnected(this);
 
         if (netFlag){
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
+            //new Thread(new Runnable() {
+                //@Override
+                //public void run() {
                     //getDate(0);
                     new Thread(new Runnable() {
                         @Override
@@ -75,8 +76,8 @@ public class WorkerOrder /*extends AppCompatActivity*/extends TabActivity {
                             }).start();
                         }
                     }).start();
-                }
-            }).start();
+               // }
+           // }).start();
         }
         else {
 
@@ -138,10 +139,14 @@ public class WorkerOrder /*extends AppCompatActivity*/extends TabActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                SharedUtil sp = SharedUtil.getIntance(com.example.login.worker.WorkerOrder.this, "taskinfo");
+                SharedUtil sp = SharedUtil.getIntance(com.example.login.worker.WorkerOrder.this, "logininfo");
+                //sp = SharedUtil.getIntance(this, "logininfo");
+                String s = sp.readShared("wusername", "null");
                 HashMap<String, String> hm = new HashMap<>();
                 MyApplication application = (MyApplication) com.example.login.worker.WorkerOrder.this.getApplicationContext();
-                hm.put("wusername", application.getName());
+                hm.put("wusername", s);
+
+                Log.d("out_wusername",s);
 
                 hm.put("ostate", String.valueOf(ostate));
                 ArrayList<String> send = new ArrayList<>();
@@ -158,7 +163,7 @@ public class WorkerOrder /*extends AppCompatActivity*/extends TabActivity {
                 recieve.add("odescription");
                 recieve.add("oid");
                 OkHttp okHttp = new OkHttp(send, recieve, 1, com.example.login.worker.WorkerOrder.this);
-                okHttp.sendRequestWithOkHttp(hm, "http://192.168.56.1:9090/serOrderList");
+                okHttp.sendRequestWithOkHttp(hm, "http://120.48.5.10:9090/serOrderList");
                 while (!application.orderSynFlag){
 
                 }
@@ -175,13 +180,14 @@ public class WorkerOrder /*extends AppCompatActivity*/extends TabActivity {
         while (!threadFlag){
             Log.d("tag", "in threadflag");
         }
-        threadFlag = false;
-        Log.d("tag", "out threadflag");
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
+        if (!killFlag) {
+            threadFlag = false;
+            Log.d("tag", "out threadflag");
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
 
-                switch (ostate){
+                    switch (ostate) {
 //                    case 0:
 //
 //                        for (int i = 0; i < order0.size(); i++) {
@@ -197,54 +203,55 @@ public class WorkerOrder /*extends AppCompatActivity*/extends TabActivity {
 //                        }
 //
 //                        break;
-                    case 1:
-                        for (int i = 0; i < order1.size(); i++) {
-                            HashMap<String, Object> rhm = order1.get(i);//获取一个订单的信息
-                            list1.add(new OrderFragment1());
-                            list1.get(i).setInfo(rhm);//传入订单数据给fragment
-                            getFragmentManager().beginTransaction().add(R.id.tab02, list1.get(i)).commit();
-                            list1All.add(new OrderFragment1());
-                            list1All.get(i).setInfo(rhm);
-                            getFragmentManager().beginTransaction().add(R.id.tab05, list1All.get(i)).commit();
+                        case 1:
+                            for (int i = 0; i < order1.size(); i++) {
+                                HashMap<String, Object> rhm = order1.get(i);//获取一个订单的信息
+                                list1.add(new OrderFragment1());
+                                list1.get(i).setInfo(rhm);//传入订单数据给fragment
+                                getFragmentManager().beginTransaction().add(R.id.tab02, list1.get(i)).commit();
+                                list1All.add(new OrderFragment1());
+                                list1All.get(i).setInfo(rhm);
+                                getFragmentManager().beginTransaction().add(R.id.tab05, list1All.get(i)).commit();
 
-                            Log.d("TAG", rhm.get("wusername") +" "+ rhm.get("oprice"));
-                        }
-                        break;
-                    case 2:
-                        for (int i = 0; i < order2.size(); i++) {
-                            HashMap<String, Object> rhm = order2.get(i);//获取一个订单的信息
-                            list2.add(new OrderFragment1());
-                            list2.get(i).setInfo(rhm);//传入订单数据给fragment
-                            getFragmentManager().beginTransaction().add(R.id.tab03, list2.get(i)).commit();
-                            list2All.add(new OrderFragment1());
-                            list2All.get(i).setInfo(rhm);
-                            getFragmentManager().beginTransaction().add(R.id.tab05, list2All.get(i)).commit();
+                                Log.d("TAG", rhm.get("wusername") + " " + rhm.get("oprice"));
+                            }
+                            break;
+                        case 2:
+                            for (int i = 0; i < order2.size(); i++) {
+                                HashMap<String, Object> rhm = order2.get(i);//获取一个订单的信息
+                                list2.add(new OrderFragment1());
+                                list2.get(i).setInfo(rhm);//传入订单数据给fragment
+                                getFragmentManager().beginTransaction().add(R.id.tab03, list2.get(i)).commit();
+                                list2All.add(new OrderFragment1());
+                                list2All.get(i).setInfo(rhm);
+                                getFragmentManager().beginTransaction().add(R.id.tab05, list2All.get(i)).commit();
 
-                            Log.d("TAG", rhm.get("wusername") +" "+ rhm.get("oprice"));
-                        }
-                        break;
-                    case 3:
-                        for (int i = 0; i < order3.size(); i++) {
-                            HashMap<String, Object> rhm = order3.get(i);//获取一个订单的信息
-                            list3.add(new OrderFragment1());
-                            list3.get(i).setInfo(rhm);//传入订单数据给fragment
-                            getFragmentManager().beginTransaction().add(R.id.tab04, list3.get(i)).commit();
-                            list3All.add(new OrderFragment1());
-                            list3All.get(i).setInfo(rhm);
-                            getFragmentManager().beginTransaction().add(R.id.tab05, list3All.get(i)).commit();
+                                Log.d("TAG", rhm.get("wusername") + " " + rhm.get("oprice"));
+                            }
+                            break;
+                        case 3:
+                            for (int i = 0; i < order3.size(); i++) {
+                                HashMap<String, Object> rhm = order3.get(i);//获取一个订单的信息
+                                list3.add(new OrderFragment1());
+                                list3.get(i).setInfo(rhm);//传入订单数据给fragment
+                                getFragmentManager().beginTransaction().add(R.id.tab04, list3.get(i)).commit();
+                                list3All.add(new OrderFragment1());
+                                list3All.get(i).setInfo(rhm);
+                                getFragmentManager().beginTransaction().add(R.id.tab05, list3All.get(i)).commit();
 
-                            Log.d("TAG", rhm.get("wusername") +" "+ rhm.get("oprice"));
-                        }
+                                Log.d("TAG", rhm.get("wusername") + " " + rhm.get("oprice"));
+                            }
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     void getOrder(ArrayList<HashMap> order,int ostate){
         switch (ostate){
-            case 0:
-                this.order0 = order;
-                break;
+//            case 0:
+//                this.order0 = order;
+//                break;
             case 1:
                 this.order1 = order;
                 break;
@@ -263,5 +270,11 @@ public class WorkerOrder /*extends AppCompatActivity*/extends TabActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         return super.onKeyDown(keyCode, event);
+    }
+    @Override
+    protected void onStop() {
+        threadFlag = true;
+        killFlag = true;
+        super.onStop();
     }
 }

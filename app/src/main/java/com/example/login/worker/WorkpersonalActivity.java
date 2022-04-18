@@ -68,9 +68,9 @@ public class WorkpersonalActivity /*extends Fragment  implements View.OnClickLis
             button13.setVisibility(View.GONE);
         }
         if (application.getLoginState()) {//若之前已登录
-            //SharedUtil sp = SharedUtil.getIntance(this, "logininfo");
+            sp = SharedUtil.getIntance(this, "logininfo");
             String s = sp.readShared("wusername", "null");
-            Log.d("tag", s);
+            Log.d("already_wusername", s);
             if (s.equals("null")) {
                 btn1.setText("点击登录");
             } else {

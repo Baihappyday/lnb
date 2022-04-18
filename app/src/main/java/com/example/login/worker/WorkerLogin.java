@@ -157,7 +157,7 @@ public class WorkerLogin extends AppCompatActivity implements View.OnClickListen
                     recieve.add("waccount");//余额
                     recieve.add("wscore");//评分
                     OkHttp okHttp = new OkHttp(send,recieve);
-                    HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hashMap, "http://192.168.56.1:9090/login/workers");
+                    HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hashMap, "http://120.48.5.10:9090/login/workers");
 
                     Log.d("msg1",rhm.get("msg"));
                     Log.d("account",rhm.get("waccount"));
