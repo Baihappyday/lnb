@@ -20,7 +20,7 @@
             tools:layout_editor_absoluteY="20dp">
 
             <TextView
-                android:id="@+id/ctextView"
+                android:id="@+id/itextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="验证身份"

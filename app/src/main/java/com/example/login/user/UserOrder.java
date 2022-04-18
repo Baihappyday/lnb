@@ -1,6 +1,7 @@
 package com.example.login.user;
 
 import android.app.TabActivity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -33,6 +34,7 @@ public class UserOrder /*extends AppCompatActivity*/extends TabActivity {
     ArrayList<HashMap> order2;//订单集合
     ArrayList<HashMap> order3;//订单集合
 
+
     Thread[] threads = new Thread[4];
 
     boolean threadFlag = false;
@@ -48,6 +50,7 @@ public class UserOrder /*extends AppCompatActivity*/extends TabActivity {
         tabHost = getTabHost();
         LayoutInflater.from(this).inflate(R.layout.user_order,
                 tabHost.getTabContentView(), true);
+
 
         boolean netFlag = NetWorkUtil.isNetworkConnected(this);
 

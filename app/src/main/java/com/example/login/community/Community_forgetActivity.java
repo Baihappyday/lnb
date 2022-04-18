@@ -13,9 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.login.R;
-import com.example.login.user.ForgetPasswordActivity;
-import com.example.login.user.UserLoginActivity;
-import com.example.login.user.UserMainInterfaceActivity;
 import com.example.login.util.OkHttp;
 
 import java.util.ArrayList;
@@ -31,7 +28,7 @@ public class Community_forgetActivity extends AppCompatActivity implements View.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.community_forget);
-        textview = findViewById(R.id.ctextView);
+        textview = findViewById(R.id.itextView);
         btn = findViewById(R.id.yanzheng);
         btn.setOnClickListener((View.OnClickListener) this);
         username1 = findViewById(R.id.forgetusername);

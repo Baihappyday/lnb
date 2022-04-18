@@ -129,8 +129,8 @@ public class OkHttp {
             state_JSON = 0;
             try {
                 JSONObject object=new JSONObject(jsonData);
-                Log.d("name", "JSON length: "+object.length());
-                Log.d("msg", object.get("msg").toString());
+              //  Log.d("name", "JSON length: "+object.length());
+               // Log.d("msg", object.get("msg").toString());
                 Iterator<String> i = recieve.iterator();
                 HashMap<String, String> hm = new HashMap<>();
                 while (i.hasNext()){
@@ -143,6 +143,9 @@ public class OkHttp {
                     }
                     else if (s.equals("judgeinfo")){
                         hm.put(s , String.valueOf(object.getBoolean(s)));
+                    }
+                    else if (s.equals("account")){
+                        hm.put(s , String.valueOf(object.getInt(s)));
                     }
                     else {
                         hm.put(s ,object.getString(s));

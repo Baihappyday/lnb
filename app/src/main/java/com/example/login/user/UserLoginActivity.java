@@ -154,6 +154,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                     send.add("password");
                     final ArrayList<String> recieve = new ArrayList<String>();
                     recieve.add("msg");
+                    recieve.add("account");
                     OkHttp okHttp = new OkHttp(send,recieve);
                     HashMap<String,String> rhm = okHttp.sendRequestWithOkHttp(hashMap, "http://120.48.5.10:9090/login/users");
                     if (rhm.get("msg").equals("登录成功")){
@@ -163,6 +164,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                         application.setLoginState(true);//设置登录状态
                         SharedUtil sp = SharedUtil.getIntance(UserLoginActivity.this,"logininfo");
                         sp.writeShared(send,hashMap);//写入登录信息
+                        sp.writeShared("account",rhm.get("account"));
                         sp.writeShared("loginstate", true);//登录状态设为真，下次进app直接跳转到对应身份主界面
                         sp.writeShared("identification","0");//设置身份
                         Log.d("tag", String.valueOf(sp.readShared("loginstate", false)));
