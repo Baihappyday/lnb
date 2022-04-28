@@ -28,12 +28,12 @@
 
             <Button
                 android:id="@+id/bt1"
-                android:layout_width="80dp"
-                android:layout_height="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:background="@null"
                 android:text="点击登录"
-                android:textSize="17sp" />
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -48,9 +48,9 @@
             <TextView
                 android:id="@+id/pingfen"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="30dp"
                 android:text="综合评分"
-                android:textSize="17sp"
+                android:textSize="20sp"
                 android:layout_gravity="center"
                 android:textColor="@color/black"/>
         </LinearLayout>
@@ -67,9 +67,9 @@
             <TextView
                 android:id="@+id/dingdan"
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
+                android:layout_height="30dp"
                 android:text="我的订单"
-                android:textSize="17sp"
+                android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_gravity="top|left"
                 android:layout_marginBottom="5dp"/>
@@ -132,9 +132,9 @@
             <Button
                 android:id="@+id/bt6"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="30dp"
                 android:text="收入钱包"
-                android:textSize="17sp"
+                android:textSize="20sp"
                 android:textColor="@color/black"
                 android:background="@null"
                 android:gravity="center"
@@ -144,12 +144,14 @@
         <Button
             android:id="@+id/button13"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:background="@color/white"
             android:text="退出登录"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:layout_marginBottom="60dp"/>
         <LinearLayout
+            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:orientation="horizontal">
@@ -159,7 +161,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="首页"
-                android:background="@color/white"/>
+                android:background="@color/white"
+                android:layout_alignParentBottom="true"/>
 
             <Button
                 android:id="@+id/button2"
@@ -167,7 +170,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="个人中心"
-                android:background="@color/white"/>
+                android:background="@color/white"
+                android:layout_alignParentBottom="true"/>
         </LinearLayout>
 
     </LinearLayout>

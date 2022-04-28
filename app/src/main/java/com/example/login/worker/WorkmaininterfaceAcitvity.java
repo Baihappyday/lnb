@@ -51,7 +51,7 @@ public class WorkmaininterfaceAcitvity extends AppCompatActivity
         
         //getSupportFragmentManager().beginTransaction().replace(R.id.fragment, mi).commit();
 
-        Toast.makeText(WorkmaininterfaceAcitvity.this,"欢迎使用老年宝，请前往个人中心登录",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(WorkmaininterfaceAcitvity.this,"欢迎使用老年宝，请前往个人中心登录",Toast.LENGTH_SHORT).show();
         //getSupportFragmentManager().beginTransaction().replace(R.id.fragment, mi).commit();
 
         Button button1=findViewById(R.id.button1);//首页

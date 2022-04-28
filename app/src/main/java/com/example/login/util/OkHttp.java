@@ -194,7 +194,7 @@ public class OkHttp {
                             hm.put(s ,String.valueOf(object.getInt(s)));
                         }
                         else if (s.equals("oprice")){
-                            //hm.put(s ,String.valueOf(object.getInt(s)));
+                            hm.put(s ,String.valueOf(object.getInt(s)));
                         }
                         else if (s.equals("judgeinfo")){
                             hm.put(s , String.valueOf(object.getBoolean(s)));
