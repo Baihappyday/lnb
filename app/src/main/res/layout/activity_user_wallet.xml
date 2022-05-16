@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="收入钱包"
+        android:text="钱包"
         android:textColor="@color/black"
         android:textSize="50sp"
         android:layout_margin="8dp" />
@@ -42,7 +42,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/textview_border"
                 android:backgroundTint="@color/smallblue"
-                android:text="加载中..."
+                android:text="请先登录..."
                 android:textColor="@color/black"
                 android:textSize="40sp" />
         </LinearLayout>

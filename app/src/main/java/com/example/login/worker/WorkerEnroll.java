@@ -111,7 +111,7 @@ public class WorkerEnroll extends AppCompatActivity {
             public void onClick(View v){
                 //Intent是一种运行时绑定（run-time binding）机制，它能在程序运行过程中连接两个不同的组件。
                 //在存放资源代码的文件夹下下，
-                Intent i = new Intent(com.example.login.worker.WorkerEnroll.this, UserLoginActivity.class);//跳转至登录界面
+                Intent i = new Intent(com.example.login.worker.WorkerEnroll.this, WorkerLogin.class);//跳转至登录界面
                 //启动
                 startActivity(i);
             }
