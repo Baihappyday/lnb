@@ -89,7 +89,7 @@ public class WorkerOrder /*extends AppCompatActivity*/extends TabActivity {
         //tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("未付款").setContent(R.id.tab011));
         tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("进行中").setContent(R.id.tab022));
         tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator("已完成").setContent(R.id.tab033));
-        tabHost.addTab(tabHost.newTabSpec("tab4").setIndicator("待评价").setContent(R.id.tab044));
+        tabHost.addTab(tabHost.newTabSpec("tab4").setIndicator("已评价").setContent(R.id.tab044));
         tabHost.addTab(tabHost.newTabSpec("tab5").setIndicator("全部").setContent(R.id.tab055));
 //        tabHost.setCurrentTabByTag(R.id.tab01);
 
