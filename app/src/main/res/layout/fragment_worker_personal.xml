@@ -94,19 +94,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:background="@null"
-                    android:text="待收款"
+                    android:text="进行中"
                     android:textSize="17sp"
                     android:layout_weight="1"
-                    android:gravity="center"/>
-
-                <Button
-                    android:id="@+id/bt5"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@null"
-                    android:text="待评价"
-                    android:layout_weight="1"
-                    android:textSize="17sp"
                     android:gravity="center"/>
 
                 <Button
@@ -115,6 +105,16 @@
                     android:layout_height="80dp"
                     android:background="@null"
                     android:text="已完成"
+                    android:layout_weight="1"
+                    android:textSize="17sp"
+                    android:gravity="center"/>
+
+                <Button
+                    android:id="@+id/bt5"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@null"
+                    android:text="已评价"
                     android:layout_weight="1"
                     android:textSize="17sp"
                     android:gravity="center"/>
