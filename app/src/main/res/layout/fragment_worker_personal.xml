@@ -104,7 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:background="@null"
-                    android:text="已完成"
+                    android:text="待评价"
                     android:layout_weight="1"
                     android:textSize="17sp"
                     android:gravity="center"/>
@@ -114,7 +114,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:background="@null"
-                    android:text="已评价"
+                    android:text="已完成"
                     android:layout_weight="1"
                     android:textSize="17sp"
                     android:gravity="center"/>

@@ -66,6 +66,9 @@ public class WorkerEnroll extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         Toast.makeText(com.example.login.worker.WorkerEnroll.this,"注册成功！",Toast.LENGTH_SHORT).show();
+                                        Intent i = new Intent(com.example.login.worker.WorkerEnroll.this, WorkerLogin.class);//跳转至登录界面
+                                        //启动
+                                        startActivity(i);
                                     }
                                 });
                             }
